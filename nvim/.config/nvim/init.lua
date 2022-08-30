@@ -30,9 +30,9 @@ vim.opt.expandtab = false
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
--- vim.opt.softtabstop = 2
+vim.opt.softtabstop = 2
 
--- vim.opt.clipboard = {"unnamedplus"}
+vim.opt.clipboard = {"unnamedplus"}
 -- vim.opt.foldenable = false
 vim.g.python3_host_prog = true
 vim.g.loaded_perl_provider = false
@@ -44,11 +44,11 @@ vim.g.netrw_liststyle = 1
 
 -- NEOVIDE
 if (vim.g.neovide) then
-  vim.g.neovide_cursor_animation_length = 0.03
-  vim.g.neovide_scroll_animation_length = 0.3
-  vim.opt.guifont = "FiraCode NF:h11"
-  -- set guifont=*  <== lists all fonts
-  vim.g.neovide_fullscreen = false
+	vim.g.neovide_cursor_animation_length = 0.03
+	vim.g.neovide_scroll_animation_length = 0.3
+	vim.opt.guifont = "FiraCode NF:h11"
+	-- set guifont=*  <== lists all fonts
+	vim.g.neovide_fullscreen = false
 end
 
 -- PLUGINS
@@ -141,21 +141,24 @@ vim.api.nvim_set_keymap('n',"<leader>td",":Telescope diagnostics<cr>", { noremap
 vim.api.nvim_set_keymap('x',"ga","<Plug>(EasyAlign)", { noremap = false, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ch', ':Cheat<cr>', { noremap = false, silent = true } )
 
+-- CUSTOM FUNCTIONS
+vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`a', { noremap = true, silent = true }) -- indent on command
+
 -- EXTERNAL REQUIREMENTS
 Plugins = {
-  'vim-notify_c',
-  'telescope_c',
-  'nvim-cmp_c',
-  'nvim-lspconfig_c',
-  'bufferline_c',
-  'nvim-autopairs_c',
-  'lualine_c',
-  'treesitter_c',
-  'cheat_c'
+	'vim-notify_c',
+	'telescope_c',
+	'nvim-cmp_c',
+	'nvim-lspconfig_c',
+	'bufferline_c',
+	'nvim-autopairs_c',
+	'lualine_c',
+	'treesitter_c',
+	'cheat_c'
 }
 
 for _, pConfig in ipairs(Plugins) do
-  require(pConfig)
+	require(pConfig)
 end
 
 require ('colorizer').setup()
