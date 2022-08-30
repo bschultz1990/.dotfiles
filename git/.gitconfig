@@ -1,0 +1,11 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	name = Ben Schultz
+	email = ben@schultz.com
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
+	rebase = false
