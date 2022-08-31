@@ -29,10 +29,11 @@ vim.opt.winblend = 10
 vim.opt.expandtab = false
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.shiftround = true
+-- vim.opt.shiftround = true
 vim.opt.softtabstop = 2
 
-vim.opt.clipboard = {"unnamedplus"}
+-- CLIPBOARD
+vim.opt.clipboard:append {'unnamedplus'}
 -- vim.opt.foldenable = false
 vim.g.python3_host_prog = true
 vim.g.loaded_perl_provider = false
@@ -148,13 +149,12 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`a', { noremap = true, sile
 Plugins = {
 	'vim-notify_c',
 	'telescope_c',
-	'nvim-cmp_c',
 	'nvim-lspconfig_c',
 	'bufferline_c',
 	'nvim-autopairs_c',
 	'lualine_c',
 	'treesitter_c',
-	'cheat_c'
+	'cheat_c',
 }
 
 for _, pConfig in ipairs(Plugins) do
