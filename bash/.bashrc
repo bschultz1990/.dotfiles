@@ -146,7 +146,6 @@ function clone {
 		git clone --filter=blob:none "$URL";
 	fi
 }
-
 export -f clone
 
 # Enable Git Status

@@ -33,7 +33,7 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 
 -- CLIPBOARD
-vim.opt.clipboard:append {'unnamedplus'}
+vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
 -- vim.opt.foldenable = false
 vim.g.python3_host_prog = true
 vim.g.loaded_perl_provider = false
@@ -155,6 +155,7 @@ Plugins = {
 	'lualine_c',
 	'treesitter_c',
 	'cheat_c',
+	'luasnip_c',
 }
 
 for _, pConfig in ipairs(Plugins) do
