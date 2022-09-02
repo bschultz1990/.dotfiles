@@ -1,3 +1,4 @@
+-- https://bryankegley.me/posts/nvim-getting-started/
 -- GENERAL
 vim.scriptencoding = 'utf8'
 vim.opt.encoding = 'utf-8'
