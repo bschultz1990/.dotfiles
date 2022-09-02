@@ -84,7 +84,6 @@ Plug 'akinsho/bufferline.nvim'
 ---- TELESCOPE
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 ---- NVIM-LSP
 Plug 'neovim/nvim-lspconfig'
@@ -99,69 +98,18 @@ Plug ('glepnir/lspsaga.nvim', {branch='main'} )
 ---- COLOR
 Plug 'sainnhe/sonokai'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug ('folke/tokyonight.nvim', { branch= 'main' })
+Plug ('projekt0n/github-nvim-theme')
 
 ---- CHEATSHEETS
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
 vim.call("plug#end")
 
--- PACKER
--- https://www.notonlycode.org/neovim-lua-config/
---vim.cmd[[packadd packer.nvim]]
---vim.cmd('set packpath='..vim.fn.stdpath('data')..'/plugins')
---require('packer').startup(function(use)
-	--use 'tpope/vim-surround'
-	--use 'tpope/vim-commentary'
-	--use 'tpope/vim-repeat'
-	--use 'KabbAmine/vCoolor.vim'
-	--use 'folke/zen-mode.nvim'
-	--use 'folke/twilight.nvim'
-	--use 'startup-nvim/startup.nvim'
-	--use 'junegunn/vim-easy-align'
-	--use 'bschultz1990/cheatsheet.nvim'
-	--use 'mhinz/vim-startify'
-	--use 'windwp/nvim-autopairs'
-	--use 'rcarriga/nvim-notify'
-	--use 'nvim-treesitter/nvim-treesitter'
---
-	------ LUALINE
-	--use 'kyazdani42/nvim-web-devicons'
-	--use 'nvim-lualine/lualine.nvim'
---
-	------ BUFFERLINE
-	--use 'akinsho/bufferline.nvim'
---
-	------ TELESCOPE
-	--use 'nvim-telescope/telescope.nvim'
-	--use 'nvim-lua/plenary.nvim'
-	--use 'nvim-telescope/telescope-file-browser.nvim'
---
-	------ NVIM-LSP
-	--use 'neovim/nvim-lspconfig'
-	--use 'hrsh7th/nvim-cmp'
-	--use 'hrsh7th/cmp-nvim-lua'
-	--use 'hrsh7th/cmp-nvim-lsp'
-	--use 'hrsh7th/cmp-path'
-	--use 'L3MON4D3/LuaSnip'
-	--use 'saadparwaiz1/cmp_luasnip'
-	--use {'glepnir/lspsaga.nvim',{branch='main'}}
---
-	------ COLOR
-	--use 'sainnhe/sonokai'
-	--use 'norcalli/nvim-colorizer.lua'
-	--use {'folke/tokyonight.nvim',{branch='main'}}
---
-	------ CHEATSHEETS
-	--use 'RishabhRD/popfix'
-	--use 'RishabhRD/nvim-cheat.sh'
---end)
-
 -- Colorschemes
 -- default, atlantis, andromeda, shusia, maia, espresso
 vim.g.sonokai_style = 'shusia'
 vim.cmd("colorscheme sonokai")
--- vim.cmd("colorscheme tokyonight")
+-- vim.cmd('colorscheme github_dark_default') -- github_dimmed, github_dark_default, github_dark_colorblind, github_light, github_light_default, github_light_colorblind
 
 -- KEYMAPS
 vim.g.mapleader = ','
@@ -170,7 +118,6 @@ vim.g.mapleader = ','
 vim.api.nvim_set_keymap("n",'<F3>',':wa<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n",'<F5>',':luafile $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n","<F6>", ':PlugInstall<cr>', { noremap = true, silent = true }) -- Vim-Plug
-vim.api.nvim_set_keymap("n","<F6>", '', { noremap = true, silent = true }) -- Packer
 vim.api.nvim_set_keymap("n","<F7>", ':PlugClean<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n","<F12>",":edit $MYVIMRC<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n","<leader>ex", ":Explore<cr>", { noremap = true, silent = true })
@@ -202,6 +149,7 @@ Plugins = {
 	'vim-notify_c',
 	'telescope_c',
 	'nvim-lspconfig_c',
+	'lspsaga_c',
 	'bufferline_c',
 	'nvim-autopairs_c',
 	'lualine_c',

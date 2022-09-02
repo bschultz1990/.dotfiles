@@ -21,14 +21,12 @@ require('telescope').setup {
   }
 }
 
-require('telescope').load_extension 'file_browser'
-
 
 ---- TELESCOPE MAPPINGS
 vim.api.nvim_set_keymap('n','<leader>ff',':Telescope find_files<cr>',{ noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>fg',':Telescope live_grep<cr>',{ noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>bb',':Telescope buffers<cr>',{ noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>h',':Telescope help_tags<cr>',{ noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>fb',':Telescope file_browser<cr>',{ noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>km', ':Telescope keymaps<cr>', { noremap = true, silent = true })
 
 return M
