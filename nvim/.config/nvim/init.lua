@@ -74,6 +74,7 @@ Plug 'mhinz/vim-startify'
 Plug 'windwp/nvim-autopairs'
 Plug 'rcarriga/nvim-notify'
 Plug 'nvim-treesitter/nvim-treesitter'
+-- Plug 'psliwka/vim-smoothie'
 
 ---- LUALINE
 Plug 'kyazdani42/nvim-web-devicons'
