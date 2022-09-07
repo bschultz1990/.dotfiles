@@ -101,6 +101,8 @@ Plug ('glepnir/lspsaga.nvim', {branch='main'} )
 Plug 'sainnhe/sonokai'
 Plug 'ap/vim-css-color'
 Plug ('projekt0n/github-nvim-theme')
+Plug 'RRethy/nvim-base16'
+Plug 'kyazdani42/nvim-palenight.lua'
 
 ---- CHEATSHEETS
 Plug 'RishabhRD/popfix'
