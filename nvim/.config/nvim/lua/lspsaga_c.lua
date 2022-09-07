@@ -41,11 +41,11 @@ code_action_lightbulb = {
     virtual_text = true,
 },
 -- finder icons
-finder_icons = {
-  def = '  ',
-  ref = '諭 ',
-  link = '  ',
-},
+-- finder_icons = {
+--   def = '  ',
+--   ref = '諭 ',
+--   link = '  ',
+-- },
 -- finder do lsp request timeout
 -- if your project big enough or your server very slow
 -- you may need to increase this value
@@ -72,7 +72,7 @@ definition_preview_icon = "  ",
 symbol_in_winbar = {
     in_custom = false,
     enable = false,
-    separator = ' ',
+    -- separator = ' ',
     show_file = true,
     click_support = false,
 },

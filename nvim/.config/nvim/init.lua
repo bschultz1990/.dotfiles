@@ -6,9 +6,9 @@ vim.opt.fileencoding = 'utf-8'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
-vim.opt.pumheight = 20
+vim.opt.pumheight = 10
 vim.opt.pumblend = 0
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
@@ -25,7 +25,6 @@ vim.opt.linebreak = true
 vim.opt.whichwrap = "<,>,h,l"
 vim.opt.ignorecase = true
 vim.opt.winblend = 10
-
 -- TABSTOPS
 vim.opt.expandtab = false
 vim.opt.tabstop = 2
@@ -100,7 +99,7 @@ Plug ('glepnir/lspsaga.nvim', {branch='main'} )
 
 ---- COLOR
 Plug 'sainnhe/sonokai'
-Plug 'norcalli/nvim-colorizer.lua'
+Plug 'ap/vim-css-color'
 Plug ('projekt0n/github-nvim-theme')
 
 ---- CHEATSHEETS
