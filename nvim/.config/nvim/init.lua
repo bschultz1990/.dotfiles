@@ -141,6 +141,7 @@ vim.api.nvim_set_keymap('i',"<C-cr>","<CR><CR><Up><BS><CR>", { noremap = true, s
 -- PLUGIN SPECIFIC
 vim.api.nvim_set_keymap('n',"<leader>st",":Startify<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n',"<leader>zz",":ZenMode<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n',"<leader>th",":Telescope help_tags<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n',"<leader>td",":Telescope diagnostics<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x',"ga","<Plug>(EasyAlign)", { noremap = false, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ch', ':Cheat<cr>', { noremap = false, silent = true } )
@@ -153,7 +154,7 @@ Plugins = {
 	'vim-notify_c',
 	'telescope_c',
 	'nvim-lspconfig_c',
-	'lspsaga_c',
+	-- 'lspsaga_c',
 	'bufferline_c',
 	'nvim-autopairs_c',
 	'lualine_c',
