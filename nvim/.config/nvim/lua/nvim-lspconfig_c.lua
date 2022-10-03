@@ -121,7 +121,7 @@ cmp.setup({
 		{ name = 'luasnip' }, -- vsnip, ultisnips, snippy, luasnip 
 		{ name = 'nvim_lua' },
 		{ name = 'path' },
-		{ name = 'buffer', keyword_length=5 },
+		{ name = 'buffer', keyword_length=0 },
 	}),
 	experimental = {
 		native_menu = false,

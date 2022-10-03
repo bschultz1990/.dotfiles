@@ -103,10 +103,10 @@ Plug 'ap/vim-css-color'
 Plug ('projekt0n/github-nvim-theme')
 Plug 'RRethy/nvim-base16'
 Plug 'kyazdani42/nvim-palenight.lua'
+Plug 'sheerun/vim-polyglot'
 
 ---- CHEATSHEETS
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-cheat.sh'
+Plug 'ThePrimeagen/vim-be-good'
 vim.call("plug#end")
 
 -- Colorschemes
@@ -144,7 +144,6 @@ vim.api.nvim_set_keymap('n',"<leader>zz",":ZenMode<cr>", { noremap = true, silen
 vim.api.nvim_set_keymap('n',"<leader>th",":Telescope help_tags<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n',"<leader>td",":Telescope diagnostics<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x',"ga","<Plug>(EasyAlign)", { noremap = false, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ch', ':Cheat<cr>', { noremap = false, silent = true } )
 
 -- CUSTOM FUNCTIONS
 vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`a', { noremap = true, silent = true }) -- indent on command
@@ -159,7 +158,6 @@ Plugins = {
 	'nvim-autopairs_c',
 	'lualine_c',
 	'treesitter_c',
-	'cheat_c',
 	-- 'luasnip_c',
 }
 
