@@ -20,7 +20,7 @@ vim.opt.showmode = false
 vim.opt.showcmd = false
 vim.opt.cmdheight = 1
 vim.opt.shortmess = "F"
-vim.opt.wrap.linebreak = true
+vim.opt.wrap.linebreak = false
 vim.opt.linebreak = true
 vim.opt.whichwrap = "<,>,h,l"
 vim.opt.ignorecase = true
@@ -73,8 +73,6 @@ Plug 'mhinz/vim-startify'
 Plug 'windwp/nvim-autopairs'
 Plug 'rcarriga/nvim-notify'
 Plug 'nvim-treesitter/nvim-treesitter'
--- Plug 'psliwka/vim-smoothie'
--- Plug 'ThePrimeagen/vim-be-good'
 
 ---- LUALINE
 Plug 'kyazdani42/nvim-web-devicons'
@@ -95,7 +93,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug ('glepnir/lspsaga.nvim', {branch='main'} )
+Plug ('glepnir/lspsaga.nvim', {branch='main'})
 
 ---- COLOR
 Plug 'sainnhe/sonokai'
@@ -112,6 +110,7 @@ vim.call("plug#end")
 -- Colorschemes
 -- default, atlantis, andromeda, shusia, maia, espresso
 vim.g.sonokai_style = 'shusia'
+vim.cmd("colorscheme ")
 vim.cmd("colorscheme sonokai")
 -- vim.cmd('colorscheme github_dark_default') -- github_dimmed, github_dark_default, github_dark_colorblind, github_light, github_light_default, github_light_colorblind
 
@@ -153,7 +152,7 @@ Plugins = {
 	'vim-notify_c',
 	'telescope_c',
 	'nvim-lspconfig_c',
-	-- 'lspsaga_c',
+	'lspsaga_c',
 	'bufferline_c',
 	'nvim-autopairs_c',
 	'lualine_c',
