@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 local M = {}
 
 -- Is there an lspconfig in the house?

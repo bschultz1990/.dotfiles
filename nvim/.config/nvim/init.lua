@@ -20,8 +20,8 @@ vim.opt.showmode = false
 vim.opt.showcmd = false
 vim.opt.cmdheight = 1
 vim.opt.shortmess = "F"
-vim.opt.wrap.linebreak = false
-vim.opt.linebreak = true
+vim.opt.wrap.linebreak = true
+vim.opt.linebreak = false
 vim.opt.whichwrap = "<,>,h,l"
 vim.opt.ignorecase = true
 vim.opt.winblend = 10
@@ -52,60 +52,8 @@ if (vim.g.neovide) then
 	vim.g.neovide_fullscreen = false
 end
 
--- PLUGINS
--- https://www.notonlycode.org/neovim-lua-config/
--- https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom
--- Plug('scrooloose/nerdtree', {on = {NERDTreeToggle', 'NERDTree'})
-local Plug = vim.fn["plug#"]
-vim.call("plug#begin", vim.fn.stdpath('data').."/plugins")
-
----- DEV
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'KabbAmine/vCoolor.vim'
-Plug 'folke/zen-mode.nvim'
-Plug 'folke/twilight.nvim'
-Plug 'startup-nvim/startup.nvim'
-Plug 'junegunn/vim-easy-align'
-Plug 'bschultz1990/cheatsheet.nvim'
-Plug 'mhinz/vim-startify'
-Plug 'windwp/nvim-autopairs'
-Plug 'rcarriga/nvim-notify'
-Plug 'nvim-treesitter/nvim-treesitter'
-
----- LUALINE
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-lualine/lualine.nvim'
-
----- BUFFERLINE
-Plug 'akinsho/bufferline.nvim'
-
----- TELESCOPE
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-lua/plenary.nvim'
-
----- NVIM-LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-path'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug ('glepnir/lspsaga.nvim', {branch='main'})
-
----- COLOR
-Plug 'sainnhe/sonokai'
-Plug 'ap/vim-css-color'
-Plug ('projekt0n/github-nvim-theme')
-Plug 'RRethy/nvim-base16'
-Plug 'kyazdani42/nvim-palenight.lua'
-Plug 'sheerun/vim-polyglot'
-
----- CHEATSHEETS
-Plug 'ThePrimeagen/vim-be-good'
-vim.call("plug#end")
+-- PLUGIN SOURCING
+vim.cmd('source ~/.config/nvim/lua/plugins.vim')
 
 -- Colorschemes
 -- default, atlantis, andromeda, shusia, maia, espresso
