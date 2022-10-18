@@ -20,9 +20,9 @@ vim.opt.showmode = false
 vim.opt.showcmd = false
 vim.opt.cmdheight = 1
 vim.opt.shortmess = "F"
-vim.opt.wrap.linebreak = true
-vim.opt.linebreak = false
+vim.opt.wrap.linebreak = false
 vim.opt.whichwrap = "<,>,h,l"
+vim.opt.linebreak = false
 vim.opt.ignorecase = true
 vim.opt.winblend = 10
 -- TABSTOPS
