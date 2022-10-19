@@ -30,7 +30,7 @@ for index, lsp in ipairs(Servers) do
 	require('lspconfig')[lsp].setup{}
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 function M.LspKeymaps()
 	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
