@@ -81,6 +81,7 @@ vim.api.nvim_set_keymap('n',"<leader>bd",":bp|bd#!<cr>", { noremap = true, silen
 vim.api.nvim_set_keymap('n',"<leader>tt",":tabnew<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n',"<leader>tc",":tabclose<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n',"<leader>tn",":tabnext<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n","<leader>`","<cmd>sp<cr><C-w>w<cmd>terminal<cr>i", { noremap = true, silent = true })
 
 -- INSERT MODE GOODIES
 vim.api.nvim_set_keymap('i',"<C-cr>","<CR><CR><Up><BS><CR>", { noremap = true, silent = true })
