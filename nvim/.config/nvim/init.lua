@@ -113,6 +113,8 @@ for _, pConfig in ipairs(Plugins) do
 	require(pConfig)
 end
 
+vim.cmd('source ~/.config/nvim/lua/startify.vim')
+
 require ('colorizer').setup()
 
 -- SUCCESS! :)
