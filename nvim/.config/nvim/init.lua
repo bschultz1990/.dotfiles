@@ -59,8 +59,8 @@ vim.cmd('source ~/.config/nvim/lua/plugins.vim')
 -- slate
 -- default, atlantis, andromeda, shusia, maia, espresso
 vim.g.sonokai_style = 'shusia'
-vim.cmd("colorscheme slate")
--- vim.cmd("colorscheme sonokai")
+-- vim.cmd("colorscheme slate")
+vim.cmd("colorscheme sonokai")
 -- vim.cmd('colorscheme github_dark_default') -- github_dimmed, github_dark_default, github_dark_colorblind, github_light, github_light_default, github_light_colorblind
 
 -- KEYMAPS

@@ -17,8 +17,6 @@ call plug#begin()
 	Plug 'rcarriga/nvim-notify'
 	Plug 'nvim-treesitter/nvim-treesitter'
 	Plug 'iamcco/markdown-preview.nvim'
-" cmd(mkdp#util#install())
-
 
 	"ICONS AND BUFFERLINE
 	Plug 'kyazdani42/nvim-web-devicons'
@@ -42,8 +40,7 @@ call plug#begin()
 	"COLORS
 	Plug 'sainnhe/sonokai'
 	Plug 'ap/vim-css-color'
-	Plug 'projekt0n/github-nvim-theme'
-	Plug 'RRethy/nvim-base16'
 	Plug 'kyazdani42/nvim-palenight.lua'
 	Plug 'sheerun/vim-polyglot'
+	Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()
