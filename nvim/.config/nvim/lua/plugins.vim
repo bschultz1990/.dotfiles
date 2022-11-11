@@ -28,7 +28,6 @@ call plug#begin()
 	Plug 'nvim-lua/plenary.nvim'
 
 	"LSP
-	Plug 'neovim/nvim-lspconfig'
 	Plug 'hrsh7th/nvim-cmp'
 	Plug 'hrsh7th/cmp-nvim-lua'
 	Plug 'hrsh7th/cmp-nvim-lsp'
@@ -36,6 +35,11 @@ call plug#begin()
 	Plug 'L3MON4D3/LuaSnip'
 	Plug 'saadparwaiz1/cmp_luasnip'
 	Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+
+	" Keep these three in order:
+	Plug 'williamboman/mason.nvim'
+	Plug 'williamboman/mason-lspconfig.nvim'
+	Plug 'neovim/nvim-lspconfig'
 
 	"COLORS
 	Plug 'sainnhe/sonokai'

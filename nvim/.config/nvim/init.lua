@@ -8,7 +8,7 @@ vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 vim.opt.pumheight = 10
 vim.opt.pumblend = 0
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
@@ -35,7 +35,7 @@ vim.opt.softtabstop = 2
 -- CLIPBOARD
 vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
 -- vim.opt.foldenable = false
-vim.g.python3_host_prog = true
+vim.g.python3_host_prog = '/usr/bin/python3'
 vim.g.loaded_perl_provider = false
 
 ---- NETRW
@@ -59,7 +59,6 @@ vim.cmd('source ~/.config/nvim/lua/plugins.vim')
 -- slate
 -- default, atlantis, andromeda, shusia, maia, espresso
 vim.g.sonokai_style = 'shusia'
--- vim.cmd("colorscheme slate")
 vim.cmd("colorscheme sonokai")
 -- vim.cmd('colorscheme github_dark_default') -- github_dimmed, github_dark_default, github_dark_colorblind, github_light, github_light_default, github_light_colorblind
 
@@ -101,7 +100,7 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`a', { noremap = true, sile
 Plugins = {
 	'vim-notify_c',
 	'telescope_c',
-	'nvim-lspconfig_c',
+--	'nvim-lspconfig_c',
 	'lspsaga_c',
 	'bufferline_c',
 	'nvim-autopairs_c',
@@ -116,7 +115,11 @@ end
 
 vim.cmd('source ~/.config/nvim/lua/startify.vim')
 
+-- Setups
 require ('colorizer').setup()
+require ('mason').setup()
+require ('mason-lspconfig').setup()
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')
+
