@@ -32,9 +32,11 @@ sudo nala install openjdk-17-jdk-headless -y
 sudo nala install golang-go -y
 sudo nala install python3 -y
 python3 -m pip install --user --upgrade pynvim
+sudo nala install juila -y
 
 # NEOVIM
 # FiraCode Nerd Font
+echo "Installing FiraCode Nerd Font"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/}"Downloads/firacode.zip --create-dirs \
 			https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip'
 mkdir "${XDG_DATA_HOME:-$HOME}"/.fonts
@@ -44,6 +46,7 @@ rm -r "${XDG_DATA_HOME:-$HOME}"/Downloads/firacode
 rm "${XDG_DATA_HOME:-$HOME}"/Downloads/firacode.zip
 
 # Vim-Plug
+echo "Installing Vim-Plug"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
