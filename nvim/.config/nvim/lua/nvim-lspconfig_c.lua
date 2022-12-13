@@ -22,9 +22,9 @@ require('lspsaga').init_lsp_saga()
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ----------------------------------------
 Servers = { 'tsserver',
-'sumneko_lua',
-'emmet_ls',
--- 'cssls',
+	'sumneko_lua',
+	'emmet_ls',
+	'cssls',
 }
 for index, lsp in ipairs(Servers) do
 	require('lspconfig')[lsp].setup{}
@@ -90,42 +90,62 @@ require('lspconfig').tsserver.setup{
 		print('tsserver attached')
 	end
 }
+
+
+--------------TABNINE---------------
+local tabnine = require('cmp_tabnine.config')
+
+tabnine:setup({
+	max_lines = 1000,
+	max_num_results = 20,
+	sort = true,
+	run_on_every_keystroke = true,
+	snippet_placeholder = '..',
+	ignored_file_types = {
+		-- default is not to ignore
+		-- uncomment to ignore in lua:
+		-- lua = true
+	},
+	show_prediction_strength = true
+})
 --------------NVIM-CMP--------------
 -- Setup nvim-cmp.
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 local cmp = require'cmp'
 cmp.setup({
-	snippet = {
-		expand = function(args)
-			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-		end,
-	},
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
-	mapping = cmp.mapping.preset.insert({
-		['<C-b>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping.abort(),
-		['<Tab>'] = cmp.mapping.confirm({
-			select = true,
-			behavior = cmp.ConfirmBehavior.Insert,
-		}),
-	}),
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' }, -- vsnip, ultisnips, snippy, luasnip 
-		{ name = 'nvim_lua' },
-		{ name = 'path' },
-		{ name = 'buffer', keyword_length=0 },
-	}),
-	experimental = {
-		native_menu = false,
-		ghost_text = true,
-	}
-})
+		snippet = {
+			expand = function(args)
+				vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+				-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+				-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+				-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+			end,
+		},
+		window = {
+			completion = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered(),
+		},
+		mapping = cmp.mapping.preset.insert({
+				['<C-b>'] = cmp.mapping.scroll_docs(-4),
+				['<C-f>'] = cmp.mapping.scroll_docs(4),
+				['<C-Space>'] = cmp.mapping.complete(),
+				['<C-e>'] = cmp.mapping.abort(),
+				['<Tab>'] = cmp.mapping.confirm({
+						select = true,
+						behavior = cmp.ConfirmBehavior.Insert,
+					}),
+			}),
+		sources = cmp.config.sources({
+				{ name = 'cmp_tabnine' },
+				{ name = 'nvim_lsp' },
+				{ name = 'vsnip' }, -- vsnip, ultisnips, snippy, luasnip 
+				{ name = 'nvim_lua' },
+				{ name = 'path' },
+				{ name = 'buffer', keyword_length=0 },
+			}),
+		experimental = {
+			native_menu = false,
+			ghost_text = true,
+		}
+	})
+-- return M

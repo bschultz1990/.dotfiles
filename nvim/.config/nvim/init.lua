@@ -103,14 +103,15 @@ require ('colorizer').setup()
 Plugins = {
 	'bufferline_c',
 	'lspsaga_c',
+	'lspkind_c',
 	'lualine_c',
+	'mason_c',
 	'nvim-autopairs_c',
 	'nvim-lspconfig_c',
 	'telescope_c',
 	'treesitter_c',
 	'vim-notify_c',
 	-- 'luasnip_c',
-	'mason_c',
 }
 
 for _, pConfig in ipairs(Plugins) do

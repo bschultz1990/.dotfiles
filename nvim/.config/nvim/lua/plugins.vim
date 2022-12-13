@@ -1,6 +1,7 @@
 "https://www.notonlycode.org/neovim-lua-config/
 "https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom
-"Plug('scrooloose/nerdtree', {on = {NERDTreeToggle', 'NERDTree'})
+"Plug('scrooloose/nerdtree', {on = {NERDTreeToggle', 'NERDTree'})\
+set nowrap
 
 call plug#begin()
 	"DEV
@@ -32,9 +33,15 @@ call plug#begin()
 	Plug 'hrsh7th/cmp-nvim-lua'
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-path'
-	Plug 'L3MON4D3/LuaSnip'
-	Plug 'saadparwaiz1/cmp_luasnip'
+	Plug 'hrsh7th/cmp-cmdline'
+	" Plug 'L3MON4D3/LuaSnip'
+	" Plug 'saadparwaiz1/cmp_luasnip'
+	Plug 'hrsh7th/vim-vsnip'
+	Plug 'hrsh7th/cmp-vsnip'
+	Plug 'hrsh7th/vim-vsnip-integ'
 	Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+	Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+	Plug 'onsails/lspkind.nvim' "Pictograms in completion menu.
 
 	" Keep these three in order:
 	Plug 'williamboman/mason.nvim'

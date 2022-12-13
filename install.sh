@@ -56,4 +56,4 @@ xdg-open "https://github.com/neovim/neovim/releases/latest"
 
 # Install Lua notice
 echo "Opening install link to Lua"
-xdg-open "https://https://www.lua.org/versions.html"
+xdg-open "https://www.lua.org/versions.html"
