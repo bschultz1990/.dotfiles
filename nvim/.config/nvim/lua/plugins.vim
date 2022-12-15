@@ -16,7 +16,7 @@ call plug#begin()
 	Plug 'mhinz/vim-startify'
 	Plug 'windwp/nvim-autopairs'
 	Plug 'rcarriga/nvim-notify'
-	Plug 'nvim-treesitter/nvim-treesitter'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'iamcco/markdown-preview.nvim'
 
 	"ICONS AND BUFFERLINE
@@ -39,6 +39,7 @@ call plug#begin()
 	Plug 'hrsh7th/vim-vsnip'
 	Plug 'hrsh7th/cmp-vsnip'
 	Plug 'hrsh7th/vim-vsnip-integ'
+	Plug 'rafamadriz/friendly-snippets'
 	Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 	Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 	Plug 'onsails/lspkind.nvim' "Pictograms in completion menu.

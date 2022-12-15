@@ -1,4 +1,4 @@
--- https://bryankegley.me/posts/nvim-getting-started/
+-- https://bryankegley.me/posts/nvim-getting-started/kind
 -- GENERAL
 vim.scriptencoding = 'utf8'
 vim.opt.encoding = 'utf-8'
@@ -24,7 +24,7 @@ vim.opt.wrap.linebreak = false
 vim.opt.whichwrap = '<,>,h,l'
 vim.opt.linebreak = false
 vim.opt.ignorecase = true
-vim.opt.winblend = 10
+vim.opt.winblend = 5
 -- TABSTOPS
 vim.opt.expandtab = false
 vim.opt.tabstop = 2

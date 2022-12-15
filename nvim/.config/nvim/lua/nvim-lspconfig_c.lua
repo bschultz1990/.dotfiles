@@ -97,16 +97,16 @@ local tabnine = require('cmp_tabnine.config')
 
 tabnine:setup({
 	max_lines = 1000,
-	max_num_results = 20,
+	max_num_results = 5,
 	sort = true,
 	run_on_every_keystroke = true,
-	snippet_placeholder = '..',
+	snippet_placeholder = '...',
 	ignored_file_types = {
 		-- default is not to ignore
 		-- uncomment to ignore in lua:
 		-- lua = true
 	},
-	show_prediction_strength = true
+	show_prediction_strength = false
 })
 --------------NVIM-CMP--------------
 -- Setup nvim-cmp.
@@ -137,9 +137,9 @@ cmp.setup({
 			}),
 		sources = cmp.config.sources({
 				{ name = 'cmp_tabnine' },
-				{ name = 'nvim_lsp' },
 				{ name = 'vsnip' }, -- vsnip, ultisnips, snippy, luasnip 
 				{ name = 'nvim_lua' },
+				{ name = 'nvim_lsp' },
 				{ name = 'path' },
 				{ name = 'buffer', keyword_length=0 },
 			}),
