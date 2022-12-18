@@ -20,6 +20,7 @@ sudo nala install npm -y
 sudo npm install -g n
 sudo n install latest -y
 sudo npm install -g neovim
+sudo npm install -g live-server
 
 # Language dependencies
 sudo nala install cargo -y
