@@ -58,7 +58,7 @@ vim.cmd('source ~/.config/nvim/lua/plugins.vim')
 -- Colorschemes
 -- slate
 -- default, atlantis, andromeda, shusia, maia, espresso
-vim.g.sonokai_style = 'shusia'
+vim.g.sonokai_style = 'default'
 vim.cmd('colorscheme sonokai')
 -- vim.cmd('colorscheme github_dark_default') -- github_dimmed, github_dark_default, github_dark_colorblind, github_light, github_light_default, github_light_colorblind
 
@@ -77,7 +77,7 @@ vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, sile
 vim.api.nvim_set_keymap('n','<leader>n', ':bn<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>vs',':vs<cr><C-w>w:Ex<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>sp',':sp<cr>:Ex<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>bd',':bp|bd#!<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>bd',':bd<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tt',':tabnew<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tc',':tabclose<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tn',':tabnext<cr>', { noremap = true, silent = true })
@@ -111,7 +111,6 @@ Plugins = {
 	'telescope_c',
 	'treesitter_c',
 	'vim-notify_c',
-	-- 'luasnip_c',
 }
 
 for _, pConfig in ipairs(Plugins) do
@@ -122,4 +121,3 @@ vim.cmd('source ~/.config/nvim/lua/startify.vim')
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')
-
