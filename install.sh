@@ -17,7 +17,11 @@ gh auth login
 # General dependencies
 sudo apt install nala -y
 sudo nala install stow -y
+
 sudo nala install git -y
+git config --global user.name "Ben S."
+git config --global user.email "bens@email.com"
+
 sudo nala install ripgrep -y
 sudo nala install xclip -y
 sudo nala install freerdp2-x11 -y
