@@ -118,6 +118,7 @@ for _, pConfig in ipairs(Plugins) do
 end
 
 vim.cmd('source ~/.config/nvim/lua/startify.vim')
+vim.cmd('source ~/.config/nvim/lua/after.vim')
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')
