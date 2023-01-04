@@ -136,16 +136,16 @@ cmp.setup({
 					}),
 			}),
 		sources = cmp.config.sources({
-				{ name = 'cmp_tabnine' },
-				{ name = 'vsnip' }, -- vsnip, ultisnips, snippy, luasnip 
-				{ name = 'nvim_lua' },
-				{ name = 'nvim_lsp' },
-				{ name = 'path' },
+				{ name = 'cmp_tabnine', keyword_length=5 },
+				{ name = 'vsnip', keyword_length=5 }, -- vsnip, ultisnips, snippy, luasnip 
+				{ name = 'nvim_lua', keyword_length=5 },
+				{ name = 'nvim_lsp', keyword_length=5 },
+				{ name = 'path', keyword_length=5 },
 				{ name = 'buffer', keyword_length=0 },
 			}),
 		experimental = {
 			native_menu = false,
-			ghost_text = true,
+			ghost_text = false,
 		}
 	})
 -- return M

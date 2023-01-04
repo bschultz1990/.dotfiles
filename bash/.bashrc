@@ -172,6 +172,23 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 
 alias update='sudo nala update && sudo nala upgrade -y'
 alias ls='exa -lah'
+function c {
+	cd $1
+	exa -lah
+}
+function take {
+	mkdir -p $1
+	cd $1
+}
+function t {
+	# Loop over all file arguments passed to the function:
+	for file in "$@"; do
+		touch "$file"
+	done
+
+	# List all the files in the directory:
+	exa -lah
+}
 
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"
