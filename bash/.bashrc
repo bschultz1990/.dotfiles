@@ -171,6 +171,7 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 # https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface
 
 alias update='sudo nala update && sudo nala upgrade -y'
+alias ls='exa -lah'
 
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"

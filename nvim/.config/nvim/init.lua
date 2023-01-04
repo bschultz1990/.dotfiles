@@ -33,7 +33,7 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 
 -- CLIPBOARD
-vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
+-- vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
 -- vim.opt.foldenable = false
 vim.g.python3_host_prog = '/usr/bin/python3'
 vim.g.loaded_perl_provider = false
@@ -59,9 +59,9 @@ vim.cmd('source ~/.config/nvim/lua/plugins.vim')
 -- slate
 -- default, atlantis, andromeda, shusia, maia, espresso
 vim.g.sonokai_style = 'default'
-vim.cmd('colorscheme sonokai')
--- vim.cmd('colorscheme github_dark_default') -- github_dimmed, github_dark_default, github_dark_colorblind, github_light, github_light_default, github_light_colorblind
-
+-- oceanic, deep ocean palenight, lighter, darker
+vim.g.material_style = 'palenight'
+vim.cmd('colorscheme material')
 -- KEYMAPS
 vim.g.mapleader = ','
 

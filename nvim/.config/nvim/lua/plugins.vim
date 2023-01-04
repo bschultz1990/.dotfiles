@@ -52,7 +52,8 @@ call plug#begin()
 	"COLORS
 	Plug 'sainnhe/sonokai'
 	Plug 'ap/vim-css-color'
-	Plug 'kyazdani42/nvim-palenight.lua'
+	Plug 'marko-cerovac/material.nvim'
+	Plug 'drewtempelmeyer/palenight.vim'
 	Plug 'sheerun/vim-polyglot'
 	Plug 'norcalli/nvim-colorizer.lua'
 call plug#end()
