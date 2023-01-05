@@ -73,6 +73,15 @@ vim.api.nvim_set_keymap('n','<F7>', ':PlugClean<cr>', { noremap = true, silent =
 vim.api.nvim_set_keymap('n','<F12>',':edit $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, silent = true })
 
+-- Center Scroll Results on Page
+vim.api.nvim_set_keymap('n','<C-d>', '<C-d>zz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<C-u>', '<C-u>zz', { noremap = true, silent = true })
+
+-- Center Search Results on the Page
+vim.api.nvim_set_keymap('n','n', 'nzzzv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','N', 'Nzzzv', { noremap = true, silent = true })
+
+
 -- BUFFERS AND SPLITS
 vim.api.nvim_set_keymap('n','<leader>n', ':bn<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>vs',':vs<cr><C-w>w:Ex<cr>', { noremap = true, silent = true })

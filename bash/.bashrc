@@ -171,6 +171,7 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 # https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface
 
 alias update='sudo nala update && sudo nala upgrade -y'
+
 alias ls='exa -lah'
 function c {
 	cd $1
@@ -180,6 +181,7 @@ function take {
 	mkdir -p $1
 	cd $1
 }
+
 function t {
 	# Loop over all file arguments passed to the function:
 	for file in "$@"; do
@@ -189,6 +191,30 @@ function t {
 	# List all the files in the directory:
 	exa -lah
 }
+
+function i {
+	for app in "$@"; do
+		sudo nala install "$app"
+	done
+}
+
+function remove {
+	for app in "$@"; do
+		sudo nala remove "$app"
+	done
+}
+
+function mann {
+	if [ -z "$1"]; then
+		# If not, print error message
+		echo "Error: no command provided."
+		return 1
+	fi
+	# Copy the man page text and open it in Nvim
+	man "$1" | col -bx > /tmp/manpage.txt
+	nvim /tmp/manpage.txt
+}
+
 
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"

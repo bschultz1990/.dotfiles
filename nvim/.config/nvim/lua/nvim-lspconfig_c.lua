@@ -97,7 +97,7 @@ local tabnine = require('cmp_tabnine.config')
 
 tabnine:setup({
 	max_lines = 1000,
-	max_num_results = 5,
+	max_num_results = 3,
 	sort = true,
 	run_on_every_keystroke = true,
 	snippet_placeholder = '...',
@@ -136,15 +136,17 @@ cmp.setup({
 					}),
 			}),
 		sources = cmp.config.sources({
+				{ name = 'nvim_lsp', keyword_length=0 },
 				{ name = 'cmp_tabnine', keyword_length=5 },
 				{ name = 'vsnip', keyword_length=5 }, -- vsnip, ultisnips, snippy, luasnip 
 				{ name = 'nvim_lua', keyword_length=5 },
-				{ name = 'nvim_lsp', keyword_length=5 },
 				{ name = 'path', keyword_length=5 },
-				{ name = 'buffer', keyword_length=0 },
+				{ name = 'buffer', keyword_length=5 },
 			}),
+		view = {
+			entries = "native"
+		},
 		experimental = {
-			native_menu = false,
 			ghost_text = false,
 		}
 	})
