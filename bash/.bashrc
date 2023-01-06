@@ -172,16 +172,25 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 
 alias update='sudo nala update && sudo nala upgrade -y'
 
+# Ls alias. More colors!
 alias ls='exa -lah'
+
+# Change to a directory and list files.
 function c {
+	clear
 	cd $1
 	exa -lah
 }
+
+# Make a directory and change to it.
 function take {
 	mkdir -p $1
 	cd $1
 }
 
+alias cd='c'
+
+# Touch alias
 function t {
 	# Loop over all file arguments passed to the function:
 	for file in "$@"; do
@@ -189,6 +198,7 @@ function t {
 	done
 
 	# List all the files in the directory:
+	clear
 	exa -lah
 }
 
@@ -204,6 +214,7 @@ function remove {
 	done
 }
 
+# Display a man page in Neovim
 function mann {
 	if [ -z "$1"]; then
 		# If not, print error message
@@ -215,7 +226,30 @@ function mann {
 	nvim /tmp/manpage.txt
 }
 
+# Copy the output of a command and open it in nvim.
+function output {
+	if [ -z "$1"]; then
+		# If not, print error message
+		echo "Error: no command provided."
+		return 1
+	fi
+	# Copy the command outpt and open it in Nvim
+	"$1" | col -bx > /tmp/output.txt
+	nvim /tmp/output.txt
+}
 
+# Safer file deletion. Requires trash-cli
+alias rm='trash'
+
+function note {
+	echo "Date: $(date)" >> $HOME/Documents/notes.txt
+	echo "$@" >> $HOME/Documents/notes.txt
+	echo "" >> $HOME/Documents/notes.txt
+}
+
+function notes {
+	nvim $HOME/Documents/notes.txt
+}
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Apps:$PATH"

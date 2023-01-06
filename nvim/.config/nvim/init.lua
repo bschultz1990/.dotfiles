@@ -81,6 +81,8 @@ vim.api.nvim_set_keymap('n','<C-u>', '<C-u>zz', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n','n', 'nzzzv', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','N', 'Nzzzv', { noremap = true, silent = true })
 
+-- Center bottom of document on page.
+vim.api.nvim_set_keymap('n','G', 'Gzz', { noremap = true, silent = true })
 
 -- BUFFERS AND SPLITS
 vim.api.nvim_set_keymap('n','<leader>n', ':bn<cr>', { noremap = true, silent = true })

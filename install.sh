@@ -17,6 +17,7 @@ gh auth login
 # General dependencies
 sudo apt install nala -y
 sudo nala install stow -y
+sudo nala install trash-cli -y
 
 sudo nala install git -y
 git config --global user.name "Ben S."
