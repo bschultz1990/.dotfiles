@@ -129,6 +129,7 @@ end
 
 vim.cmd('source ~/.config/nvim/lua/startify.vim')
 vim.cmd('source ~/.config/nvim/lua/after.vim')
+vim.g.vim_matchtag_enable_by_default = 1
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')
