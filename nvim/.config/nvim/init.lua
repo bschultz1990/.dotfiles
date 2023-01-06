@@ -100,6 +100,7 @@ vim.api.nvim_set_keymap('n','<leader>st',':Startify<cr>', { noremap = true, sile
 vim.api.nvim_set_keymap('n','<leader>zz',':ZenMode<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>th',':Telescope help_tags<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>td',':Telescope diagnostics<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>tk',':Telescope keymaps<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x','ga','<Plug>(EasyAlign)', { noremap = false, silent = true })
 
 -- CUSTOM FUNCTIONS

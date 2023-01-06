@@ -1,6 +1,5 @@
 "https://www.notonlycode.org/neovim-lua-config/
 "https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom
-"Plug('scrooloose/nerdtree', {on = {NERDTreeToggle', 'NERDTree'})\
 set nowrap
 
 call plug#begin()
