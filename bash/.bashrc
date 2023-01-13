@@ -250,6 +250,16 @@ function note {
 function notes {
 	nvim $HOME/Documents/notes.txt
 }
+
+function webnotes {
+	cd $HOME/Documents/webdevelopmentbootcamp/notes/
+	nvim notes.md +MarkdownPreview
+}
+
+function bp {
+	node $HOME/Documents/webdevelopmentbootcamp/Projects/bp/bp.js $1
+}
+
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Apps:$PATH"
