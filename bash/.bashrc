@@ -256,6 +256,11 @@ function webnotes {
 	nvim notes.md +MarkdownPreview
 }
 
+function webprojects {
+	cd $HOME/Documents/webdevelopmentbootcamp/Projects/
+	nvim .
+}
+
 function bp {
 	node $HOME/Documents/webdevelopmentbootcamp/Projects/bp/bp.js $1
 }

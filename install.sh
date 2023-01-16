@@ -18,6 +18,7 @@ gh auth login
 sudo apt install nala -y
 sudo nala install stow -y
 sudo nala install trash-cli -y
+sudo nala install fzf -y
 
 sudo nala install git -y
 git config --global user.name "Ben S."
@@ -53,6 +54,11 @@ sudo nala install python3 -y
 python3 -m pip install --user --upgrade pynvim
 sudo nala install juila -y
 
+# getNF CLI
+git clone https://github.com/ronniedroid/getnf.git
+cd getnf
+./install.sh
+
 # NEOVIM
 # FiraCode Nerd Font
 echo "Installing FiraCode Nerd Font"
@@ -81,3 +87,5 @@ xdg-open "https://www.lua.org/versions.html"
 
 # GitHub
 echo "GitHub CLi installed. If this failed, visit https://github.com/cli/cli/blob/trunk/docs/install_linux.md for options."
+
+

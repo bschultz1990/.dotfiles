@@ -16,6 +16,7 @@ end
 
 require('lspsaga').init_lsp_saga()
 
+local configs = require('lspconfig/configs')
 ----------CONNECT TO SERVERS------------
 -- read more at :h vim.lsp.buf<TAB>
 -- Need more servers?
@@ -31,21 +32,30 @@ for index, lsp in ipairs(Servers) do
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 function M.LspKeymaps()
 	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
 	vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
-	vim.keymap.set('n', '<C-k>', '<cmd>Lspsaga preview_definition<CR>', { silent = true })
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = 0 })
+	vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<CR>', { buffer = 0, silent = true })
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer=0 })
 	vim.keymap.set('n', '<leader>r', '<cmd>Lspsaga rename<CR>', { silent = true })
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer=0 })
 	vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga show_line_diagnostics<CR>', { silent = true } )
 	vim.keymap.set('n','<leader>o', '<cmd>LSoutlineToggle<CR>',{ silent = true })
-	vim.diagnostic.config({ virtual_text=false })
+	vim.diagnostic.config({ virtual_text=true })
 	capabilities=capabilities
 end
 
+
+
+-----------EMMET-----------
+require('lspconfig').emmet_ls.setup {
+	on_attach = function()
+		print('emmet_ls attached')
+	end,
+	filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'jst'},
+}
 
 -----------CSSLS-----------
 require'lspconfig'.cssls.setup {
@@ -136,12 +146,13 @@ cmp.setup({
 					}),
 			}),
 		sources = cmp.config.sources({
-				{ name = 'nvim_lsp', keyword_length=0 },
-				{ name = 'cmp_tabnine', keyword_length=5 },
-				{ name = 'vsnip', keyword_length=5 }, -- vsnip, ultisnips, snippy, luasnip 
-				{ name = 'nvim_lua', keyword_length=5 },
-				{ name = 'path', keyword_length=5 },
-				{ name = 'buffer', keyword_length=5 },
+				{ name = 'nvim_lsp', keyword_length=1 },
+				{ name = 'emmet_ls', keyword_length=1 },
+				{ name = 'vsnip', keyword_length=3 }, -- vsnip, ultisnips, snippy, luasnip 
+				{ name = 'cmp_tabnine', keyword_length=3 },
+				{ name = 'nvim_lua', keyword_length=3 },
+				{ name = 'path', keyword_length=3 },
+				-- { name = 'buffer', keyword_length=3 },
 			}),
 		view = {
 			entries = "native"

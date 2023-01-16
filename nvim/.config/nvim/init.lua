@@ -108,6 +108,10 @@ vim.api.nvim_set_keymap('x','ga','<Plug>(EasyAlign)', { noremap = false, silent 
 -- CUSTOM FUNCTIONS
 vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`a', { noremap = true, silent = true }) -- indent on command
 
+-- EJS
+vim.api.nvim_set_keymap('n', '<leader><', 'I<% <Esc>A %><Esc>', { noremap = true, silent = true, nowait = true}) -- indent on command
+vim.api.nvim_set_keymap('n', '<leader><<', 'I<%= <Esc>A %><Esc>', { noremap = true, silent = true, nowait = true}) -- indent on command
+
 -- Setups
 require ('colorizer').setup()
 
