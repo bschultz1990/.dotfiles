@@ -33,7 +33,7 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 
 -- CLIPBOARD
--- vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
+vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
 -- vim.opt.foldenable = false
 vim.g.python3_host_prog = '/usr/bin/python3'
 vim.g.loaded_perl_provider = false
