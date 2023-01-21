@@ -265,6 +265,11 @@ function bp {
 	node $HOME/Documents/webdevelopmentbootcamp/Projects/bp/bp.js $1
 }
 
+function kittyconfig {
+	cd ~/.dotfiles/kitty/.config/kitty
+	nvim kitty.conf
+}
+
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Apps:$PATH"
