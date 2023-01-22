@@ -1,8 +1,10 @@
+require('plugins_c')
+
 -- https://bryankegley.me/posts/nvim-getting-started/kind
 -- GENERAL
 vim.scriptencoding = 'utf8'
 vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
+-- vim.opt.fileencoding = 'utf-8'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
@@ -10,7 +12,7 @@ vim.opt.pumheight = 10
 vim.opt.pumblend = 0
 vim.opt.cursorline = true
 vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
 vim.opt.termguicolors = true
 vim.opt.autoindent = true
@@ -31,9 +33,10 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 -- vim.opt.shiftround = true
 vim.opt.softtabstop = 2
+vim.opt.wrap = false
 
 -- CLIPBOARD
-vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
+-- vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
 -- vim.opt.foldenable = false
 vim.g.python3_host_prog = '/usr/bin/python3'
 vim.g.loaded_perl_provider = false
@@ -43,33 +46,24 @@ vim.g.netrw_keepdir = 1
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 1
 
--- NEOVIDE
-if (vim.g.neovide) then
-	vim.g.neovide_cursor_animation_length = 0.03
-	vim.g.neovide_scroll_animation_length = 0.3
-	vim.opt.guifont = 'FiraCode NF:h11'
-	-- set guifont=*  <== lists all fonts
-	vim.g.neovide_fullscreen = false
-end
-
 -- PLUGIN SOURCING
-vim.cmd('source ~/.config/nvim/lua/plugins.vim')
+-- vim.cmd('source ~/.config/nvim/lua/plugins.vim')
 
 -- Colorschemes
 -- slate
 -- default, atlantis, andromeda, shusia, maia, espresso
-vim.g.sonokai_style = 'default'
+-- vim.g.sonokai_style = 'default'
 -- oceanic, deep ocean palenight, lighter, darker
-vim.g.material_style = 'palenight'
-vim.cmd('colorscheme material')
+
 -- KEYMAPS
-vim.g.mapleader = ','
+-- vim.g.mapleader = ','
 
 -- GENERAL
 vim.api.nvim_set_keymap('n','<F3>',':wa<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F5>',':luafile $MYVIMRC<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<F6>', ':PlugInstall<cr>', { noremap = true, silent = true }) -- Vim-Plug
-vim.api.nvim_set_keymap('n','<F7>', ':PlugClean<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<F6>', ':Lazy<cr>', { noremap = true, silent = true }) -- Lazy
+-- vim.api.nvim_set_keymap('n','<F6>', ':PlugInstall<cr>', { noremap = true, silent = true }) -- Vim-Plug
+-- vim.api.nvim_set_keymap('n','<F7>', ':PlugClean<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F12>',':edit $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, silent = true })
 
@@ -113,29 +107,28 @@ vim.api.nvim_set_keymap('n', '<leader><', 'I<% <Esc>A %><Esc>', { noremap = true
 vim.api.nvim_set_keymap('n', '<leader><<', 'I<%= <Esc>A %><Esc>', { noremap = true, silent = true, nowait = true}) -- indent on command
 
 -- Setups
-require ('colorizer').setup()
+-- require ('colorizer').setup()
 
 -- EXTERNAL REQUIREMENTS
-Plugins = {
-	'bufferline_c',
-	'lspsaga_c',
-	'lspkind_c',
-	'lualine_c',
-	'mason_c',
-	'nvim-autopairs_c',
-	'nvim-lspconfig_c',
-	'telescope_c',
-	'treesitter_c',
-	'vim-notify_c',
-}
+-- Plugins = {
+-- 	'bufferline_c',
+-- 	'lspsaga_c',
+-- 	'lspkind_c',
+-- 	'lualine_c',
+-- 	'mason_c',
+-- 	'nvim-autopairs_c',
+-- 	'nvim-lspconfig_c',
+-- 	'telescope_c',
+-- 	'treesitter_c',
+-- 	'vim-notify_c',
+-- }
 
-for _, pConfig in ipairs(Plugins) do
-	require(pConfig)
-end
+-- for _, pConfig in ipairs(Plugins) do
+-- 	require(pConfig)
+-- end
 
-vim.cmd('source ~/.config/nvim/lua/startify.vim')
-vim.cmd('source ~/.config/nvim/lua/after.vim')
-vim.g.vim_matchtag_enable_by_default = 1
+-- vim.cmd('source ~/.config/nvim/lua/startify.vim')
+-- vim.cmd('source ~/.config/nvim/lua/after.vim')
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')

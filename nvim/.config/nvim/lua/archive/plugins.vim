@@ -1,6 +1,5 @@
 "https://www.notonlycode.org/neovim-lua-config/
 "https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom
-set nowrap
 
 call plug#begin()
 	"DEV
@@ -9,7 +8,7 @@ call plug#begin()
 	Plug 'tpope/vim-repeat'
 	Plug 'KabbAmine/vCoolor.vim'
 	Plug 'folke/zen-mode.nvim'
-	Plug 'unegunn/vim-easy-align'
+	Plug 'junegunn/vim-easy-align'
 	Plug 'mhinz/vim-startify'
 	Plug 'windwp/nvim-autopairs'
 	Plug 'rcarriga/nvim-notify'

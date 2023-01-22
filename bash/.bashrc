@@ -240,15 +240,17 @@ function output {
 
 # Safer file deletion. Requires trash-cli
 alias rm='trash'
+alias rmdir='trash'
+
 
 function note {
-	echo "Date: $(date)" >> $HOME/Documents/notes.txt
-	echo "$@" >> $HOME/Documents/notes.txt
-	echo "" >> $HOME/Documents/notes.txt
+	echo "Date: $(date)" >> $HOME/.dotfiles/notes/notes/notes.txt
+	echo "$@" >> $HOME/.dotfiles/notes/notes/notes.txt
+	echo "" >> $HOME/.dotfiles/notes/notes/notes.txt
 }
 
 function notes {
-	nvim $HOME/Documents/notes.txt
+	nvim $HOME/.dotfiles/notes/notes/notes.txt
 }
 
 function webnotes {
@@ -268,6 +270,11 @@ function bp {
 function kittyconfig {
 	cd ~/.dotfiles/kitty/.config/kitty
 	nvim kitty.conf
+}
+
+# Create directories when moving files
+function mvv {
+	mkdir -p $2; mv $1 $2
 }
 
 # Custom PATH Additions
