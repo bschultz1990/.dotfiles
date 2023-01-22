@@ -4,16 +4,39 @@ require('plugins_c')
 -- GENERAL
 vim.scriptencoding = 'utf8'
 vim.opt.encoding = 'utf-8'
--- vim.opt.fileencoding = 'utf-8'
+vim.opt.fileencoding = 'utf-8'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 vim.opt.pumheight = 10
 vim.opt.pumblend = 0
 vim.opt.cursorline = true
+
+-- Create an autocommand to remember folds in between sessions.
+
+vim.g.viewoptions = 'options'
+local remember_folds = vim.api.nvim_create_augroup('remember_folds', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufWinLeave', 'BufWritePost' }, {
+		pattern = '*.*',
+		group = remember_folds,
+		command = 'if &ft !=# "help" | mkview | endif',
+	})
+vim.api.nvim_create_autocmd({ 'BufWinEnter', 'BufWritePost'}, {
+		pattern = '*.*',
+		group = remember_folds,
+		command = 'if &ft !=# "help" | silent! loadview | endif',
+	})
+-- manual	    Folds are created manually.
+-- indent	    Lines with equal indent form a fold.
+-- expr	    'foldexpr' gives the fold level of a line.
+-- marker	    Markers are used to specify folds.
+-- syntax	    Syntax highlighting items specify folds.
+-- diff	    Fold text that is not changed.
 vim.opt.foldmethod = 'expr'
--- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
+vim.opt.foldenable = true
+
 vim.opt.termguicolors = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -37,7 +60,6 @@ vim.opt.wrap = false
 
 -- CLIPBOARD
 -- vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
--- vim.opt.foldenable = false
 vim.g.python3_host_prog = '/usr/bin/python3'
 vim.g.loaded_perl_provider = false
 
@@ -51,12 +73,7 @@ vim.g.netrw_liststyle = 1
 
 -- Colorschemes
 -- slate
--- default, atlantis, andromeda, shusia, maia, espresso
--- vim.g.sonokai_style = 'default'
 -- oceanic, deep ocean palenight, lighter, darker
-
--- KEYMAPS
--- vim.g.mapleader = ','
 
 -- GENERAL
 vim.api.nvim_set_keymap('n','<F3>',':wa<cr>', { noremap = true, silent = true })
@@ -64,6 +81,7 @@ vim.api.nvim_set_keymap('n','<F5>',':luafile $MYVIMRC<cr>', { noremap = true, si
 vim.api.nvim_set_keymap('n','<F6>', ':Lazy<cr>', { noremap = true, silent = true }) -- Lazy
 -- vim.api.nvim_set_keymap('n','<F6>', ':PlugInstall<cr>', { noremap = true, silent = true }) -- Vim-Plug
 -- vim.api.nvim_set_keymap('n','<F7>', ':PlugClean<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<F11>',':edit /home/bens/.dotfiles/nvim/.config/nvim/lua/plugins_c.lua<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F12>',':edit $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, silent = true })
 
@@ -82,7 +100,6 @@ vim.api.nvim_set_keymap('n','G', 'Gzz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>n', ':bn<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>vs',':vs<cr><C-w>w:Ex<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>sp',':sp<cr>:Ex<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>bd',':bd<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tt',':tabnew<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tc',':tabclose<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tn',':tabnext<cr>', { noremap = true, silent = true })
@@ -94,13 +111,10 @@ vim.api.nvim_set_keymap('i','<C-cr>','<CR><CR><Up><BS><CR>', { noremap = true, s
 -- PLUGIN SPECIFIC
 vim.api.nvim_set_keymap('n','<leader>st',':Startify<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>zz',':ZenMode<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>th',':Telescope help_tags<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>td',':Telescope diagnostics<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>tk',':Telescope keymaps<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x','ga','<Plug>(EasyAlign)', { noremap = false, silent = true })
 
 -- CUSTOM FUNCTIONS
-vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`a', { noremap = true, silent = true }) -- indent on command
+vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`azz', { noremap = true, silent = true }) -- indent on command and center the cursor
 
 -- EJS
 vim.api.nvim_set_keymap('n', '<leader><', 'I<% <Esc>A %><Esc>', { noremap = true, silent = true, nowait = true}) -- indent on command
@@ -109,25 +123,6 @@ vim.api.nvim_set_keymap('n', '<leader><<', 'I<%= <Esc>A %><Esc>', { noremap = tr
 -- Setups
 -- require ('colorizer').setup()
 
--- EXTERNAL REQUIREMENTS
--- Plugins = {
--- 	'bufferline_c',
--- 	'lspsaga_c',
--- 	'lspkind_c',
--- 	'lualine_c',
--- 	'mason_c',
--- 	'nvim-autopairs_c',
--- 	'nvim-lspconfig_c',
--- 	'telescope_c',
--- 	'treesitter_c',
--- 	'vim-notify_c',
--- }
-
--- for _, pConfig in ipairs(Plugins) do
--- 	require(pConfig)
--- end
-
--- vim.cmd('source ~/.config/nvim/lua/startify.vim')
 -- vim.cmd('source ~/.config/nvim/lua/after.vim')
 
 -- SUCCESS! :)

@@ -27,10 +27,11 @@ require('telescope').setup {
 
 
 ---- TELESCOPE MAPPINGS
+vim.api.nvim_set_keymap('n','<leader>bb',':Telescope buffers<cr>',{ noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>ff',':Telescope find_files<cr>',{ noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>fg',':Telescope live_grep<cr>',{ noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>bb',':Telescope buffers<cr>',{ noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>h',':Telescope help_tags<cr>',{ noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>km', ':Telescope keymaps<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>td',':Telescope diagnostics<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>th',':Telescope help_tags<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>tk',':Telescope keymaps<cr>', { noremap = true, silent = true })
 
 return M

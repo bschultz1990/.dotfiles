@@ -1,9 +1,9 @@
-Date: Fri Jan 20 05:51:40 PM CST 2023
+Configure rest of plugins in-line
+Add part to fold autocommand where it runs on every save.
+
+
+
+
+
 Add an Express boilerplate to Neovim <leader>express
-
-Date: Fri Jan 20 06:23:16 PM CST 2023
 Make a snippet for this: app.get('/$1', (request,resolve) => {$2})
-
-Plugin manager: Lazy.vim
-Main config in Vimscript. Source other files as necessary.
-COC for completion
