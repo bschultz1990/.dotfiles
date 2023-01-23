@@ -23,10 +23,18 @@ require("lazy").setup({
 				{ "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
 			},
 		},
-		{ 'tpope/vim-surround' },
-		{ 'tpope/vim-commentary' },
-		{ 'tpope/vim-repeat' },
-		{ 'KabbAmine/vCoolor.vim' },
+		{ 'tpope/vim-surround',
+			event = 'BufReadPre'
+		},
+		{ 'tpope/vim-commentary',
+			event = 'BufReadPre'
+		},
+		{ 'tpope/vim-repeat',
+			event = 'BufReadPre'
+		},
+		{ 'KabbAmine/vCoolor.vim',
+			event = 'BufReadPre'
+		},
 		{ 'folke/zen-mode.nvim' },
 		{ 'junegunn/vim-easy-align' },
 		{ 'windwp/nvim-autopairs',
@@ -54,9 +62,12 @@ require("lazy").setup({
 		{ 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate',
 			lazy = false,
 		},
-		{ 'iamcco/markdown-preview.nvim' },
+		{ 'iamcco/markdown-preview.nvim',
+			ft = 'markdown'
+		},
 		{ 'kyazdani42/nvim-web-devicons' },
 		{ 'nvim-lualine/lualine.nvim',
+			event = 'VimEnter',
 			config = function()
 				require('lualine').setup {
 					options = {
@@ -139,15 +150,22 @@ require("lazy").setup({
 				vim.api.nvim_set_keymap('n','<leader>tk',':Telescope keymaps<cr>', { noremap = true, silent = true })
 			end
 		},
-		{ 'hrsh7th/nvim-cmp' },
-		{ 'hrsh7th/cmp-nvim-lua' },
-		{ 'hrsh7th/cmp-nvim-lsp' },
-		{ 'hrsh7th/cmp-path' },
-		{ 'hrsh7th/cmp-cmdline' },
-		{ 'hrsh7th/vim-vsnip' },
-		{ 'hrsh7th/cmp-vsnip' },
-		-- { 'hrsh7th/vim-vsnip-integ' },
-		{ 'rafamadriz/friendly-snippets' },
+		{ 'hrsh7th/nvim-cmp',
+			dependencies = {
+				'hrsh7th/cmp-nvim-lua',
+				'hrsh7th/cmp-nvim-lsp',
+				'hrsh7th/cmp-path',
+				'hrsh7th/cmp-cmdline',
+			}
+		},
+		{ 'hrsh7th/vim-vsnip',
+			event = 'BufReadPre',
+			dependencies = {
+				'hrsh7th/cmp-vsnip',
+				'hrsh7th/vim-vsnip-integ',
+				'rafamadriz/friendly-snippets',
+			}
+		},
 		{ 'glepnir/lspsaga.nvim',
 			config = function()
 				local saga = require('lspsaga')
@@ -195,9 +213,9 @@ require("lazy").setup({
 				}
 			end
 		},
-		{ 'tzachar/cmp-tabnine', build = './install.sh'  },
-		{ 'onsails/lspkind.nvim'
-			-- configured in nvim-lspconfig
+		{ 'tzachar/cmp-tabnine',
+			build = './install.sh',
+			event = 'BufReadPre'
 		},
 		{ 'williamboman/mason.nvim',
 			config = function ()
@@ -205,6 +223,7 @@ require("lazy").setup({
 			end
 		},
 		{ 'williamboman/mason-lspconfig.nvim',
+			event = 'BufReadPre',
 			config = function()
 				require("mason-lspconfig").setup({
 						automatic_installation = true,
@@ -212,6 +231,8 @@ require("lazy").setup({
 			end
 		},
 		{ 'neovim/nvim-lspconfig',
+			event = 'BufReadPre',
+			dependencies = 'onsails/lspkind.nvim',
 			config = function ()
 				-- Is there an lspconfig in the house?
 				local lspconfig_ok, _ = pcall(require, 'lspconfig')
@@ -226,7 +247,7 @@ require("lazy").setup({
 					return
 				end
 
-				require('lspsaga').init_lsp_saga()
+				require('lspsaga').setup({})
 
 				local configs = require('lspconfig/configs')
 				----------CONNECT TO SERVERS------------
@@ -383,13 +404,9 @@ require("lazy").setup({
 					})
 			end
 		},
-		{ 'sainnhe/sonokai',
-			config = function()
-				-- default, atlantis, andromeda, shusia, maia, espresso
-				vim.g.sonokai_style = 'default'
-			end,
+		{ 'ap/vim-css-color',
+			ft = 'css'
 		},
-		{ 'ap/vim-css-color' },
 		{ 'marko-cerovac/material.nvim',
 			priority = 9000,
 			config = function()
@@ -397,8 +414,10 @@ require("lazy").setup({
 				vim.cmd('colorscheme material')
 			end,
 		},
-		{ 'drewtempelmeyer/palenight.vim', },
-		{ 'sheerun/vim-polyglot' },
+		{ 'drewtempelmeyer/palenight.vim' },
+		{ 'sheerun/vim-polyglot',
+			event = 'BufReadPre'
+		},
 		{ 'norcalli/nvim-colorizer.lua' },
 		{ 'echasnovski/mini.starter',
 			-- version = false, -- wait till new 0.7.0 release to put it back on semver
@@ -467,6 +486,7 @@ require("lazy").setup({
 			end,
 		},
 	})
+
 
 -- MIGRATION FROM PACKER
 -- setup => init

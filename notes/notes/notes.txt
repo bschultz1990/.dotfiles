@@ -1,9 +1,11 @@
-Configure rest of plugins in-line
-Add part to fold autocommand where it runs on every save.
-
-
-
-
-
 Add an Express boilerplate to Neovim <leader>express
 Make a snippet for this: app.get('/$1', (request,resolve) => {$2})
+
+
+
+
+
+
+
+PLUGIN EVENTS
+

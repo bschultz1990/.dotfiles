@@ -37,6 +37,14 @@ vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
 vim.opt.foldenable = true
 
+----------CUSTOM COMMANDS----------
+-- Open help files in a new tab.
+vim.api.nvim_create_user_command('H', ':tab help <args>', { nargs = 1, complete = "help" })
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'VimEnter' }, {
+		pattern = '*',
+		command = 'syn match parens /[(){}]/ | hi parens ctermfg=red',
+	})
+
 vim.opt.termguicolors = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -109,7 +117,6 @@ vim.api.nvim_set_keymap('n','<leader>`','<cmd>sp<cr><C-w>w<cmd>terminal<cr>i', {
 vim.api.nvim_set_keymap('i','<C-cr>','<CR><CR><Up><BS><CR>', { noremap = true, silent = true })
 
 -- PLUGIN SPECIFIC
-vim.api.nvim_set_keymap('n','<leader>st',':Startify<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>zz',':ZenMode<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x','ga','<Plug>(EasyAlign)', { noremap = false, silent = true })
 
@@ -123,7 +130,6 @@ vim.api.nvim_set_keymap('n', '<leader><<', 'I<%= <Esc>A %><Esc>', { noremap = tr
 -- Setups
 -- require ('colorizer').setup()
 
--- vim.cmd('source ~/.config/nvim/lua/after.vim')
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')
