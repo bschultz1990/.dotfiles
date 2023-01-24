@@ -15,28 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ','
 
 require("lazy").setup({
-		{ "echasnovski/mini.bufremove",
-			lazy = false,
-			-- stylua: ignore
-			keys = {
-				{ "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-				{ "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
-			},
-		},
-		{ 'tpope/vim-surround',
-			event = 'BufReadPre'
-		},
-		{ 'tpope/vim-commentary',
-			event = 'BufReadPre'
-		},
-		{ 'tpope/vim-repeat',
-			event = 'BufReadPre'
-		},
-		{ 'KabbAmine/vCoolor.vim',
-			event = 'BufReadPre'
-		},
-		{ 'folke/zen-mode.nvim' },
-		{ 'junegunn/vim-easy-align' },
 		{ 'windwp/nvim-autopairs',
 			config = function()
 				require('nvim-autopairs').setup {
@@ -56,7 +34,49 @@ require("lazy").setup({
 					map_c_h = false,  -- Map the <C-h> key to delete a pair
 					map_c_w = false, -- map <c-w> to delete a pair if possible
 				}
-			end
+			end,
+		},
+		{ "echasnovski/mini.bufremove",
+			lazy = false,
+			-- stylua: ignore
+			keys = {
+				{ "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+				{ "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+			},
+		},
+		{ 'hrsh7th/nvim-cmp',
+			dependencies = {
+				'hrsh7th/cmp-nvim-lua',
+				'hrsh7th/cmp-nvim-lsp',
+				'hrsh7th/cmp-path',
+				'hrsh7th/cmp-cmdline',
+			}
+		},
+		{ 'hrsh7th/nvim-cmp',
+			dependencies = {
+				'hrsh7th/cmp-nvim-lua',
+				'hrsh7th/cmp-nvim-lsp',
+				'hrsh7th/cmp-path',
+				'hrsh7th/cmp-cmdline',
+			}
+		},
+		{ 'tpope/vim-surround',
+			event = 'BufReadPre'
+		},
+		{ 'tpope/vim-commentary',
+			event = 'BufReadPre'
+		},
+		{ 'tpope/vim-repeat',
+			event = 'BufReadPre'
+		},
+		{ 'KabbAmine/vCoolor.vim',
+			event = 'BufReadPre'
+		},
+		{ 'folke/zen-mode.nvim',
+			event = "BufReadPre",
+		},
+		{ 'junegunn/vim-easy-align',
+			event = "BufReadPre",
 		},
 		{ 'rcarriga/nvim-notify' },
 		{ 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate',
@@ -149,14 +169,6 @@ require("lazy").setup({
 				vim.api.nvim_set_keymap('n','<leader>th',':Telescope help_tags<cr>', { noremap = true, silent = true })
 				vim.api.nvim_set_keymap('n','<leader>tk',':Telescope keymaps<cr>', { noremap = true, silent = true })
 			end
-		},
-		{ 'hrsh7th/nvim-cmp',
-			dependencies = {
-				'hrsh7th/cmp-nvim-lua',
-				'hrsh7th/cmp-nvim-lsp',
-				'hrsh7th/cmp-path',
-				'hrsh7th/cmp-cmdline',
-			}
 		},
 		{ 'hrsh7th/vim-vsnip',
 			event = 'BufReadPre',
@@ -420,7 +432,7 @@ require("lazy").setup({
 		},
 		{ 'norcalli/nvim-colorizer.lua' },
 		{ 'echasnovski/mini.starter',
-			-- version = false, -- wait till new 0.7.0 release to put it back on semver
+			version = false, -- wait till new 0.7.0 release to put it back on semver
 			event = "VimEnter",
 			opts = function()
 				local logo = table.concat({
