@@ -87,5 +87,3 @@ xdg-open "https://www.lua.org/versions.html"
 
 # GitHub
 echo "GitHub CLi installed. If this failed, visit https://github.com/cli/cli/blob/trunk/docs/install_linux.md for options."
-
-
