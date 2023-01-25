@@ -1,0 +1,44 @@
+{
+	"notes":{
+		"oos": {
+			"title": "Out of Stock",
+			"text": "Item out of stock."
+		},
+		"fraud": {
+			"title": "Fraud?",
+			"text": "Potential fraud. Order and payment entered."
+		},
+		"ba_contacted": {
+			"title": "Bad Address, Contacted",
+			"text": "Contacted customer about bad address."
+		},
+		"remessaged": {
+			"title": "Re-Messaged",
+			"text": "Re-messaged. Hold until"
+		},
+		"cancelled": {
+			"title": "Cancelled",
+			"text": "Cancelled. No customer response about bad address."
+		},
+		"e_bad": {
+			"title": "Email - Bad Address",
+			"greeting": "Hello! We're processing your Pellethead order and your shipping address",
+			"pobox": "is showing undeliverable via USPS. Since this is such a light order, do you have an alternate address or a PO box we could use?",
+			"closer": "If we don't hear from you in two business days, your order will be cancelled and auto-refunded. Thank you!"
+		},
+		"e_fraud": {
+			"title": "Email - Fraud",
+			"text": "Hello! There was an issue processing your Pellethead order",
+			"text2": "and it has been put on hold. Please call us back at 920-779-6647 so we can get the order rolling for you. If we do not hear back by",
+			"text2": ", your order will be cancelled and your payment refunded. Best regards,"
+		},
+		"e_tracking": {
+			"title": "Email - Tracking",
+			"text": "Hello! Thanks for reaching out! Your tracking number is below and order attached. I just created the label, so it might take up to 1 business day to show movement."
+		},
+		"e_schange": {
+			"title": "Email - Shipping Change",
+			"text": "Hello! I'm contacting you in regard to your recent Pellethead.com order. The shipping service you requested (First Class Mail International) was not available for your package.  USPS was giving an estimate as far out as 999 days. However, we managed to upgrade you to FedEx International Ground at no extra cost. Your tracking number is below. It may take a day to show movement, as the label just got created. Thank you in advance for understanding and hope you have a great rest of day."
+		}
+	}
+}
