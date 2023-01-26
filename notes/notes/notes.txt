@@ -1,11 +1,6 @@
 Add an Express boilerplate to Neovim <leader>express
 Make a snippet for this: app.get('/$1', (request,resolve) => {$2})
 
-
-
-
-
-
-
-PLUGIN EVENTS
+Date: Wed Jan 25 06:44:06 PM CST 2023
+Enable sessions in nvim. Then, point to the sessions folder on your startup page.
 

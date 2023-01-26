@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'VimEnter' }, {
 		command = 'syn match parens /[(){}]/ | hi parens ctermfg=red',
 	})
 
-vim.opt.termguicolors = true
+-- vim.opt.termguicolors = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.ruler = false

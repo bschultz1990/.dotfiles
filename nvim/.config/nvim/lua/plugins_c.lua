@@ -36,6 +36,14 @@ require("lazy").setup({
 				}
 			end,
 		},
+		{ "akinsho/bufferline.nvim",
+			version = "v3.*",
+			depends = { "kyazdani42/nvim-web-devicons"},
+			init = function ()
+				vim.opt.termguicolors = true,
+				require("bufferline").setup{}
+			end,
+		},
 		{ "echasnovski/mini.bufremove",
 			lazy = false,
 			-- stylua: ignore
@@ -269,7 +277,8 @@ require("lazy").setup({
 						vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer=0 })
 						vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga show_line_diagnostics<CR>', { silent = true } )
 						vim.keymap.set('n','<leader>o', '<cmd>LSoutlineToggle<CR>',{ silent = true })
-						vim.diagnostic.config({ virtual_text=true })
+						-- Show or hide diagnostic text
+						vim.diagnostic.config({ virtual_text=false })
 						capabilities=capabilities
 					end
 
