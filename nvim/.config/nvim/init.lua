@@ -76,9 +76,6 @@ vim.g.netrw_keepdir = 1
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 1
 
--- PLUGIN SOURCING
--- vim.cmd('source ~/.config/nvim/lua/plugins.vim')
-
 -- Colorschemes
 -- slate
 -- oceanic, deep ocean palenight, lighter, darker
@@ -96,7 +93,7 @@ vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, sile
 vim.api.nvim_create_user_command('Session',
 	function(opts)
 		Session_dir = vim.fn.stdpath("config") .. "/sessions/"
-		vim.cmd("mksession "..Session_dir..opts.fargs[1])
+		vim.cmd("mksession "..Session_dir..opts.fargs[1]..".vim")
 	end,
 	{ nargs = 1 })
 
@@ -104,7 +101,7 @@ vim.api.nvim_create_user_command('Session',
 function sourcefile()
 	local dir = vim.api.nvim_eval("@%")
 	local file = string.match(vim.api.nvim_eval("@\""), ".*%.vim")
-	local path = "~/"..dir .. "/" .. file
+	local path = dir .. "/" .. file
 	vim.cmd("source "..path)
 end
 vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })

@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/.dotfiles
+cd ~/Documents/webdevelopmentbootcamp/Projects
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -13,17 +13,22 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +452 nvim/.config/nvim/lua/plugins_c.lua
-badd +48 nvim/.config/nvim/init.lua
+badd +9 230120_Post_Request_Routes/comments.txt
+badd +51 230120_Post_Request_Routes/index.js
+badd +14 230120_Post_Request_Routes/views/comments/edit.ejs
+badd +15 230120_Post_Request_Routes/views/comments/index.ejs
+badd +20 230120_Post_Request_Routes/views/comments/new.ejs
+badd +12 230120_Post_Request_Routes/views/comments/show.ejs
 argglobal
 %argdel
-edit nvim/.config/nvim/lua/plugins_c.lua
+$argadd ~/Documents/webdevelopmentbootcamp/Projects
+edit 230120_Post_Request_Routes/index.js
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
-split
-1wincmd k
+vsplit
+1wincmd h
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -34,10 +39,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 32 + 34) / 68)
-exe '2resize ' . ((&lines * 32 + 34) / 68)
+exe 'vert 1resize ' . ((&columns * 128 + 128) / 256)
+exe 'vert 2resize ' . ((&columns * 127 + 128) / 256)
 argglobal
-balt nvim/.config/nvim/init.lua
+balt 230120_Post_Request_Routes/views/comments/index.ejs
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
@@ -46,20 +51,19 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 452 - ((9 * winheight(0) + 15) / 31)
+let s:l = 54 - ((45 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 452
-normal! 080|
-lcd ~
+keepjumps 54
+normal! 02|
+lcd ~/Documents/webdevelopmentbootcamp/Projects
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/.dotfiles/nvim/.config/nvim/init.lua", ":p")) | buffer ~/.dotfiles/nvim/.config/nvim/init.lua | else | edit ~/.dotfiles/nvim/.config/nvim/init.lua | endif
+if bufexists(fnamemodify("~/Documents/webdevelopmentbootcamp/Projects/230120_Post_Request_Routes/views/comments/edit.ejs", ":p")) | buffer ~/Documents/webdevelopmentbootcamp/Projects/230120_Post_Request_Routes/views/comments/edit.ejs | else | edit ~/Documents/webdevelopmentbootcamp/Projects/230120_Post_Request_Routes/views/comments/edit.ejs | endif
 if &buftype ==# 'terminal'
-  silent file ~/.dotfiles/nvim/.config/nvim/init.lua
+  silent file ~/Documents/webdevelopmentbootcamp/Projects/230120_Post_Request_Routes/views/comments/edit.ejs
 endif
-balt ~/.dotfiles/nvim/.config/nvim/lua/plugins_c.lua
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
@@ -68,17 +72,16 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 92 - ((17 * winheight(0) + 15) / 31)
+let s:l = 14 - ((13 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 92
-normal! 068|
-lcd ~
+keepjumps 14
+normal! 07|
+lcd ~/Documents/webdevelopmentbootcamp/Projects
 wincmd w
-2wincmd w
-exe '1resize ' . ((&lines * 32 + 34) / 68)
-exe '2resize ' . ((&lines * 32 + 34) / 68)
+exe 'vert 1resize ' . ((&columns * 128 + 128) / 256)
+exe 'vert 2resize ' . ((&columns * 127 + 128) / 256)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

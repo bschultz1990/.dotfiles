@@ -486,6 +486,8 @@ require("lazy").setup({
 							end,
 						})
 				end,
+				-- Start mini.starter with a key combo
+				vim.api.nvim_set_keymap('n','<leader>st', ':lua MiniStarter.open()<cr>', { noremap = true, silent = true })
 			},
 		})
 
