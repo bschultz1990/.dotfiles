@@ -88,11 +88,27 @@ vim.api.nvim_set_keymap('n','<leader>q',':q<cr>', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n','<F3>',':wa<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F5>',':luafile $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F6>', ':Lazy<cr>', { noremap = true, silent = true }) -- Lazy
--- vim.api.nvim_set_keymap('n','<F6>', ':PlugInstall<cr>', { noremap = true, silent = true }) -- Vim-Plug
--- vim.api.nvim_set_keymap('n','<F7>', ':PlugClean<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F11>',':edit /home/bens/.dotfiles/nvim/.config/nvim/lua/plugins_c.lua<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F12>',':edit $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, silent = true })
+
+-- Save session to directory via custom Session command
+vim.api.nvim_create_user_command('Session',
+	function(opts)
+		Session_dir = vim.fn.stdpath("config") .. "/sessions/"
+		vim.cmd("mksession "..Session_dir..opts.fargs[1])
+	end,
+	{ nargs = 1 })
+
+-- Source the file under the cursor in Netrw
+function sourcefile()
+	local dir = vim.api.nvim_eval("@%")
+	local file = string.match(vim.api.nvim_eval("@\""), ".*%.vim")
+	local path = "~/"..dir .. "/" .. file
+	vim.cmd("source "..path)
+end
+vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
+
 
 -- Center Scroll Results on Page
 vim.api.nvim_set_keymap('n','<C-d>', '<C-d>zz', { noremap = true, silent = true })

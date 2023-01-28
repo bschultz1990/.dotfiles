@@ -69,22 +69,22 @@ require("lazy").setup({
 			}
 		},
 		{ 'tpope/vim-surround',
-			event = 'BufReadPre'
+			event = 'VimEnter'
 		},
 		{ 'tpope/vim-commentary',
-			event = 'BufReadPre'
+			event = 'VimEnter'
 		},
 		{ 'tpope/vim-repeat',
-			event = 'BufReadPre'
+			event = 'VimEnter'
 		},
 		{ 'KabbAmine/vCoolor.vim',
-			event = 'BufReadPre'
+			event = 'VimEnter'
 		},
 		{ 'folke/zen-mode.nvim',
-			event = "BufReadPre",
+			event = "VimEnter",
 		},
 		{ 'junegunn/vim-easy-align',
-			event = "BufReadPre",
+			event = "VimEnter",
 		},
 		{ 'rcarriga/nvim-notify' },
 		{ 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate',
@@ -187,7 +187,7 @@ require("lazy").setup({
 				end
 			},
 			{ 'hrsh7th/vim-vsnip',
-				event = 'BufReadPre',
+				event = 'VimEnter',
 				dependencies = {
 					'hrsh7th/cmp-vsnip',
 					'hrsh7th/vim-vsnip-integ',
@@ -216,7 +216,7 @@ require("lazy").setup({
 			},
 			{ 'tzachar/cmp-tabnine',
 				build = './install.sh',
-				event = 'BufReadPre'
+				event = 'VimEnter'
 			},
 			{ 'williamboman/mason.nvim',
 				config = function ()
@@ -224,7 +224,7 @@ require("lazy").setup({
 				end
 			},
 			{ 'williamboman/mason-lspconfig.nvim',
-				event = 'BufReadPre',
+				event = 'VimEnter',
 				config = function()
 					require("mason-lspconfig").setup({
 							automatic_installation = true,
@@ -232,7 +232,7 @@ require("lazy").setup({
 				end
 			},
 			{ 'neovim/nvim-lspconfig',
-				event = 'BufReadPre',
+				event = 'VimEnter',
 				dependencies = 'onsails/lspkind.nvim',
 				config = function ()
 					-- Is there an lspconfig in the house?
@@ -259,7 +259,6 @@ require("lazy").setup({
 						'sumneko_lua',
 						'emmet_ls',
 						'cssls',
-						'fixjson',
 					}
 					for index, lsp in ipairs(Servers) do
 						require('lspconfig')[lsp].setup{}
@@ -418,7 +417,7 @@ require("lazy").setup({
 			},
 			{ 'drewtempelmeyer/palenight.vim' },
 			{ 'sheerun/vim-polyglot',
-				event = 'BufReadPre'
+				event = 'VimEnter'
 			},
 			{ 'norcalli/nvim-colorizer.lua' },
 			{ 'echasnovski/mini.starter',
@@ -448,8 +447,9 @@ require("lazy").setup({
 							new_section("Recent files", "Telescope oldfiles",   "Telescope"),
 							new_section("Grep text",    "Telescope live_grep",  "Telescope"),
 							new_section("init.lua",     "e $MYVIMRC",           "Config"),
-							new_section("Plugins",":edit /home/bens/.dotfiles/nvim/.config/nvim/lua/plugins_c.lua", "Config"),
+							new_section("Plugins",":edit ~/.config/nvim/lua/plugins_c.lua", "Config"),
 							new_section("Lazy",         "Lazy",                 "Config"),
+							new_section("Sessions",     ":Explore ~/.config/nvim/sessions/",    "Bookmarks"),
 							new_section("New file",     "ene | startinsert",    "Built-in"),
 							new_section("Quit",         "qa",                   "Built-in"),
 						},
