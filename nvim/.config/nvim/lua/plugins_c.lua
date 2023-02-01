@@ -99,7 +99,7 @@ require("lazy").setup({
 				}
 			end},
 			{ 'iamcco/markdown-preview.nvim',
-				ft = 'markdown'
+				-- ft = 'markdown'
 			},
 			{ 'kyazdani42/nvim-web-devicons' },
 			{ 'nvim-lualine/lualine.nvim',
@@ -406,7 +406,7 @@ require("lazy").setup({
 				end
 			},
 			{ 'ap/vim-css-color',
-				ft = 'css'
+				-- ft = 'css'
 			},
 			{ 'marko-cerovac/material.nvim',
 				priority = 9000,
@@ -490,7 +490,6 @@ require("lazy").setup({
 				vim.api.nvim_set_keymap('n','<leader>st', ':lua MiniStarter.open()<cr>', { noremap = true, silent = true })
 			},
 		})
-
 
 	-- MIGRATION FROM PACKER
 	-- setup => init
