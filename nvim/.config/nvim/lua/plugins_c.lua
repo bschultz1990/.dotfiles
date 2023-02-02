@@ -16,7 +16,7 @@ vim.g.mapleader = ','
 
 require("lazy").setup({
 		{ 'windwp/nvim-autopairs',
-			config = function()
+			init = function()
 				require('nvim-autopairs').setup {
 					disable_filetype = { 'TelescopePrompt' },
 					disable_in_macro = false,  -- disable when recording or executing a macro
@@ -77,10 +77,10 @@ require("lazy").setup({
 		{ 'tpope/vim-repeat',
 			event = 'VimEnter'
 		},
-		{ 'KabbAmine/vCoolor.vim',
-			event = 'VimEnter'
-		},
 		{ 'folke/zen-mode.nvim',
+			event = "VimEnter",
+		},
+		{ 'folke/twilight.nvim',
 			event = "VimEnter",
 		},
 		{ 'junegunn/vim-easy-align',
@@ -104,7 +104,7 @@ require("lazy").setup({
 			{ 'kyazdani42/nvim-web-devicons' },
 			{ 'nvim-lualine/lualine.nvim',
 				event = 'VimEnter',
-				config = function()
+				init = function()
 					require('lualine').setup {
 						options = {
 							icons_enabled = true,
@@ -202,15 +202,16 @@ require("lazy").setup({
 						enable_in_insert = false,
 						sign = false,
 						sign_priority = 40,
-						virtual_text = true,
+						virtual_text = false,
 					}
-					definition = {
-						edit = '<C-c>o',
-						vsplit = '<C-c>v',
-						split = '<C-c>i',
-						tabe = '<C-c>t',
-						quit = 'q',
-						close = '<Esc>',
+					symbol_in_winbar = {
+						enable = false,
+						separator = " ",
+						hide_keyword = true,
+						show_file = false,
+						folder_level = 2,
+						respect_root = false,
+						color_mode = false,
 					}
 				end
 			},
@@ -225,7 +226,7 @@ require("lazy").setup({
 			},
 			{ 'williamboman/mason-lspconfig.nvim',
 				event = 'VimEnter',
-				config = function()
+				init = function()
 					require("mason-lspconfig").setup({
 							automatic_installation = true,
 						})
@@ -410,16 +411,32 @@ require("lazy").setup({
 			},
 			{ 'marko-cerovac/material.nvim',
 				priority = 9000,
-				config = function()
-					vim.g.material_style = 'palenight'
-					vim.cmd('colorscheme material')
+				init = function()
+					-- oceanic, deep ocean, palenight, darker, lighter
+					vim.g.material_style = 'deep ocean'
 				end,
 			},
-			{ 'drewtempelmeyer/palenight.vim' },
+			{'ghifarit53/tokyonight-vim',
+				init = function()
+					vim.g.tokyonight_style = 'night'
+					-- night, storm
+				end
+			},
+			{'sainnhe/sonokai',
+				init = function()
+					vim.g.sonokai_style = "atlantis"
+					-- atlantis, default, andromeda, shusia, maia, espresso
+				end
+			},
+			{'shaunsingh/nord.nvim'},
+			{'EdenEast/nightfox.nvim'},
 			{ 'sheerun/vim-polyglot',
 				event = 'VimEnter'
 			},
 			{ 'norcalli/nvim-colorizer.lua' },
+			{ 'KabbAmine/vCoolor.vim',
+				event = 'VimEnter'
+			},
 			{ 'echasnovski/mini.starter',
 				version = false, -- wait till new 0.7.0 release to put it back on semver
 				event = "VimEnter",
