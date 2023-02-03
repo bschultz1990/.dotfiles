@@ -277,6 +277,8 @@ function mvv {
 	mkdir -p $2; mv $1 $2
 }
 
+alias mongoshwdbc='mongosh "mongodb+srv://wdbc.rrnu9ou.mongodb.net/wdbc" --apiVersion 1 --username bschultz1990'
+
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Apps:$PATH"
