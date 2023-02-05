@@ -104,8 +104,12 @@ function sourcefile()
 	local path = dir .. "/" .. file
 	vim.cmd("source "..path)
 end
-vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
 
+function mdpreview()
+	-- Get current file name	
+end
+
+vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
 
 -- Center Scroll Results on Page
 vim.api.nvim_set_keymap('n','<C-d>', '<C-d>zz', { noremap = true, silent = true })

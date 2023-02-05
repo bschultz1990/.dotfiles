@@ -284,3 +284,5 @@ function mdb {
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Apps:$PATH"
+export PATH="/home/bens/.deno/bin:$PATH"
+export EDITOR=nvim

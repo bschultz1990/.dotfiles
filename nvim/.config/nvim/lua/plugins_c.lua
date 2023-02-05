@@ -98,9 +98,6 @@ require("lazy").setup({
 					auto_install = false,
 				}
 			end},
-			{ 'iamcco/markdown-preview.nvim',
-				-- ft = 'markdown'
-			},
 			{ 'kyazdani42/nvim-web-devicons' },
 			{ 'nvim-lualine/lualine.nvim',
 				event = 'VimEnter',
