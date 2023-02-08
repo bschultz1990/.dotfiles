@@ -78,7 +78,7 @@ vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 1
 
 -- Colorschemes
-vim.cmd('colorscheme material')
+vim.cmd('colorscheme catppuccin-frappe')
 -- For more options, :Telescope colorschemes
 -- GENERAL
 vim.api.nvim_set_keymap('n','<leader>q',':q<cr>', { noremap = true, silent = true })

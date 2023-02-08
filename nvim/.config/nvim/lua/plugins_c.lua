@@ -193,23 +193,24 @@ require("lazy").setup({
 			},
 			{ 'glepnir/lspsaga.nvim',
 				init = function()
-					require('lspsaga').setup({})
-					lightbulb = {
-						enable = false,
-						enable_in_insert = false,
-						sign = false,
-						sign_priority = 40,
-						virtual_text = false,
-					}
-					symbol_in_winbar = {
-						enable = false,
-						separator = " ",
-						hide_keyword = true,
-						show_file = false,
-						folder_level = 2,
-						respect_root = false,
-						color_mode = false,
-					}
+					require('lspsaga').setup({
+							lightbulb = {
+								enable = false,
+								enable_in_insert = false,
+								sign = false,
+								sign_priority = 40,
+								virtual_text = false,
+							},
+							symbol_in_winbar = {
+								enable = false,
+								separator = " ",
+								hide_keyword = true,
+								show_file = false,
+								folder_level = 2,
+								respect_root = false,
+								color_mode = false,
+							}
+						})
 				end
 			},
 			{ 'tzachar/cmp-tabnine',
@@ -503,6 +504,7 @@ require("lazy").setup({
 				-- Start mini.starter with a key combo
 				vim.api.nvim_set_keymap('n','<leader>st', ':lua MiniStarter.open()<cr>', { noremap = true, silent = true })
 			},
+			{ "catppuccin/nvim", name = "catppuccin" },
 		})
 
 	-- MIGRATION FROM PACKER
