@@ -177,7 +177,7 @@ require("lazy").setup({
 					---- TELESCOPE MAPPINGS
 					vim.api.nvim_set_keymap('n','<leader>bb',':Telescope buffers<cr>',{ noremap = true, silent = true })
 					vim.api.nvim_set_keymap('n','<leader>ff',':Telescope find_files<cr>',{ noremap = true, silent = true })
-					vim.api.nvim_set_keymap('n','<leader>fg',':Telescope live_grep<cr>',{ noremap = true, silent = true })
+					vim.api.nvim_set_keymap('n','<leader>tg',':Telescope live_grep<cr>',{ noremap = true, silent = true })
 					vim.api.nvim_set_keymap('n','<leader>td',':Telescope diagnostics<cr>', { noremap = true, silent = true })
 					vim.api.nvim_set_keymap('n','<leader>th',':Telescope help_tags<cr>', { noremap = true, silent = true })
 					vim.api.nvim_set_keymap('n','<leader>tk',':Telescope keymaps<cr>', { noremap = true, silent = true })
@@ -505,6 +505,13 @@ require("lazy").setup({
 				vim.api.nvim_set_keymap('n','<leader>st', ':lua MiniStarter.open()<cr>', { noremap = true, silent = true })
 			},
 			{ "catppuccin/nvim", name = "catppuccin" },
+			{ "metakirby5/codi.vim",
+				init = function()
+						vim.api.nvim_set_keymap('n', '<F7>', ':Codi!<cr>', {noremap = true, silent = true})
+						vim.api.nvim_set_keymap('n', '<F8>', ':Codi<cr>', {noremap = true, silent = true})
+						vim.api.nvim_set_keymap('n', '<F9>', ':CodiExpand<cr>', {noremap = true, silent = true})
+				end
+			},
 		})
 
 	-- MIGRATION FROM PACKER
