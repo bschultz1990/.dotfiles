@@ -78,7 +78,7 @@ vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 1
 
 -- Colorschemes
-vim.cmd('colorscheme catppuccin-frappe')
+vim.cmd('colorscheme sonokai')
 -- For more options, :Telescope colorschemes
 -- GENERAL
 vim.api.nvim_set_keymap('n','<leader>q',':q<cr>', { noremap = true, silent = true })
@@ -109,7 +109,7 @@ function mdpreview()
 	-- Get current file name	
 end
 
-vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader><cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
 
 -- Center Scroll Results on Page
 vim.api.nvim_set_keymap('n','<C-d>', '<C-d>zz', { noremap = true, silent = true })

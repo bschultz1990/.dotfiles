@@ -76,8 +76,7 @@ esac
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 	alias ls='ls --color=auto'
-	#alias dir='dir --color=auto'
-	#alias vdir='vdir --color=auto'
+	#alias dir='dir --color=auto
 
 	alias grep='grep --color=auto'
 	alias fgrep='fgrep --color=auto'
@@ -174,6 +173,11 @@ alias update='sudo nala update && sudo nala upgrade -y'
 
 # Ls alias. More colors!
 alias ls='exa -lah'
+
+# Find anything anywhere and open in Neovim.
+function f {
+	fdfind . '/home/bens/' --type f --hidden --exclude .git | fzf --preview-window right | xargs nvim
+}
 
 # Change to a directory and list files.
 function c {
@@ -284,16 +288,16 @@ function mdb {
 # Codi
 # Usage: codi [filetype] [filename]
 codi() {
-  local syntax="${1:-python}"
-  shift
-  nvim -c \
-    "let g:startify_disable_at_vimenter = 1 |\
-    set bt=nofile ls=0 noru nonu nornu |\
-    hi ColorColumn ctermbg=NONE |\
-    hi VertSplit ctermbg=NONE |\
-    hi NonText ctermfg=0 |\
-    Codi $syntax" "$@"
-}
+	local syntax="${1:-python}"
+	shift
+	nvim -c \
+		"let g:startify_disable_at_vimenter = 1 |\
+		set bt=nofile ls=0 noru nonu nornu |\
+		hi ColorColumn ctermbg=NONE |\
+		hi VertSplit ctermbg=NONE |\
+		hi NonText ctermfg=0 |\
+		Codi $syntax" "$@"
+	}
 
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"

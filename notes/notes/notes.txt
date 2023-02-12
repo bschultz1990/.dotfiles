@@ -1,6 +1,10 @@
-Add an Express boilerplate to Neovim <leader>express
-Make a snippet for this: app.get('/$1', (request,resolve) => {$2})
+- Backup your current config
+- Remove all your lsps
+- Install Tabnine from https://github.com/codota/tabnine-nvim
+- Switch back over to CoC. Reinstall all the languages.
 
-Date: Wed Jan 25 06:44:06 PM CST 2023
-Enable sessions in nvim. Then, point to the sessions folder on your startup page.
 
+- Make your snippet plugin work
+- Sync your snippets to .dotfiles 
+- Add an Express boilerplate to Neovim <leader>express
+- Make a snippet for this: app.get('/$1', (request,resolve) => {$2})

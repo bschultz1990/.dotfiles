@@ -162,7 +162,7 @@ require("lazy").setup({
 						},
 						defaults = {
 							file_ignore_patterns = {'%.git', '%.npm', '%node_modules'},
-							-- layout_strategy = 'vertical',
+							layout_strategy = 'vertical',
 							layout_config = {
 								height = 125,
 							}
@@ -507,11 +507,17 @@ require("lazy").setup({
 			{ "catppuccin/nvim", name = "catppuccin" },
 			{ "metakirby5/codi.vim",
 				init = function()
-						vim.api.nvim_set_keymap('n', '<F7>', ':Codi!<cr>', {noremap = true, silent = true})
-						vim.api.nvim_set_keymap('n', '<F8>', ':Codi<cr>', {noremap = true, silent = true})
-						vim.api.nvim_set_keymap('n', '<F9>', ':CodiExpand<cr>', {noremap = true, silent = true})
+					vim.api.nvim_set_keymap('n', '<F7>', ':Codi!<cr>', {noremap = true, silent = true})
+					vim.api.nvim_set_keymap('n', '<F8>', ':Codi<cr>', {noremap = true, silent = true})
+					vim.api.nvim_set_keymap('n', '<F9>', ':CodiExpand<cr>', {noremap = true, silent = true})
 				end
 			},
+			-- {'echasnovski/mini.tabline', version = '*',
+			-- 	depends = { "kyazdani42/nvim-web-devicons"},
+			-- 	init = function()
+			-- 		require('mini.tabline').setup()
+			-- 	end
+			-- },
 		})
 
 	-- MIGRATION FROM PACKER

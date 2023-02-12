@@ -70,11 +70,6 @@ cp firacode/'Fira Code Light Nerd Font Complete.ttf' ~/.fonts
 rm -r "${XDG_DATA_HOME:-$HOME}"/Downloads/firacode
 rm "${XDG_DATA_HOME:-$HOME}"/Downloads/firacode.zip
 
-# Vim-Plug
-echo "Installing Vim-Plug"
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
 
 # Install Glow, a CLI Markdown Rendering Engine
 sudo mkdir -p /etc/apt/keyrings
