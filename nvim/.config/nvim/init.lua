@@ -142,7 +142,7 @@ vim.api.nvim_set_keymap('i','<C-cr>','<CR><CR><Up><BS><CR>', { noremap = true, s
 vim.api.nvim_set_keymap('n','<leader>zz',':ZenMode<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x','ga','<Plug>(EasyAlign)', { noremap = false, silent = true })
 
--- CUSTOM FUNCTIONS
+-- CUSTOM KEYMAPS
 vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`azz', { noremap = true, silent = true }) -- indent on command and center the cursor
 
 -- EJS

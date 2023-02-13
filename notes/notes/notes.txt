@@ -1,8 +1,26 @@
 - Backup your current config
 - Remove all your lsps
+○ cmp-cmdline 
+○ cmp-nvim-lsp 
+○ cmp-nvim-lua 
+○ cmp-path 
+○ cmp-tabnine 
+○ cmp-vsnip 
+○ friendly-snippets 
+○ lspkind.nvim 
+○ mason-lspconfig.nvim 
+○ mason.nvim 
+○ nvim-cmp 
+○ nvim-lspconfig 
+○ vim-vsnip 
+○ vim-vsnip-integ 
 - Install Tabnine from https://github.com/codota/tabnine-nvim
 - Switch back over to CoC. Reinstall all the languages.
+- markdwon, html, css, javascript, lua
 
+Install these:
+- https://github.com/yaegassy/coc-html-css-support
+- https://github.com/neoclide/coc-snippets
 
 - Make your snippet plugin work
 - Sync your snippets to .dotfiles 
