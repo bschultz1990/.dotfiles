@@ -109,7 +109,7 @@ function mdpreview()
 	-- Get current file name	
 end
 
-vim.api.nvim_set_keymap('n','<leader><cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
 
 -- Center Scroll Results on Page
 vim.api.nvim_set_keymap('n','<C-d>', '<C-d>zz', { noremap = true, silent = true })

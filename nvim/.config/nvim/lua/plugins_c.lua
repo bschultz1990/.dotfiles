@@ -298,7 +298,8 @@ require("lazy").setup({
 						'coc-css',
 						'coc-sumneko-lua',
 						'coc-html',
-						'coc-snippets' -- using SnipMate, since Utilisnips sometimes doesn't work
+						'coc-snippets', -- using SnipMate, since Utilisnips sometimes doesn't work
+						'coc-tsserver', -- use this link if Yarn is >= 2.0: https://github.com/neoclide/coc-tsserver#install
 					}
 					-- DEFAULT CONFIG. CHANGE AS YOU LIKE
 					-- Some servers have issues with backup files, see #649
