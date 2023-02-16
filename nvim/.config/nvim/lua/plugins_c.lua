@@ -133,13 +133,11 @@ require("lazy").setup({
 				dependencies = {
 					'nvim-lua/popup.nvim',
 					'nvim-lua/plenary.nvim',
+					'nvim-telescope/telescope-file-browser.nvim'
 				},
 				config = function ()
 					require('telescope').setup {
 						extensions = {
-							media_files = {
-								find_cmd = 'rg',
-							},
 							file_browser = {
 								-- hijack_netrw = true,
 							}
@@ -158,6 +156,9 @@ require("lazy").setup({
 							},
 						}
 					}
+					-- Load Extra Extensions
+					require("telescope").load_extension "file_browser"
+
 					---- TELESCOPE MAPPINGS
 					vim.api.nvim_set_keymap('n','<leader>bb',':Telescope buffers<cr>',{ noremap = true, silent = true })
 					vim.api.nvim_set_keymap('n','<leader>ff',':Telescope find_files<cr>',{ noremap = true, silent = true })
@@ -165,6 +166,7 @@ require("lazy").setup({
 					vim.api.nvim_set_keymap('n','<leader>td',':Telescope diagnostics<cr>', { noremap = true, silent = true })
 					vim.api.nvim_set_keymap('n','<leader>th',':Telescope help_tags<cr>', { noremap = true, silent = true })
 					vim.api.nvim_set_keymap('n','<leader>tk',':Telescope keymaps<cr>', { noremap = true, silent = true })
+					vim.api.nvim_set_keymap('n','<leader>tb',':Telescope file_browser path=%:p:h select_buffer=true<cr>', { noremap = true, silent = true })
 				end
 			},
 			--			TABNINE HERE
@@ -298,8 +300,10 @@ require("lazy").setup({
 						'coc-css',
 						'coc-sumneko-lua',
 						'coc-html',
-						'coc-snippets', -- using SnipMate, since Utilisnips sometimes doesn't work
-						'coc-tsserver', -- use this link if Yarn is >= 2.0: https://github.com/neoclide/coc-tsserver#install
+						'coc-snippets',
+						'coc-tsserver', -- use these instructions if Yarn is >= 2.0: https://github.com/neoclide/coc-tsserver#install
+						'coc-html-css-support',
+						'coc-snippets'
 					}
 					-- DEFAULT CONFIG. CHANGE AS YOU LIKE
 					-- Some servers have issues with backup files, see #649
@@ -332,7 +336,7 @@ require("lazy").setup({
 					keyset("i", "<S-cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
 					-- Use <c-j> to trigger snippets
-					keyset("i", "<c-n>", "<Plug>(coc-snippets-expand-jump)")
+					keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
 					-- Use <c-space> to trigger completion
 					keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 
@@ -372,7 +376,7 @@ require("lazy").setup({
 
 
 					-- Symbol renaming
-					keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
+					keyset("n", "<leader>r", "<Plug>(coc-rename)", {silent = true})
 
 
 					-- Formatting selected code
@@ -468,25 +472,9 @@ require("lazy").setup({
 					-- Mappings for CoCList
 					-- code actions and coc stuff
 					---@diagnostic disable-next-line: redefined-local
-					local opts = {silent = true, nowait = true}
-					-- Show all diagnostics
-					keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
-					-- Manage extensions
-					keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
-					-- Show commands
-					keyset("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
-					-- Find symbol of current documentvim.opt.signcolumn = "yes"
-					keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
-					-- Search workspace symbols
-					keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
-					-- Do default action for next itemvim.opt.signcolumn = "yes"
-					keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
-					-- Do default action for previous item
-					keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
-					-- Resume latest coc list
-					keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
 				end
 			},
+
 		})
 
 	-- MIGRATION FROM PACKER
@@ -502,13 +490,6 @@ require("lazy").setup({
 	-- wants information_source not needed for most use-cases. Use dependencies otherwise.
 	-- config don't support string type, use fun(LazyPlugin) instead.
 	-- module is auto-loaded. No need to specify
-
-
-
-
-
-
-
 
 
 	----------------------------------------------------------------

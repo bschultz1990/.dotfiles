@@ -172,7 +172,7 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 alias update='sudo nala update && sudo nala upgrade -y'
 
 # Ls alias. More colors!
-alias ls='exa -lah'
+alias ls='lsd -lah'
 
 # Find anything anywhere and open in Neovim.
 function f {
@@ -183,16 +183,16 @@ function f {
 function c {
 	clear
 	cd $1
-	exa -lah
+	lsd -lah
 }
+
+alias cd='c'
 
 # Make a directory and change to it.
 function take {
 	mkdir -p $1
 	cd $1
 }
-
-alias cd='c'
 
 # Touch alias
 function t {
@@ -203,7 +203,7 @@ function t {
 
 	# List all the files in the directory:
 	clear
-	exa -lah
+	lsd -lah
 }
 
 function i {
@@ -302,5 +302,5 @@ codi() {
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Apps:$PATH"
-export PATH="/home/bens/.deno/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim

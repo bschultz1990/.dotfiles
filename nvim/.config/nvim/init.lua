@@ -64,7 +64,7 @@ vim.opt.expandtab = false
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 -- vim.opt.shiftround = true
-vim.opt.softtabstop = 2
+-- vim.opt.softtabstop = 2
 vim.opt.wrap = false
 
 -- CLIPBOARD
@@ -81,7 +81,7 @@ vim.g.netrw_liststyle = 1
 vim.cmd('colorscheme sonokai')
 -- For more options, :Telescope colorschemes
 -- GENERAL
-vim.api.nvim_set_keymap('n','<leader>q',':q<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>q',':q<cr>', { noremap = true, silent = true, nowait = true })
 vim.api.nvim_set_keymap('n','<F3>',':wa<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F5>',':luafile $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F6>', ':Lazy<cr>', { noremap = true, silent = true }) -- Lazy
@@ -105,11 +105,12 @@ function sourcefile()
 	vim.cmd("source "..path)
 end
 
+vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
+
 function mdpreview()
 	-- Get current file name	
 end
 
-vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
 
 -- Center Scroll Results on Page
 vim.api.nvim_set_keymap('n','<C-d>', '<C-d>zz', { noremap = true, silent = true })
@@ -123,8 +124,8 @@ vim.api.nvim_set_keymap('n','N', 'Nzzzv', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','G', 'Gzz', { noremap = true, silent = true })
 
 -- FOLDS AND SUCH
-vim.api.nvim_set_keymap('n','<leader>fd', ':set foldlevel=1<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>uf', ':set foldlevel=99<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>fd', ':set foldlevel=1<cr>', { noremap = true, silent = true }) -- Fold
+vim.api.nvim_set_keymap('n','<leader>uf', ':set foldlevel=99<cr>', { noremap = true, silent = true }) -- Unfold
 
 -- BUFFERS AND SPLITS
 vim.api.nvim_set_keymap('n','<leader>n', ':bn<cr>', { noremap = true, silent = true })
@@ -148,10 +149,6 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`azz', { noremap = true, si
 -- EJS
 vim.api.nvim_set_keymap('n', '<leader><', 'I<% <Esc>A %><Esc>', { noremap = true, silent = true, nowait = true})
 vim.api.nvim_set_keymap('n', '<leader><<', 'I<%= <Esc>A %><Esc>', { noremap = true, silent = true, nowait = true})
-
--- Setups
--- require ('colorizer').setup()
-
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')

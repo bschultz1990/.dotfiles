@@ -1,3 +1,13 @@
 {
 	"sumneko-lua.enableNvimLuaDev": true,
+
+	"html-css-support.enabledLanguages": [
+		"html",
+		"vue",
+		"blade",
+		"htmldjango",
+		"typescriptreact",
+		"javascriptreact",
+		"ejs",
+	]
 }
