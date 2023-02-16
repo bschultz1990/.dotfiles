@@ -172,7 +172,7 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 alias update='sudo nala update && sudo nala upgrade -y'
 
 # Ls alias. More colors!
-alias ls='lsd -lah'
+alias ls='lsd'
 
 # Find anything anywhere and open in Neovim.
 function f {

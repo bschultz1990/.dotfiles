@@ -23,6 +23,7 @@ sudo nala install fzf -y
 sudo nala install git -y
 git config --global user.name "Ben S."
 git config --global user.email "bens@email.com"
+git config --global submodule.recurse true
 
 sudo nala install ripgrep -y
 sudo nala install xclip -y
