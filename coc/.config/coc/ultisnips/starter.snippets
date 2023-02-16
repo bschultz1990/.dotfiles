@@ -23,18 +23,3 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
-
-snippet plugin "Lazy.vim Plugin" b
-{ "${1}",
-	init = function()
-		${2}
-	end
-},
-endsnippet
-
-snippet local "Local requirements" b
-local M = {}
-${1}
-
-return M
-endsnippet
