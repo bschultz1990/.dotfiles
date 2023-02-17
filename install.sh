@@ -14,6 +14,10 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 # Configure gh and git. Log in to GitHub
 gh auth login
 
+echo "Cloning /.dotfiles"
+cd ~/
+git clone https://github.com/bschultz1990/.dotfiles
+
 # General dependencies
 sudo apt install nala -y
 sudo nala install stow -y
