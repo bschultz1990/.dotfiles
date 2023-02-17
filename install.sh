@@ -60,7 +60,7 @@ python3 -m pip install --user --upgrade pynvim
 sudo nala install juila -y
 
 # LS Deluxe! This requires Rust and a Nerd Font ;)
-cargo install lsd
+
 
 # getNF CLI
 if [ ! -d ""${XDG_DATA_HOME:-$HOME}"/Downloads/getnf"]; then
