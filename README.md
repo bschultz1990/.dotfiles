@@ -1,7 +1,7 @@
 # Installation
 
 ```bash
-curl -O https://github.com/bschultz1990/.dotfiles/blob/main/install.sh
+curl -O https://raw.githubusercontent.com/bschultz1990/.dotfiles/main/install.sh
 sudo chmod 
 ./install.sh
 ```
