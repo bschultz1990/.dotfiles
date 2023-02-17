@@ -14,9 +14,6 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 # Configure gh and git. Log in to GitHub
 gh auth login
 
-echo "Cloning /.dotfiles"
-cd ~/
-git clone https://github.com/bschultz1990/.dotfiles
 
 # General dependencies
 sudo apt install nala -y
@@ -63,13 +60,12 @@ sudo nala install juila -y
 
 
 # getNF CLI
-if [ ! -d ""${XDG_DATA_HOME:-$HOME}"/Downloads/getnf"]; then
+if [ ! -d "{$HOME}/Downloads/getnf"]; then
 	mkdir ~/Downloads/getnf
 fi
-cd "${XDG_DATA_HOME:-$HOME}"/Downloads/firacode.zip
-git clone https://github.com/ronniedroid/getnf.git
-cd getnf
+cd ~/Downloads/getnf
 ./install.sh
+trash ~/Downloads/getnf
 
 # NEOVIM
 # FiraCode Nerd Font
@@ -104,3 +100,32 @@ xdg-open "https://www.lua.org/versions.html"
 
 # GitHub
 echo "GitHub CLi installed. If this failed, visit https://github.com/cli/cli/blob/trunk/docs/install_linux.md for options."
+
+# Clone .dotfiles
+echo "Cloning /.dotfiles"
+cd ~/
+git clone https://github.com/bschultz1990/.dotfiles
+
+# Clone nvim repo
+cd ~/.config
+trash nvim
+git clone --depth 1 https://github.com/bschultz1990/nvim
+
+# Clone notes
+echo "Cloning notes"
+cd ~/Documents/
+git clone https://github.com/bschultz1990/notes
+
+# Stow all your .dotfiles
+echo "Trashing existing configs. Recover using 'trash-restore'"
+cd ~/
+trash ~/.bashrc
+trash ~/.gitconfig
+cd ~/.config
+trash kitty
+cd ~/.dotfiles
+
+echo "Stowing configs..."
+stow bash
+stow git
+stow kitty

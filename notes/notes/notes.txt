@@ -1,6 +1,0 @@
-- https://github.com/quangnguyen30192/cmp-nvim-ultisnips
-- https://github.com/SirVer/ultisnips
-- Install trouble.nvim
-
-- Look up the video "From No Org to Neorg"
--- Possibly get Neorg plugin???
