@@ -6,10 +6,10 @@ sudo apt update && sudo apt upgrade -y
 # install gh cli
 type -p curl >/dev/null || sudo apt install curl -y
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-&& sudo apt update \
-&& sudo apt install gh -y
+	&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install gh -y
 
 # Configure gh and git. Log in to GitHub
 gh auth login
@@ -59,6 +59,10 @@ sudo nala install juila -y
 cargo install lsd
 
 # getNF CLI
+if [ ! -d ""${XDG_DATA_HOME:-$HOME}"/Downloads/getnf"]; then
+	mkdir ~/Downloads/getnf
+fi
+cd "${XDG_DATA_HOME:-$HOME}"/Downloads/firacode.zip
 git clone https://github.com/ronniedroid/getnf.git
 cd getnf
 ./install.sh
@@ -67,16 +71,20 @@ cd getnf
 # FiraCode Nerd Font
 echo "Installing FiraCode Nerd Font"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/}"Downloads/firacode.zip --create-dirs \
-			https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip'
-mkdir "${XDG_DATA_HOME:-$HOME}"/.fonts
-unzip firacode.zip -d firacode
-cp firacode/'Fira Code Light Nerd Font Complete.ttf' ~/.fonts
-rm -r "${XDG_DATA_HOME:-$HOME}"/Downloads/firacode
-rm "${XDG_DATA_HOME:-$HOME}"/Downloads/firacode.zip
+	https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip'
+	if [ ! -d ""${XDG_DATA_HOME:-$HOME}"/.fonts"]; then
+		mkdir "${XDG_DATA_HOME:-$HOME}"/.fonts
+	fi
+	unzip firacode.zip -d firacode
+	cp firacode/'Fira Code Light Nerd Font Complete.ttf' ~/.fonts
+	rm -r "${XDG_DATA_HOME:-$HOME}"/Downloads/firacode
+	rm "${XDG_DATA_HOME:-$HOME}"/Downloads/firacode.zip
 
 
 # Install Glow, a CLI Markdown Rendering Engine
-sudo mkdir -p /etc/apt/keyrings
+if [ ! -d "/etc/apt/keyrings"]; then
+	sudo mkdir -p /etc/apt/keyrings
+fi
 curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
 echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
 sudo nala install glow
