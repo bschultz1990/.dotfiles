@@ -206,17 +206,6 @@ function t {
 	lsd -lah
 }
 
-function i {
-	for app in "$@"; do
-		sudo nala install "$app"
-	done
-}
-
-function remove {
-	for app in "$@"; do
-		sudo nala remove "$app"
-	done
-}
 
 # Display a man page in Neovim
 function mann {
