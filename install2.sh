@@ -68,6 +68,9 @@ nix-env -iA nixpkgs.nodejs \
 # Set ownership of ~/.npm
 sudo chown -R 501:20 ~/.npm
 
+# Install Nix-Locate
+nix-env -iA nixos.nix-index
+
 # Trash existing configs
 echo "Trashing existing configs. Recover using 'trash-restore'" \
 	&& cd ~/ \
