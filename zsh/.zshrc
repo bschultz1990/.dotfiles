@@ -1,6 +1,10 @@
 # Plugins
-source /usr/local/opt/antidote/share/antidote/antidote.zsh
-antidote load
+if type "antidote" &>/dev/null; then
+  # antidote command is available, run some commands
+	source /usr/local/opt/antidote/share/antidote/antidote.zsh
+	antidote load
+  echo "antidote is available"
+fi
 
 # Custom Aliases
 alias gpull='git pull'
@@ -60,15 +64,15 @@ function t {
 
 # Easily install Nix packages
 function nix-install {
-	nix-env -iA nixpkgs."$1"
+nix-env -iA nixpkgs."$1"
 }
 
 function nix-remove {
-	nix-env --uninstall nixpkgs."$1"
+nix-env --uninstall nixpkgs."$1"
 }
 
 function nix-search {
-	open "https://search.nixos.org/packages?channel=22.11&from=0&size=50&sort=relevance&type=packages&query=""$1"
+open "https://search.nixos.org/packages?channel=22.11&from=0&size=50&sort=relevance&type=packages&query=""$1"
 }
 
 # Display a man page in Neovim

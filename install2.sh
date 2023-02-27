@@ -42,13 +42,12 @@ nix-env -iA \
 # Python, pip, and pynvim
 # Python
 nix-env -iA nixpkgs.python311 \
-	# Install pip
 	&& curl -fLo ~/Downloads/get-pip.py \
-	https://bootstrap.pypa.io/get-pip.py \
+	&& https://bootstrap.pypa.io/get-pip.py \
 	&& sudo chmod u+rwx ~/Downloads/get-pip.py
 
 # Install pynvim through pip
-cd ~/Downloads
+cd "$HOME/Downloads"|| exit
 python3 -m pip install pynvim
 
 # Install and set Kitty as default terminal:
@@ -62,7 +61,7 @@ nix-env -iA nixpkgs.nodejs \
 	&& sudo n install latest -y \
 	&& sudo npm install -g neovim \
 	&& sudo npm install -g live-server \
-	&& sudo npm install -g cmdtest
+	&& sudo npm install -g cmdtest \
 	&& npm fund
 
 # Set ownership of ~/.npm
@@ -100,19 +99,9 @@ echo "Cloning notes" \
 cd ~/.dotfiles \
 	&& echo "Stowing bash..." \
 	&& stow bash \
-	&& echo "Stowing git..." \
-	&& stow git \
 	&& echo "Stowing kitty..." \
-	&& stow kitty
+	&& stow kitty \
+	&& echo "Stowing zsh..." \
+	&& stow zsh
 
-# FiraCode Nerd Font
-echo "Installing FiraCode Nerd Font"
-cd ~/Downloads \
-	&& curl -fLo ~/Downloads/FiraCode.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip \
-	&& unzip "FiraCode.zip" -d firacode \
-	&& rm "FiraCode.zip" \
-	&& trash *Mono* \
-	&& trash *.md \
-	&& trash *Windows* \
-	&& echo "Opening Unzipped Fonts. Install Manually." \
-	&& open *
+# Install getnf.
