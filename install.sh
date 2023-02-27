@@ -29,9 +29,9 @@ fi
 fi
 
 # Git and gh-cli
-brew install \
-	git \
-	gh
+brew install git
+brew install gh
+
 # Configure gh and git. Log in to GitHub
 git config --global user.name "Ben S."
 git config --global user.email "bens@noemail.com"
@@ -49,25 +49,22 @@ brew install --cask git-credential-manager-core
 # brew uninstall --cask git-credential-manager-core
 
 # General dependencies
-brew install \
-	stow \
-	trash-cli \
-	fzf \
-	ripgrep \
-	xclip \
-	freerdp \
-	rustup-init \
-	lua \
-	luarocks \
-	composer \
-	#FIXME: Might be broken. Watch your errors in nvim --checkhealth
-	# jre8 \
-	ruby \
-	go \
-	lsd \
-	glow \
-	neovim
-	
+brew install stow
+brew install trash-cli
+brew install fzf
+brew install ripgrep
+brew install xclip
+brew install freerdp
+brew install rust
+brew install lua
+brew install luarocks
+brew install composer
+brew install ruby
+brew install go
+brew install lsd
+brew install glow
+brew install neovim
+
 # Python, pip, and pynvim
 # Python
 brew install python@3.11 \
@@ -76,7 +73,7 @@ brew install python@3.11 \
 	&& sudo chmod u+rwx ~/Downloads/get-pip.py
 
 # Install pynvim through pip
-cd "$HOME/Downloads"|| exit
+cd "$HOME/Downloads" || return
 python3 -m pip install pynvim
 
 # # Install and set Kitty as default terminal:
