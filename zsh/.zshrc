@@ -26,7 +26,8 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 alias update='sudo nala update && sudo nala upgrade -y'
 
 # Ls alias. More colors!
-alias ls='lsd'
+# alias ls='lsd'
+
 
 # Find anything anywhere and open in Neovim.
 function f {
@@ -37,7 +38,7 @@ function f {
 function c {
 	clear
 	cd $1
-	lsd -lah
+	ls -lah
 }
 
 alias cd='c'
@@ -57,25 +58,12 @@ function t {
 
 	# List all the files in the directory:
 	clear
-	lsd -lah
+	ls -lah
 }
 
 # Reload shell environment!
 
-# Easily install Nix packages
-function nix-install {
-nix-env -iA nixpkgs."$1"
-}
-
-function nix-remove {
-nix-env --uninstall nixpkgs."$1"
-}
-
-function nix-search {
-open "https://search.nixos.org/packages?channel=22.11&from=0&size=50&sort=relevance&type=packages&query=""$1"
-}
-
-# Display a man page in Neovim
+# Display a man page and edit it in the default editor.
 function mann {
 	if [ -z "$1"]; then
 		# If not, print error message
@@ -84,7 +72,7 @@ function mann {
 	fi
 	# Copy the man page text and open it in Nvim
 	man "$1" | col -bx > /tmp/manpage.txt
-	nvim /tmp/manpage.txt
+	edit /tmp/manpage.txt
 }
 
 # Copy the output of a command and open it in nvim.
