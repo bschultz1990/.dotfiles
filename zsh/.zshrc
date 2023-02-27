@@ -1,5 +1,6 @@
 # Plugins
-source ~/.zsh_scripts/git-auto-fetch/git-auto-fetch.plugin.zsh
+source /usr/local/opt/antidote/share/antidote/antidote.zsh
+antidote load
 
 # Custom Aliases
 alias gpull='git pull'
@@ -25,7 +26,7 @@ alias ls='lsd'
 
 # Find anything anywhere and open in Neovim.
 function f {
-	fdfind . '/home/bens/' --type f --hidden --exclude .git | fzf --preview-window right | xargs nvim
+	fdfind . '~/' --type f --hidden --exclude .git | fzf --preview-window right | xargs nvim
 }
 
 # Change to a directory and list files.
@@ -54,6 +55,8 @@ function t {
 	clear
 	lsd -lah
 }
+
+# Reload shell environment!
 
 # Easily install Nix packages
 function nix-install {
@@ -96,15 +99,16 @@ function output {
 alias rm='trash'
 alias rmdir='trash'
 
+notepath="$HOME/Documents/notes/"
 
 function note {
-	echo "Date: $(date)" >> $HOME/.dotfiles/notes/notes/notes.txt
-	echo "$@" >> $HOME/.dotfiles/notes/notes/notes.txt
-	echo "" >> $HOME/.dotfiles/notes/notes/notes.txt
+	echo "Date: $(date)" >> $notepath/notes.txt
+	echo "$@" >> $notepath/notes.txt
+	echo "" >> $notepath/notes.txt
 }
 
 function notes {
-	nvim $HOME/.dotfiles/notes/notes/notes.txt
+	nvim $notepath/notes.txt
 }
 
 function webnotes {
@@ -137,7 +141,7 @@ function mdb {
 
 # Codi
 # Usage: codi [filetype] [filename]
-codi() {
+function codi {
 	local syntax="${1:-python}"
 	shift
 	nvim -c \
