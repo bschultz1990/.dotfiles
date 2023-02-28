@@ -35,7 +35,6 @@ brew install gh
 # Configure gh and git. Log in to GitHub
 git config --global user.name "Ben S."
 git config --global user.email "bens@noemail.com"
-git config --global submodule.recurse true
 gh auth login
 
 # Install git-credential-manager
@@ -65,6 +64,7 @@ brew install go
 brew install lsd
 brew install glow
 brew install neovim
+brew install --cask iterm2
 
 # Python, pip, and pynvim
 # Python
