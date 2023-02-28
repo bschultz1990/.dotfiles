@@ -27,9 +27,9 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 
 alias update='sudo nala update && sudo nala upgrade -y'
 
-# Ls alias. More colors!
-if command -v ls >/dev/null 2>&1; then
-	alias ls='lsd'
+# LSD
+if type "lsd" &>/dev/null; then
+	alias lsd='ls'
 fi
 
 

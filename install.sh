@@ -7,11 +7,11 @@ if [ "$(uname -s)" = "Linux" ]; then
 fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
-# Create the Apps directory if it doesn't exist already.
-if [ ! -e ~/Apps ]; then
-	mkdir ~/Apps
-	echo "$HOME/Apps directory created!"
-fi
+	# Create the Apps directory if it doesn't exist already.
+	if [ ! -e ~/Apps ]; then
+		mkdir ~/Apps
+		echo "$HOME/Apps directory created!"
+	fi
 
 	echo "Installing Homebrew Package Manager..."
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -52,6 +52,7 @@ brew install --cask git-credential-manager-core
 brew install stow
 brew install trash-cli
 brew install fzf
+brew install fd
 brew install ripgrep
 brew install xclip
 brew install freerdp
@@ -129,3 +130,7 @@ cd ~/.dotfiles \
 	&& stow zsh
 
 # Install getnf.
+cd "$HOME/Apps" || return \
+	&& git clone https://github.com/ronniedroid/getnf.git \
+	&& cd getnf \
+	&& ./install.sh
