@@ -52,6 +52,7 @@ brew install stow
 brew install trash-cli
 brew install fzf
 brew install fd
+brew install wget
 brew install ripgrep
 brew install xclip
 brew install freerdp
@@ -60,11 +61,14 @@ brew install lua
 brew install luarocks
 brew install composer
 brew install ruby
+brew install --cask oracle-jdk
+brew install chruby
 brew install go
 brew install lsd
 brew install glow
 brew install neovim
 brew install --cask iterm2
+brew install typewritten
 
 # Python, pip, and pynvim
 # Python

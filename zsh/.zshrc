@@ -1,12 +1,8 @@
 #!/bin/bash
 
 # Plugins
-if type "antidote" &>/dev/null; then
-	# antidote command is available, run some commands
-	source "/usr/local/opt/antidote/share/antidote/antidote.zsh"
-	antidote load
-	echo "antidote is available"
-fi
+source "/usr/local/Cellar/antidote/1.8.1/share/antidote/antidote.zsh"
+antidote load
 
 # Custom Aliases
 alias gpull='git pull'
@@ -102,26 +98,26 @@ notepath="$HOME/Documents/notes/"
 
 function note {
 	{ echo "Date: $(date)"; echo "$@"; echo ""; } >> "$notepath"/notes.txt
-}
+	}
 
-function notes {
-	$EDITOR "$notepath"/notes.txt
-}
+	function notes {
+		$EDITOR "$notepath"/notes.txt
+	}
 
-function webnotes {
-	cd "$HOME"/Documents/webdevelopmentbootcamp/notes/ || return
-	nvim notes.md +MarkdownPreview
-}
+	function webnotes {
+		cd "$HOME"/Documents/webdevelopmentbootcamp/notes/ || return
+		nvim notes.md +MarkdownPreview
+	}
 
-function webprojects {
-	cd "$HOME"/Documents/webdevelopmentbootcamp/Projects/ || return
-	nvim .
-}
+	function webprojects {
+		cd "$HOME"/Documents/webdevelopmentbootcamp/Projects/ || return
+		nvim .
+	}
 
-function kittyconfig {
-	cd "$HOME"/.dotfiles/kitty/.config/kitty || return
-	nvim kitty.conf
-}
+	function kittyconfig {
+		cd "$HOME"/.dotfiles/kitty/.config/kitty || return
+		nvim kitty.conf
+	}
 
 # Create directories when moving files
 function mvv {
