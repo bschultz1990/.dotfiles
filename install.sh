@@ -152,4 +152,6 @@ cd "$HOME/Apps" || return \
 echo "CAVEAT: Be sure to download a Nerd Font for Neovim to"
 echo "use special icons. Run 'getnf' for more."
 
-echo "IMPORTANT! Please restart your shell and run `./antidote.sh` to continue."
+echo "restarting shell..."
+exec zsh
+
