@@ -57,12 +57,13 @@ brew install fzf
 brew install fd
 brew install wget
 brew install ripgrep
-brew install xclip
-brew install freerdp
+# xclip not needed on mac. Keep for Linux script.
+# brew install xclip
+# brew install freerdp
 brew install rust
 brew install lua
 brew install luarocks
-brew install composer
+# brew install composer
 brew install ruby
 brew install --cask oracle-jdk
 brew install --cask rectangle
@@ -72,7 +73,7 @@ brew install lsd
 brew install glow
 brew install neovim
 brew install --cask iterm2
-brew install typewritten
+brew install antidote
 
 # Python, pip, and pynvim
 # Python
@@ -142,3 +143,6 @@ cd "$HOME/Apps" || return \
 	&& git clone https://github.com/ronniedroid/getnf.git \
 	&& cd getnf \
 	&& ./install.sh
+
+echo "NOTE: Be sure to download a Nerd Font for Neovim to"
+echo "use special icons. Run 'getnf' for more."
