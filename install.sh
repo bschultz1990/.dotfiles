@@ -67,6 +67,7 @@ brew install luarocks
 brew install ruby
 brew install --cask oracle-jdk
 brew install --cask rectangle
+open "/Applications/Rectangle.app"
 brew install chruby
 brew install go
 brew install lsd
