@@ -149,9 +149,6 @@ cd "$HOME/Apps" || return \
 	&& cd getnf \
 	&& ./install.sh
 
-echo "CAVEAT: Be sure to download a Nerd Font for Neovim to"
-echo "use special icons. Run 'getnf' for more."
-
 echo "restarting shell..."
 exec zsh
 
