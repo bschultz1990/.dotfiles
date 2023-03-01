@@ -108,14 +108,16 @@ brew install node \
 sudo chown -R 501:20 ~/.npm
 
 # Trash existing configs
-echo "Trashing existing configs. Recover using 'trash-restore'" \
-	&& cd ~/ \
-	&& trash ~/.bashrc \
-	&& trash ~/.zshrc \
-	&& trash ~/.gitconfig \
-	&& cd ~/.config \
-	&& trash kitty \
-	&& trash nvim
+echo "Trashing existing configs. Recover using 'trash-restore'"
+cd ~/
+trash ~/.bashrc
+trash ~/.zshrc
+trash ~/.zsh_plugins.txt
+trash ~/.zsh_plugins.zsh
+trash ~/.gitconfig
+cd ~/.config
+trash kitty
+trash nvim
 
 # Clone .dotfiles
 echo "Cloning /.dotfiles" \
@@ -147,5 +149,7 @@ cd "$HOME/Apps" || return \
 	&& cd getnf \
 	&& ./install.sh
 
-echo "NOTE: Be sure to download a Nerd Font for Neovim to"
+echo "CAVEAT: Be sure to download a Nerd Font for Neovim to"
 echo "use special icons. Run 'getnf' for more."
+
+echo "IMPORTANT! Please restart your shell and run `./antidote.sh` to continue."
