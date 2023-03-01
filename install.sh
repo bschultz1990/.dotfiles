@@ -28,6 +28,8 @@ if [ "$(uname -s)" = "Darwin" ]; then
 	done
 fi
 
+brew install --cask macs-fan-control
+
 # Git and gh-cli
 brew install git
 brew install gh
