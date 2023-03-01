@@ -64,7 +64,8 @@ brew install rust
 brew install lua
 brew install luarocks
 # brew install composer
-brew install ruby
+# Ruby not needed. MacOs comes with it already.
+# brew install ruby
 brew install --cask oracle-jdk
 brew install --cask rectangle
 open "/Applications/Rectangle.app"
@@ -86,6 +87,7 @@ brew install python@3.11 \
 # Install pynvim through pip
 cd "$HOME/Downloads" || return
 python3 -m pip install pynvim
+python3.11 -m pip install --upgrade pip
 
 # # Install and set Kitty as default terminal:
 # curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
