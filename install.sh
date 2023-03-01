@@ -62,6 +62,7 @@ brew install luarocks
 brew install composer
 brew install ruby
 brew install --cask oracle-jdk
+brew install --cask rectangle
 brew install chruby
 brew install go
 brew install lsd
