@@ -57,18 +57,13 @@ brew install fzf
 brew install fd
 brew install wget
 brew install ripgrep
-# xclip not needed on mac. Keep for Linux script.
-# brew install xclip
-# brew install freerdp
 brew install rust
 brew install lua
 brew install luarocks
-# brew install composer
-# Ruby not needed. MacOs comes with it already.
-# brew install ruby
 brew install --cask oracle-jdk
 brew install --cask rectangle
-open "/Applications/Rectangle.app"
+brew install signal
+brew install bitwarden
 brew install chruby
 brew install go
 brew install lsd
@@ -77,7 +72,18 @@ brew install neovim
 brew install --cask iterm2
 brew install antidote
 
+open "/Applications/Rectangle.app"
+
+# Unneeded packages for now
+# brew install composer
+# brew install freerdp
 # Python, pip, and pynvim
+
+# Save these for linux. Already built in to Mac.
+# Ruby not needed. MacOs comes with it already.
+# brew install ruby
+# xclip not needed on mac. Keep for Linux script.
+# brew install xclip
 # Python
 brew install python@3.11 \
 	&& curl -fLo ~/Downloads/get-pip.py \

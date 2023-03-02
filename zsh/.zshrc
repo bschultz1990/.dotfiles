@@ -2,7 +2,7 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 #!/bin/bash
@@ -30,11 +30,20 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 
 alias update='sudo nala update && sudo nala upgrade -y'
 
-# LSD
-if type "lsd" &>/dev/null; then
-	alias lsd='ls'
-fi
-
+function ls {
+    cmd="ls"
+    args=(-1A)
+    # Is lsd installed?
+    if type "lsd" &>/dev/null; then
+        cmd="lsd"
+        args=(-1A --tree --depth 1)
+    fi
+    # Use default arguments if none are provided
+    if [ ${#} -eq 0 ]; then
+        set -- "${args[@]}"
+    fi
+    "${cmd}" "${args[@]}" "${@}"
+}
 
 # Find anything anywhere and open in terminal editor.
 function f {
@@ -46,7 +55,7 @@ function f {
 function c {
 	clear
 	cd "$1" || return
-	ls -lah
+	lsd
 }
 
 alias cd='c'
@@ -66,7 +75,7 @@ function t {
 
 	# List all the files in the directory:
 	clear
-	ls -lah
+	lsd
 }
 
 # Reload shell environment!

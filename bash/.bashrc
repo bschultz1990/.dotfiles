@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+## ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -209,7 +209,7 @@ function t {
 
 # Display a man page in Neovim
 function mann {
-	if [ -z "$1"]; then
+	if [ -z "$1" ]; then
 		# If not, print error message
 		echo "Error: no command provided."
 		return 1
@@ -221,7 +221,7 @@ function mann {
 
 # Copy the output of a command and open it in nvim.
 function output {
-	if [ -z "$1"]; then
+	if [ -z "$1" ]; then
 		# If not, print error message
 		echo "Error: no command provided."
 		return 1
