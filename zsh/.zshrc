@@ -2,7 +2,7 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 #!/bin/bash
@@ -25,15 +25,15 @@ alias eses-all='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -th
 
 
 function colors {
-# ChatGPT colorscheme...
-# Define variables for each color
-red='\033[0;31m'
-green='\033[0;32m'
-yellow='\033[0;33m'
-blue='\033[0;34m'
-purple='\033[0;35m'
-cyan='\033[0;36m'
-white='\033[0;37m'
+  # ChatGPT colorscheme...
+  # Define variables for each color
+  red='\033[0;31m'
+  green='\033[0;32m'
+  yellow='\033[0;33m'
+  blue='\033[0;34m'
+  purple='\033[0;35m'
+  cyan='\033[0;36m'
+  white='\033[0;37m'
 
 # Define variables for bold versions of each color
 bold_red='\033[1;31m'
@@ -87,47 +87,47 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 alias update='sudo nala update && sudo nala upgrade -y'
 
 function ls {
-cmd="ls"
-args=(-1A)
-# Is lsd installed?
-if type "lsd" &>/dev/null; then
-cmd="lsd"
-args=(-1A --tree --depth 1)
-fi
-# Use default arguments if none are provided
-if [ ${#} -eq 0 ]; then
-set -- "${args[@]}"
-fi
-"${cmd}" "${args[@]}" "${@}"
+  cmd="ls"
+  args=(-1A)
+  # Is lsd installed?
+  if type "lsd" &>/dev/null; then
+    cmd="lsd"
+    args=(-1A --tree --depth 1)
+  fi
+  # Use default arguments if none are provided
+  if [ ${#} -eq 0 ]; then
+    set -- "${args[@]}"
+  fi
+  "${cmd}" "${args[@]}" "${@}"
 }
 
 # Find anything anywhere and open in terminal editor.
 function f {
-# local find_command=
-find . "$HOME" | fzf --preview-window right | xargs "$EDITOR"
+  # local find_command=
+  find . "$HOME" | fzf --preview-window right | xargs "$EDITOR"
 }
 
 # Change to a directory and list files.
 function c {
-clear
-cd "$1" || return
-lsd
+  clear
+  cd "$1" || return
+  lsd
 }
 
 alias cd='c'
 
 # Make a directory and change to it.
 function take {
-mkdir -p "$1"
-cd "$1" || return
+  mkdir -p "$1"
+  cd "$1" || return
 }
 
 # Touch alias
 function t {
-# Loop over all file arguments passed to the function:
-for file in "$@"; do
-touch "$file"
-done
+  # Loop over all file arguments passed to the function:
+  for file in "$@"; do
+    touch "$file"
+  done
 
 # List all the files in the directory:
 clear
@@ -138,69 +138,69 @@ lsd
 
 # Display a man page and edit it in the default editor.
 function mann {
-if [ -z "$1" ]; then
-# If not, print error message
-echo "Error: no command provided."
-return 1
-fi
-# Copy the man page text and open it in Nvim
-man "$1" | col -bx > /tmp/manpage.txt
-$EDITOR /tmp/manpage.txt
+  if [ -z "$1" ]; then
+    # If not, print error message
+    echo "Error: no command provided."
+    return 1
+  fi
+  # Copy the man page text and open it in Nvim
+  man "$1" | col -bx > /tmp/manpage.txt
+  $EDITOR /tmp/manpage.txt
 }
 
 # Copy the output of a command and open it in nvim.
 function output {
-if [ -z "$1" ]; then
-# If not, print error message
-echo "Error: no command provided."
-return 1
-fi
-# Copy the command outpt and open it in Nvim
-"$1" | col -bx > /tmp/output.txt
-$EDITOR /tmp/output.txt
+  if [ -z "$1" ]; then
+    # If not, print error message
+    echo "Error: no command provided."
+    return 1
+  fi
+  # Copy the command outpt and open it in Nvim
+  "$1" | col -bx > /tmp/output.txt
+  $EDITOR /tmp/output.txt
 }
 
 # Safer file deletion. Requires trash-cli
 if type trash &> /dev/null; then
-alias rm='trash'
-alias rmdir='trash'
+  alias rm='trash'
+  alias rmdir='trash'
 fi
 
 notepath="$HOME/Documents/notes/"
 
 function note {
-{ echo "Date: $(date)"; echo "$@"; echo ""; } >> "$notepath"/notes.txt
-}
+  { echo "Date: $(date)"; echo "$@"; echo ""; } >> "$notepath"/notes.txt
+  }
 
-function notes {
-cd "$notepath" || return
-echo "Pulling changes and opening..."
-git pull || return
-$EDITOR "$notepath"/notes.txt
-}
+  function notes {
+    cd "$notepath" || return
+    echo "Pulling changes and opening..."
+    git pull || return
+    $EDITOR "$notepath"/notes.txt
+  }
 
-function webnotes {
-cd "$HOME"/Documents/webdevelopmentbootcamp/notes/ || return
-nvim notes.md +MarkdownPreview
-}
+  function webnotes {
+    cd "$HOME"/Documents/webdevelopmentbootcamp/notes/ || return
+    nvim notes.md +MarkdownPreview
+  }
 
-function webprojects {
-cd "$HOME"/Documents/webdevelopmentbootcamp/Projects/ || return
-nvim .
-}
+  function webprojects {
+    cd "$HOME"/Documents/webdevelopmentbootcamp/Projects/ || return
+    nvim .
+  }
 
-function kittyconfig {
-cd "$HOME"/.dotfiles/kitty/.config/kitty || return
-nvim kitty.conf
-}
+  function kittyconfig {
+    cd "$HOME"/.dotfiles/kitty/.config/kitty || return
+    nvim kitty.conf
+  }
 
 # Create directories when moving files
 function mvv {
-mkdir -p "$2"; mv "$1" "$2"
+  mkdir -p "$2"; mv "$1" "$2"
 }
 
 function mdb {
-mongosh mongodb+srv://wdbc.rrnu9ou.mongodb.net/"$1" --apiVersion 1 --username bschultz1990
+  mongosh mongodb+srv://wdbc.rrnu9ou.mongodb.net/"$1" --apiVersion 1 --username bschultz1990
 }
 
 # Custom PATH Additions
