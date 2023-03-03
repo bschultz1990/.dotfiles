@@ -63,6 +63,7 @@ brew install luarocks
 brew install --cask oracle-jdk
 brew install --cask rectangle
 brew install signal
+brew install --cask ao # Microsoft To Do Client
 brew install bitwarden
 brew install chruby
 brew install go
