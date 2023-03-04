@@ -34,6 +34,7 @@ open "/Applications/Macs Fan Control"
 # Git and gh-cli
 brew install git
 brew install gh
+brew install jesseduffield/lazygit/lazygit
 
 # Configure gh and git. Log in to GitHub
 git config --global user.name "Ben S."
@@ -117,13 +118,13 @@ sudo chown -R 501:20 ~/.npm
 
 # Trash existing configs
 echo "Trashing existing configs. Recover using 'trash-restore'"
-cd ~/
+cd ~/ || return
 trash ~/.bashrc
 trash ~/.zshrc
 trash ~/.zsh_plugins.txt
 trash ~/.zsh_plugins.zsh
 trash ~/.gitconfig
-cd ~/.config
+cd ~/.config || return
 trash kitty
 trash nvim
 

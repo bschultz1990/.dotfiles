@@ -101,10 +101,15 @@ function ls {
   "${cmd}" "${args[@]}" "${@}"
 }
 
-# Find anything anywhere and open in terminal editor.
-function f {
-  # local find_command=
-  find . "$HOME" | fzf --preview-window right | xargs "$EDITOR"
+# Change to LazyGit directory on LazyGit exit
+lg()
+{
+  export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+  lazygit "$@"
+  if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+    cd "$(cat $LAZYGIT_NEW_DIR_FILE)" || return
+    rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+  fi
 }
 
 # Change to a directory and list files.
@@ -113,8 +118,6 @@ function c {
   cd "$1" || return
   lsd
 }
-
-alias cd='c'
 
 # Make a directory and change to it.
 function take {
@@ -128,13 +131,10 @@ function t {
   for file in "$@"; do
     touch "$file"
   done
-
 # List all the files in the directory:
 clear
 lsd
 }
-
-# Reload shell environment!
 
 # Display a man page and edit it in the default editor.
 function mann {
