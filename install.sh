@@ -65,7 +65,8 @@ brew install --cask rectangle
 brew install signal
 brew install --cask ao # Microsoft To Do Client
 brew install bitwarden
-brew install chruby
+brew install discord
+# brew install chruby
 brew install go
 brew install lsd
 brew install glow
