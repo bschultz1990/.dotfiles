@@ -52,49 +52,17 @@ brew install --cask git-credential-manager-core
 # brew uninstall --cask git-credential-manager-core
 
 # General dependencies
-brew install stow
-brew install trash-cli
-brew install fzf
-brew install fd
 brew install wget
-brew install ripgrep
-brew install rust
-brew install lua
-brew install luarocks
-brew install --cask oracle-jdk
-brew install --cask rectangle
-brew install signal
-brew install --cask ao # Microsoft To Do Client
-brew install bitwarden
-brew install discord
-# brew install chruby
-brew install go
-brew install lsd
-brew install glow
-brew install neovim
-brew install --cask iterm2
-brew install antidote
+brew install curl
 
-open "/Applications/Rectangle.app"
-
-# Unneeded packages for now
-# brew install composer
-# brew install freerdp
-# Python, pip, and pynvim
-
-# Save these for linux. Already built in to Mac.
-# Ruby not needed. MacOs comes with it already.
-# brew install ruby
-# xclip not needed on mac. Keep for Linux script.
-# brew install xclip
 # Python
 brew install python@3.11 \
-	&& curl -fLo ~/Downloads/get-pip.py \
+	&& curl -fLo ~/Apps/get-pip.py \
 	&& https://bootstrap.pypa.io/get-pip.py \
-	&& sudo chmod u+rwx ~/Downloads/get-pip.py
+	&& sudo chmod u+rwx ~/Apps/get-pip.py
 
 # Install pynvim through pip
-cd "$HOME/Downloads" || return
+cd "$HOME/Apps" || return
 python3 -m pip install pynvim
 python3.11 -m pip install --upgrade pip
 
@@ -112,6 +80,47 @@ brew install node \
 	&& sudo npm install -g live-server \
 	&& sudo npm install -g cmdtest \
 	&& npm fund
+brew install stow
+brew install trash-cli
+
+# Neovim dependencies
+brew install fzf
+brew install fd
+brew install ripgrep
+brew install rust
+brew install lua
+brew install luarocks
+brew install --cask oracle-jdk
+# brew install chruby
+brew install go
+brew install neovim
+
+# Unneeded packages for now
+# brew install composer
+# brew install freerdp
+# Python, pip, and pynvim
+
+echo "Installing extra applications..."
+brew install antidote
+brew install lsd
+brew install glow
+# Mac Specific Apps
+brew install bitwarden
+brew install signal
+brew install discord
+brew install --cask rectangle
+brew install --cask iterm2
+brew install --cask ao # Microsoft To Do Client
+
+open "/Applications/Rectangle.app"
+
+
+# Save these for linux. Already built in to Mac.
+# Ruby not needed. MacOs comes with it already.
+# brew install ruby
+# xclip not needed on mac. Keep for Linux script.
+# brew install xclip
+# Python
 
 # Set ownership of ~/.npm
 sudo chown -R 501:20 ~/.npm
