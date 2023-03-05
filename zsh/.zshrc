@@ -183,19 +183,9 @@ function note {
     $EDITOR "$notepath"/notes.txt
   }
 
-  function webnotes {
-    cd "$HOME"/Documents/webdevelopmentbootcamp/notes/ || return
-    nvim notes.md +MarkdownPreview
-  }
-
   function webprojects {
     cd "$HOME"/Documents/webdevelopmentbootcamp/Projects/ || return
     nvim .
-  }
-
-  function kittyconfig {
-    cd "$HOME"/.dotfiles/kitty/.config/kitty || return
-    nvim kitty.conf
   }
 
 # Create directories when moving files
