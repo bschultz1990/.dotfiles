@@ -51,7 +51,7 @@ brew install --cask git-credential-manager-core
 # Uninstall:
 # brew uninstall --cask git-credential-manager-core
 
-# General dependencies
+# Basic dependencies
 brew install wget
 brew install curl
 
@@ -80,8 +80,8 @@ brew install node \
 	&& sudo npm install -g live-server \
 	&& sudo npm install -g cmdtest \
 	&& npm fund
-brew install stow
-brew install trash-cli
+	brew install stow
+	brew install trash-cli
 
 # Neovim dependencies
 brew install fzf
@@ -91,14 +91,27 @@ brew install rust
 brew install lua
 brew install luarocks
 brew install --cask oracle-jdk
-# brew install chruby
-brew install go
 brew install neovim
 
+# Ruby
+brew install chruby ruby-install
+ruby-install ruby
+echo "Install your preferred version by typing in 'ruby-install' then the version number."
+echo "This process could take up to 15 minutes. You may skip this step and then come back to it later if you desire."
+echo "Enter your commands, then type 'continue' to continue installing other packages..."
+while true; do
+	read -r -p "> " input
+	if [ "$input" == "continue" ]; then
+		break
+	else
+		# Execute the user's command
+		eval "$input"
+	fi
+done
 # Unneeded packages for now
+# brew install go
 # brew install composer
 # brew install freerdp
-# Python, pip, and pynvim
 
 echo "Installing extra applications..."
 brew install antidote
@@ -107,17 +120,12 @@ brew install glow
 # Mac Specific Apps
 brew install bitwarden
 brew install signal
-brew install discord
 brew install --cask rectangle
 brew install --cask iterm2
 brew install --cask ao # Microsoft To Do Client
 
 open "/Applications/Rectangle.app"
 
-
-# Save these for linux. Already built in to Mac.
-# Ruby not needed. MacOs comes with it already.
-# brew install ruby
 # xclip not needed on mac. Keep for Linux script.
 # brew install xclip
 # Python

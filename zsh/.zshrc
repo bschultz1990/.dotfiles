@@ -88,7 +88,26 @@ alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes
 # FreeRDP CLI Documentation. More options! :)
 # https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface
 
-alias update='sudo nala update && sudo nala upgrade -y'
+alias update='brew update && brew update && brew doctor'
+
+function installruby {
+  echo "Installing Ruby."
+  echo "Read more here: https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/"
+  brew install chruby ruby-install
+  ruby-install ruby
+  echo "Install your preferred version by typing in 'ruby-install' then the version number."
+  echo "This process could take up to 15 minutes. You may skip this step and then come back to it later if you desire."
+  echo "Enter your commands, then type 'continue' to continue installing other packages..."
+  while true; do
+    read -r -p "> " input
+    if [ "$input" == "continue" ]; then
+      break
+    else
+      # Execute the user's command
+      eval "$input"
+    fi
+  done
+}
 
 function ls {
   cmd="ls"
@@ -135,9 +154,9 @@ function t {
   for file in "$@"; do
     touch "$file"
   done
-# List all the files in the directory:
-clear
-lsd
+  # List all the files in the directory:
+  clear
+  lsd
 }
 
 # Display a man page and edit it in the default editor.
@@ -202,6 +221,12 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Apps:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
+
+# External Sources
+source "/usr/local/opt/chruby/share/chruby/chruby.sh"
+# Enable auto-switching of Rubies via .ruby-version files
+source "/usr/local/opt/chruby/share/chruby/auto.sh" 
+chruby ruby-3.2.1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
