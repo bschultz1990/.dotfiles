@@ -94,7 +94,7 @@ function installruby {
   echo "Installing Ruby."
   echo "Read more here: https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/"
   brew install chruby ruby-install
-  ruby-install ruby
+  ruby-install
   echo "Install your preferred version by typing in 'ruby-install' then the version number."
   echo "This process could take up to 15 minutes. You may skip this step and then come back to it later if you desire."
   echo "Enter your commands, then type 'continue' to continue installing other packages..."
