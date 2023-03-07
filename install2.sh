@@ -1,24 +1,22 @@
 #!/bin/bash
 
+# Install Nix-Locate
+nix-env -iA nixos.nix-index
+
 # Git and gh-cli
 nix-env -iA \
 	nixpkgs.git \
 	nixpkgs.gh
-# Configure gh and git. Log in to GitHub
-git config --global user.name "Ben S."
-git config --global user.email "bens@noemail.com"
-git config --global submodule.recurse true
-gh auth login
+	# Configure gh and git. Log in to GitHub
+	git config --global user.name "Ben S."
+	git config --global user.email "bens@noemail.com"
+	gh auth login
 
-# Install git-credential-manager
-brew tap microsoft/git
-brew install --cask git-credential-manager-core
-
-# Upgrading? Use this:
-# brew upgrade git-credential-manager-core
-
-# Uninstall:
-# brew uninstall --cask git-credential-manager-core
+# Install Linux-specific packages.
+if [ "$(uname -s)" = "Linux" ]; then
+	nix-env -iA \
+		nixpkgs.xclip
+fi
 
 # General dependencies
 nix-env -iA \
@@ -26,19 +24,37 @@ nix-env -iA \
 	nixpkgs.trash-cli \
 	nixpkgs.fzf \
 	nixpkgs.ripgrep \
-	nixpkgs.xclip \
-	nixpkgs.freerdp \
 	nixpkgs.cargo \
 	nixpkgs.lua \
 	nixpkgs.luajitPackages.luarocks \
-	nixpkgs.php82Packages.composer \
 	nixpkgs.jre8 \
-	nixpkgs.ruby \
-	nixpkgs.go \
 	nixpkgs.lsd \
 	nixpkgs.glow \
 	nixpkgs.neovim
-	
+
+# Special Ruby install for Macs. Normal for Linux.
+if [ "$(uname -s)" = "Darwin" ]; then
+	brew install chruby ruby-install
+	ruby-install
+	echo "Install your preferred version by typing in 'ruby-install' then the version number."
+	echo "This process could take up to 15 minutes. You may skip this step by typing 'continue'."
+	while true; do
+		read -r -p "> " input
+		if [ "$input" == "continue" ]; then
+			break
+		else
+			# Execute the user's command
+			eval "$input"
+		fi
+	done
+elif [ "$(uname -s)" = "Linux" ]; then
+	nix-env -iA nixpkgs.ruby
+fi
+
+	# nixpkgs.php82Packages.composer
+	# nixpkgs.go
+	# nixpkgs.freerdp \
+
 # Python, pip, and pynvim
 # Python
 nix-env -iA nixpkgs.python311 \
@@ -51,10 +67,10 @@ cd "$HOME/Downloads"|| exit
 python3 -m pip install pynvim
 
 # Install and set Kitty as default terminal:
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-if [ "$(uname -s)" = "Linux" ]; then
-	sudo update-alternatives --config x-terminal-emulator
-fi
+# curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+# if [ "$(uname -s)" = "Linux" ]; then
+# 	sudo update-alternatives --config x-terminal-emulator
+# fi
 
 # Node, Yarn, and NPM
 nix-env -iA nixpkgs.nodejs \
@@ -67,18 +83,27 @@ nix-env -iA nixpkgs.nodejs \
 # Set ownership of ~/.npm
 sudo chown -R 501:20 ~/.npm
 
-# Install Nix-Locate
-nix-env -iA nixos.nix-index
+# Other Nice Applications
+nix-env -iA \
+	&& nixpkgs.signal-desktop \
+	&& iterm2
 
 # Trash existing configs
-echo "Trashing existing configs. Recover using 'trash-restore'" \
-	&& cd ~/ \
-	&& trash ~/.bashrc \
-	&& trash ~/.zshrc \
-	&& trash ~/.gitconfig \
-	&& cd ~/.config \
-	&& trash kitty \
-	&& trash nvim
+echo "Trashing existing configs. Recover using 'trash-restore'"
+cd ~/ || return
+trash ~/.bashrc
+trash ~/.zshrc
+trash ~/.zsh_plugins.txt
+trash ~/.zsh_plugins.zsh
+trash ~/.gitconfig
+cd ~/.config || return
+trash kitty
+trash nvim
+
+# Trash existing repos and start fresh
+echo "Trashing existing repos if any..." \
+	&& cd ~/ || return && trash .dotfiles \
+	&& cd ~/Documents || return && trash notes \
 
 # Clone .dotfiles
 echo "Cloning /.dotfiles" \
@@ -105,3 +130,7 @@ cd ~/.dotfiles \
 	&& stow zsh
 
 # Install getnf.
+cd "$HOME/Apps" || return \
+	&& git clone https://github.com/ronniedroid/getnf.git \
+	&& cd getnf \
+	&& ./install.sh
