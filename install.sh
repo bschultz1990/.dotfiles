@@ -141,6 +141,11 @@ open "/Applications/Rectangle.app"
 # Set ownership of ~/.npm
 sudo chown -R 501:20 ~/.npm
 
+function trashconfigs {
+	echo "hi!"
+}
+
+
 # Trash existing configs
 echo "Trashing existing configs. Recover using 'trash-restore'"
 cd ~/ || return
@@ -148,7 +153,6 @@ trash ~/.bashrc
 trash ~/.zshrc
 trash ~/.zsh_plugins.txt
 trash ~/.zsh_plugins.zsh
-trash ~/.gitconfig
 cd ~/.config || return
 trash kitty
 trash nvim
@@ -171,11 +175,11 @@ echo "Cloning notes" \
 # Stow the new stuff
 cd ~/.dotfiles \
 	&& echo "Stowing bash..." \
-	&& stow bash \
+	&& stow -t ~/ bash \
 	&& echo "Stowing kitty..." \
-	&& stow kitty \
+	&& stow -t ~/ kitty \
 	&& echo "Stowing zsh..." \
-	&& stow zsh
+	&& stow -t ~/ zsh
 
 # Install getnf.
 cd "$HOME/Apps" || return \
@@ -185,4 +189,3 @@ cd "$HOME/Apps" || return \
 
 echo "restarting shell..."
 exec zsh
-
