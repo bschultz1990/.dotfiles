@@ -1,4 +1,12 @@
 {
+  "stow":{
+    "linux": "stow",
+    "mac": "stow"
+  },
+  "trash-cli":{
+    "linux": "trash-cli",
+    "mac": "trash-cli"
+  },
   "git":{
     "linux": "git",
     "mac": "git"
@@ -8,11 +16,62 @@
     "mac": "gh"
   },
   "lazygit":{
-    "linux": {
-      "command": "LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit
-sudo install lazygit /usr/local/bin"
-    }
+    "mac": "jesseduffield/lazygit/lazygit"
+  },
+  "git-credential-manager-core":{
+    "linux": "",
+    "mac": "git-credential-manager-core"
+  },
+  "wget":{
+    "linux": "wget",
+    "mac": "wget"
+  },
+  "curl":{
+    "linux": "curl",
+    "mac": "curl"
+  },
+  "python":{
+    "linux": "python",
+    "mac": "python@311"
+  },
+  "node":{
+    "linux": "nodejs",
+    "mac": "node"
+  },
+  "fzf":{
+    "linux": "fzf",
+    "mac": "fzf"
+  },
+  "fd":{
+    "linux": "fdfind",
+    "mac": "fd"
+  },
+  "ripgrep":{
+    "linux": "ripgrep",
+    "mac": "ripgrep"
+  },
+  "rust":{
+    "linux": "rust",
+    "mac": "rust"
+  },
+  "lua":{
+    "linux": "lua -y",
+    "mac": "lua"
+  },
+  "luarocks":{
+    "linux": "luarocks",
+    "mac": "luarocks"
+  },
+  "jdk":{
+    "linux": "openjdk-17-jdk-headless -y",
+    "mac": "oracle-jdk"
+  },
+  "lsd":{
+    "linux": "lsd",
+    "mac": "lsd"
+  },
+  "glow":{
+    "linux": "glow",
+    "mac": "glow"
   }
 }

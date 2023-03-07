@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set cross-system variables
+
+
 # update Linux System
 if [ "$(uname -s)" = "Linux" ]; then
 	echo "Updating Linux"
@@ -20,16 +23,31 @@ if [ "$(uname -s)" = "Darwin" ]; then
 			eval "$input"
 		fi
 	done
+	brew install --cask macs-fan-control
+	open "/Applications/Macs Fan Control"
+
+	# Antidote zsh plugin manager
+	brew install antidote
+	
+	# Install git-credential-manager
+	brew install git-credential-manager-core
+	# Upgrading? Use this:
+	# brew upgrade git-credential-manager-core
+	# Uninstall:
+	# brew uninstall --cask git-credential-manager-core
 fi
 
 # Create the Apps directory if it doesn't exist already.
-if [ ! -e ~/Apps ]; then
-	mkdir ~/Apps
+if [ ! -e "~$HOME/Apps" ]; then
+	mkdir "~$HOME/Apps"
 	echo "$HOME/Apps directory created!"
 fi
 
-brew install --cask macs-fan-control
-open "/Applications/Macs Fan Control"
+# Basic dependencies
+brew install wget
+brew install curl
+brew install stow
+brew install trash-cli
 
 # Git and gh-cli
 brew install git
@@ -41,30 +59,16 @@ git config --global user.name "Ben S."
 git config --global user.email "bens@noemail.com"
 gh auth login
 
-# Install git-credential-manager
-brew tap microsoft/git
-brew install --cask git-credential-manager-core
-
-# Upgrading? Use this:
-# brew upgrade git-credential-manager-core
-
-# Uninstall:
-# brew uninstall --cask git-credential-manager-core
-
-# Basic dependencies
-brew install wget
-brew install curl
-
 # Python
 brew install python@3.11 \
+	&& cd "$HOME/Apps" || return \
 	&& curl -fLo ~/Apps/get-pip.py \
 	&& https://bootstrap.pypa.io/get-pip.py \
 	&& sudo chmod u+rwx ~/Apps/get-pip.py
 
 # Install pynvim through pip
-cd "$HOME/Apps" || return
 python3 -m pip install pynvim
-python3.11 -m pip install --upgrade pip
+python3 -m pip install --upgrade pip
 
 # # Install and set Kitty as default terminal:
 # curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
@@ -80,8 +84,6 @@ brew install node \
 	&& sudo npm install -g live-server \
 	&& sudo npm install -g cmdtest \
 	&& npm fund
-	brew install stow
-	brew install trash-cli
 
 # Neovim dependencies
 brew install fzf
@@ -90,31 +92,37 @@ brew install ripgrep
 brew install rust
 brew install lua
 brew install luarocks
-brew install --cask oracle-jdk
+brew install oracle-jdk
 brew install neovim
 
 # Ruby
-brew install chruby ruby-install
-ruby-install ruby
-echo "Install your preferred version by typing in 'ruby-install' then the version number."
-echo "This process could take up to 15 minutes. You may skip this step and then come back to it later if you desire."
-echo "Enter your commands, then type 'continue' to continue installing other packages..."
-while true; do
-	read -r -p "> " input
-	if [ "$input" == "continue" ]; then
-		break
-	else
-		# Execute the user's command
-		eval "$input"
-	fi
-done
+if [ "$(uname -s)" = "Linux" ]; then
+	sudo apt install ruby
+fi
+
+
+if [ "$(uname -s)" = "Darwin" ]; then
+	brew install chruby ruby-install
+	ruby-install
+	echo "Install your preferred version by typing in 'ruby-install' then the version number."
+	echo "This process could take up to 15 minutes. You may skip this step and then come back to it later if you desire."
+	echo "Enter your commands, then type 'continue' to continue installing other packages..."
+	while true; do
+		read -r -p "> " input
+		if [ "$input" == "continue" ]; then
+			break
+		else
+			# Execute the user's command
+			eval "$input"
+		fi
+	done
+fi
 # Unneeded packages for now
 # brew install go
 # brew install composer
 # brew install freerdp
 
 echo "Installing extra applications..."
-brew install antidote
 brew install lsd
 brew install glow
 # Mac Specific Apps
