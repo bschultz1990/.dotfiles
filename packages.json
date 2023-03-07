@@ -1,26 +1,38 @@
 {
+"prefix":{
+  "linux": "sudo apt install",
+  "mac": "brew install",
+  "nix": "nix-env -iA"
+},
   "stow":{
     "linux": "stow",
-    "mac": "stow"
+    "mac": "stow",
+    "nix": "nixpkgs.stow"
   },
   "trash-cli":{
     "linux": "trash-cli",
-    "mac": "trash-cli"
+    "mac": "trash-cli",
+    "nix": "nixpkgs.trash-cli"
   },
   "git":{
     "linux": "git",
-    "mac": "git"
+    "mac": "git",
+    "nix": "nixpkgs.git"
   },
   "gh":{
     "linux": "gh",
-    "mac": "gh"
+    "mac": "gh",
+    "nix": "nixpkgs.gh"
   },
   "lazygit":{
-    "mac": "jesseduffield/lazygit/lazygit"
+    "linux": "",
+    "mac": "jesseduffield/lazygit/lazygit",
+    "nix": "nixpkgs.lazygit"
   },
   "git-credential-manager-core":{
     "linux": "",
     "mac": "git-credential-manager-core"
+    "nix": ""
   },
   "wget":{
     "linux": "wget",
@@ -31,7 +43,7 @@
     "mac": "curl"
   },
   "python":{
-    "linux": "python",
+    "linux": "python311",
     "mac": "python@311"
   },
   "node":{
