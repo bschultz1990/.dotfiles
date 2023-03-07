@@ -7,12 +7,6 @@ if [ "$(uname -s)" = "Linux" ]; then
 fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
-	# Create the Apps directory if it doesn't exist already.
-	if [ ! -e ~/Apps ]; then
-		mkdir ~/Apps
-		echo "$HOME/Apps directory created!"
-	fi
-
 	echo "Installing Homebrew Package Manager..."
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	# Pause the script and allow the user to input commands 
@@ -26,6 +20,12 @@ if [ "$(uname -s)" = "Darwin" ]; then
 			eval "$input"
 		fi
 	done
+fi
+
+# Create the Apps directory if it doesn't exist already.
+if [ ! -e ~/Apps ]; then
+	mkdir ~/Apps
+	echo "$HOME/Apps directory created!"
 fi
 
 brew install --cask macs-fan-control
