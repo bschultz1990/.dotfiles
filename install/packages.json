@@ -1,0 +1,84 @@
+{
+  "stow":{
+    "Linux": "stow",
+    "Darwin": "stow",
+    "nix": "nixpkgs.stow"
+  },
+  "trash":{
+    "Linux": "trash-cli",
+    "Darwin": "trash-cli",
+    "nix": "nixpkgs.trash-cli"
+  },
+  "git":{
+    "Linux": "git",
+    "Darwin": "git",
+    "nix": "nixpkgs.git"
+  },
+  "gh":{
+    "Linux": "gh",
+    "Darwin": "gh",
+    "nix": "nixpkgs.gh"
+  },
+  "lazygit":{
+    "Linux": "",
+    "Darwin": "jesseduffield/lazygit/lazygit",
+    "nix": "nixpkgs.lazygit"
+  },
+  "git_credential_manager":{
+    "Linux": "",
+    "Darwin": "git-credential-manager-core",
+    "nix": ""
+  },
+  "wget":{
+    "Linux": "wget",
+    "Darwin": "wget"
+  },
+  "curl":{
+    "Linux": "curl",
+    "Darwin": "curl"
+  },
+  "python":{
+    "Linux": "python3",
+    "Darwin": "python@311"
+  },
+  "node":{
+    "Linux": "nodejs",
+    "Darwin": "node"
+  },
+  "fzf":{
+    "Linux": "fzf",
+    "Darwin": "fzf"
+  },
+  "fd":{
+    "Linux": "fdfind",
+    "Darwin": "fd"
+  },
+  "ripgrep":{
+    "Linux": "ripgrep",
+    "Darwin": "ripgrep"
+  },
+  "rust":{
+    "Linux": "rust",
+    "Darwin": "rust"
+  },
+  "lua":{
+    "Linux": "lua",
+    "Darwin": "lua"
+  },
+  "luarocks":{
+    "Linux": "luarocks",
+    "Darwin": "luarocks"
+  },
+  "jdk":{
+    "Linux": "openjdk-17-jdk-headless",
+    "Darwin": "oracle-jdk"
+  },
+  "lsd":{
+    "Linux": "lsd",
+    "Darwin": "lsd"
+  },
+  "glow":{
+    "Linux": "glow",
+    "Darwin": "glow"
+  }
+}
