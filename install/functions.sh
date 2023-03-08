@@ -71,7 +71,7 @@ function sys_update {
       ;;
 
     "Apt")
-      echo "apt package manager"
+      echo "apt package manager"gh
       sudo apt update
       sudo apt upgrade -y
       ;;
@@ -107,4 +107,9 @@ function sys_update {
     # Antidote zsh plugin manager
     brew install antidote git-credential-manager-core
   fi
+}
+
+function get_wezterm {
+  flatpak install flathub org.wezfurlong.wezterm
+  flatpak run org.wezfurlong.wezterm
 }

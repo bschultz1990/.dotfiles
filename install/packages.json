@@ -80,5 +80,10 @@
   "glow":{
     "Linux": "glow",
     "Darwin": "glow"
+  },
+  "wezterm": {
+    "Linux": "flatpak install flathub org.wezfurlong.wezterm",
+    "Darwin": "wezterm",
+    "nix": "nixpkgs.wezterm"
   }
 }
