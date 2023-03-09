@@ -14,46 +14,45 @@ system="$(uname -s)"
 #   pkg_manager=(brew install)
 # fi
 
-
 function set_manager {
-  echo "Please confirm this is correct:"
-  # Define the choices as an associative array of arrays
-  apt=(sudo apt install)
-  pacman=(sudo pacman -S)
-  brew=(brew install)
-  nix=(nix-env -iA)
-
+  PS3="Select your package manager: "
   declare -A choices=(
-  ["apt"]=${apt[@]}
-  ["pacman"]=${pacman[@]}
-  ["brew"]=${brew[@]}
-  ["nix"]=${nix[@]}
+  ["apt"]="apt"
+  ["pacman"]="pacman"
+  ["brew"]="brew"
+  ["nix"]="nix"
 )
-
-# prompt the user for their choice
-echo "which package manager do you use?"
-select option in "${!choices[@]}"; do
-  # check that the user has selected a valid option
+select option in "${choices[@]}"; do
   if [[ -n ${choices[$option]} ]]; then
-    install_command=("${choices[$option]}")
     case $option in
-      apt | pacman)
+      apt)
+        install_command=(sudo apt install)
         suffix=(-y)
+        ;;
+      pacman)
+        install_command=(sudo pacman -S)
+        suffix=(-y)
+        ;;
+      brew)
+        install_command=(brew install)
+        suffix=()
+        ;;
+      nix)
+        install_command=(nix-env -iA)
+        suffix=()
         ;;
       *)
         suffix=()
         ;;
     esac
-
     break
-  else
     echo "invalid choice. please try again."
   fi
 done
 
-# Use the selected pkg_manager in a command
-echo "You selected '$option', which corresponds to the command '${install_command[*]}'."
-echo "Your suffix is" ${suffix[@]}
+  # Use the selected pkg_manager in a command
+  echo "You selected '$option', which corresponds to the command '${install_command[*]}'."
+  echo "Your suffix is" ${suffix[@]}
 }
 
 function pkginstall {

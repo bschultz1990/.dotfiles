@@ -1,5 +1,4 @@
 {
-  },
   "stow":{
     "apt": "stow",
     "brew": "stow",
@@ -46,7 +45,7 @@
     "apt": "curl",
     "brew": "curl",
     "nix": "nixpkgs.curl",
-    "pacman": "nixpkgs.curl"
+    "pacman": "curl"
   },
   "python":{
     "apt": "python3",
