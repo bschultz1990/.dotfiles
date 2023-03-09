@@ -11,6 +11,7 @@ pkginstall wget
 pkginstall curl
 pkginstall stow
 pkginstall trash
+curl https://sh.rustup.rs -sSf | sh
 
 # Git and gh-cli
 function git_tools {
@@ -60,11 +61,11 @@ sudo chown -R 501:20 ~/.npm
 brew install fzf
 brew install fd
 brew install ripgrep
-curl https://sh.rustup.rs -sSf | sh
 brew install lua
 brew install luarocks
 brew install oracle-jdk
 brew install neovim
+cargo install tree-sitter-cli
 
 # Ruby
 if [ "$(uname -s)" = "Linux" ]; then

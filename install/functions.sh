@@ -7,49 +7,60 @@ system="$(uname -s)"
 
 
 # Set default package manager
-if [ "$(uname -s)" = "Linux" ]; then
-  pkg_manager=(sudo apt install)
-  suffix=(-y)
-elif [ "$(uname -s)" = "Darwin" ]; then
-  pkg_manager=(brew install)
-fi
+# if [ "$(uname -s)" = "Linux" ]; then
+#   pkg_manager=(sudo apt install)
+#   suffix=(-y)
+# elif [ "$(uname -s)" = "Darwin" ]; then
+#   pkg_manager=(brew install)
+# fi
 
 
 function set_manager {
-  echo "We believe your package install prefix is" "${pkg_manager[@]}" "and your suffix is" "${suffix[@]}" "because you're running" "${system[@]}"
   echo "Please confirm this is correct:"
   # Define the choices as an associative array of arrays
   apt=(sudo apt install)
-  nala=(sudo nala install)
   pacman=(sudo pacman -S)
+  brew=(brew install)
+  nix=(nix-env -iA)
 
   declare -A choices=(
-  ["Apt"]=${apt[@]}
-  ["Pacman"]=${pacman[@]}
-  ["Nala"]=${nala[@]}
+  ["apt"]=${apt[@]}
+  ["pacman"]=${pacman[@]}
+  ["brew"]=${brew[@]}
+  ["nix"]=${nix[@]}
 )
 
-# Prompt the user for their choice
-echo "Which package manager do you use?"
+# prompt the user for their choice
+echo "which package manager do you use?"
 select option in "${!choices[@]}"; do
-  # Check that the user has selected a valid option
+  # check that the user has selected a valid option
   if [[ -n ${choices[$option]} ]]; then
-    pkg_manager=("${choices[$option]}")
+    install_command=("${choices[$option]}")
+    case $option in
+      apt | pacman)
+        suffix=(-y)
+        ;;
+      *)
+        suffix=()
+        ;;
+    esac
+
     break
   else
-    echo "Invalid choice. Please try again."
+    echo "invalid choice. please try again."
   fi
 done
 
 # Use the selected pkg_manager in a command
-echo "You selected '$option', which corresponds to the command '${pkg_manager[*]}'."
+echo "You selected '$option', which corresponds to the command '${install_command[*]}'."
+echo "Your suffix is" ${suffix[@]}
 }
 
 function pkginstall {
-  # TODO: Refactor this to be conscious of the package manager
-  package=$(jq -r ".$1.$system" packages.json)
+  # TODO: Refactor this to be conscious of the package manager's install command.
+  package=$(jq -r ".$1.$option" packages.json)
   echo "Installing package: " "$package""..."
-  ${pkg_manager[@]} $package ${suffix[@]}
+  ${install_command[@]} $package ${suffix[@]}
 }
 
 # Create the Apps directory if it doesn't exist already.

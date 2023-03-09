@@ -1,89 +1,117 @@
 {
+  },
   "stow":{
-    "Linux": "stow",
-    "Darwin": "stow",
-    "nix": "nixpkgs.stow"
+    "apt": "stow",
+    "brew": "stow",
+    "nix": "nixpkgs.stow",
+    "pacman": "stow"
   },
   "trash":{
-    "Linux": "trash-cli",
-    "Darwin": "trash-cli",
-    "nix": "nixpkgs.trash-cli"
+    "apt": "trash-cli",
+    "brew": "trash-cli",
+    "nix": "nixpkgs.trash-cli",
+    "pacman": "trash-cli"
   },
   "git":{
-    "Linux": "git",
-    "Darwin": "git",
-    "nix": "nixpkgs.git"
+    "apt": "git",
+    "brew": "git",
+    "nix": "nixpkgs.git",
+    "pacman": "git"
   },
   "gh":{
-    "Linux": "gh",
-    "Darwin": "gh",
-    "nix": "nixpkgs.gh"
+    "apt": "gh",
+    "brew": "gh",
+    "nix": "nixpkgs.gh",
+    "pacman": "github-cli"
   },
   "lazygit":{
-    "Linux": "",
-    "Darwin": "jesseduffield/lazygit/lazygit",
-    "nix": "nixpkgs.lazygit"
+    "apt": "",
+    "brew": "jesseduffield/lazygit/lazygit",
+    "nix": "nixpkgs.lazygit",
+    "pacman": "lazygit"
   },
   "git_credential_manager":{
-    "Linux": "",
-    "Darwin": "git-credential-manager-core",
-    "nix": ""
+    "apt": "",
+    "brew": "git-credential-manager-core",
+    "nix": "",
+    "pacman": ""
   },
   "wget":{
-    "Linux": "wget",
-    "Darwin": "wget"
+    "apt": "wget",
+    "brew": "wget",
+    "nix": "nixpkgs.wget",
+    "pacman": "wget"
   },
   "curl":{
-    "Linux": "curl",
-    "Darwin": "curl"
+    "apt": "curl",
+    "brew": "curl",
+    "nix": "nixpkgs.curl",
+    "pacman": "nixpkgs.curl"
   },
   "python":{
-    "Linux": "python3",
-    "Darwin": "python@311"
+    "apt": "python3",
+    "brew": "python@311",
+    "nix": "nixpkgs.python311",
+    "pacman": "python"
   },
   "node":{
-    "Linux": "nodejs",
-    "Darwin": "node"
+    "apt": "nodejs",
+    "brew": "node",
+    "nix": "nixpkgs.nodejs",
+    "pacman": "nodejs"
   },
   "fzf":{
-    "Linux": "fzf",
-    "Darwin": "fzf"
+    "apt": "fzf",
+    "brew": "fzf",
+    "nix": "nixpkgs.fzf",
+    "pacman": "fzf"
   },
   "fd":{
-    "Linux": "fdfind",
-    "Darwin": "fd"
+    "apt": "fdfind",
+    "brew": "fd",
+    "nix": "nixpkgs.fd",
+    "pacman": "fd"
   },
   "ripgrep":{
-    "Linux": "ripgrep",
-    "Darwin": "ripgrep"
-  },
-  "rust":{
-    "Linux": "rust",
-    "Darwin": "rust"
+    "apt": "ripgrep",
+    "brew": "ripgrep",
+    "nix": "nixpkgs.ripgrep",
+    "pacman": "ripgrep"
   },
   "lua":{
-    "Linux": "lua",
-    "Darwin": "lua"
+    "apt": "lua",
+    "brew": "lua",
+    "nix": "nixpkgs.lua",
+    "pacman": "lua"
   },
   "luarocks":{
-    "Linux": "luarocks",
-    "Darwin": "luarocks"
+    "apt": "luarocks",
+    "brew": "luarocks",
+    "nix": "nixpkgs.luajitPackages.luarocks",
+    "pacman": "luarocks"
   },
   "jdk":{
-    "Linux": "openjdk-17-jdk-headless",
-    "Darwin": "oracle-jdk"
+    "apt": "openjdk-17-jdk-headless",
+    "brew": "oracle-jdk",
+    "nix": "nixpkgs.jdk",
+    "pacman": "jdk17-openjdk"
   },
   "lsd":{
-    "Linux": "lsd",
-    "Darwin": "lsd"
+    "apt": "lsd",
+    "brew": "lsd",
+    "nix": "nixpkgs.lsd",
+    "pacman": "lsd"
   },
   "glow":{
-    "Linux": "glow",
-    "Darwin": "glow"
+    "apt": "glow",
+    "brew": "glow",
+    "nix": "nixpkgs.glow",
+    "pacman": "glow"
   },
-  "wezterm": {
-    "Linux": "flatpak install flathub org.wezfurlong.wezterm",
-    "Darwin": "wezterm",
-    "nix": "nixpkgs.wezterm"
+  "terminal": {
+    "apt": "flatpak install flathub org.wezfurlong.wezterm",
+    "brew": "wezterm",
+    "nix": "nixpkgs.wezterm",
+    "pacman": "wezterm"
   }
 }
