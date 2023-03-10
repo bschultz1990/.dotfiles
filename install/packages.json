@@ -109,7 +109,7 @@
   },
   "terminal": {
     "apt": "",
-    "brew": "wezterm",
+    "brew": "iterm2",
     "nix": "nixpkgs.wezterm",
     "pacman": "wezterm"
   },
