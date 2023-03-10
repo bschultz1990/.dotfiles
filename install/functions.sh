@@ -4,6 +4,7 @@
 # system="$(uname -s)"
 
 function set_manager {
+  # TODO: Add an 'are you sure?' prompt before making a final choice.
   PS3="Select your package manager: "
   declare -A choices=(
   ["apt"]="apt"
