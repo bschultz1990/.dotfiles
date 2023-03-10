@@ -108,9 +108,15 @@
     "pacman": "glow"
   },
   "terminal": {
-    "apt": "flatpak install flathub org.wezfurlong.wezterm",
+    "apt": "",
     "brew": "wezterm",
     "nix": "nixpkgs.wezterm",
     "pacman": "wezterm"
+  },
+  "zsh": {
+    "apt": "zsh",
+    "brew": "zsh",
+    "nix": "nixpkgs.zsh",
+    "pacman": "zsh"
   }
 }

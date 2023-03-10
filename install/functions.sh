@@ -1,18 +1,7 @@
 #!/bin/bash
 
-# source install.sh
-
 # Get system name to help set default values
-system="$(uname -s)"
-
-
-# Set default package manager
-# if [ "$(uname -s)" = "Linux" ]; then
-#   pkg_manager=(sudo apt install)
-#   suffix=(-y)
-# elif [ "$(uname -s)" = "Darwin" ]; then
-#   pkg_manager=(brew install)
-# fi
+# system="$(uname -s)"
 
 function set_manager {
   PS3="Select your package manager: "
@@ -27,18 +16,17 @@ select option in "${choices[@]}"; do
     case $option in
       apt)
         install_command=(sudo apt install)
+        update_command=(sudo apt full-upgrade)
         suffix=(-y)
         ;;
       pacman)
         install_command=(sudo pacman -S)
+        update_command=(sudo pacman -Syu)
         suffix=(-y)
-        ;;
-      brew)
-        install_command=(brew install)
-        suffix=()
         ;;
       nix)
         install_command=(nix-env -iA)
+        update_command=(nix-env -u '*')
         suffix=()
         ;;
       *)
@@ -52,14 +40,8 @@ done
 
   # Use the selected pkg_manager in a command
   echo "You selected '$option', which corresponds to the command '${install_command[*]}'."
-  echo "Your suffix is" ${suffix[@]}
-}
-
-function pkginstall {
-  # TODO: Refactor this to be conscious of the package manager's install command.
-  package=$(jq -r ".$1.$option" packages.json)
-  echo "Installing package: " "$package""..."
-  ${install_command[@]} $package ${suffix[@]}
+  echo "Your suffix is" "${suffix[@]}"
+  echo "Your update command is" "${update_command[@]}"
 }
 
 # Create the Apps directory if it doesn't exist already.
@@ -70,26 +52,10 @@ function set_appdir {
   fi
 }
 
-
 function sys_update {
   # update Linux system
-  case $option in
-    "Nala")
-      echo "Nala package manager"
-      sudo nala update
-      sudo nala upgrade -y
-      ;;
-
-    "Apt")
-      echo "apt package manager"gh
-      sudo apt update
-      sudo apt upgrade -y
-      ;;
-
-    "Pacman")
-      echo "Pacman package manager"
-      sudo pacman -Syu
-  esac
+  echo "Updating using " "${option[@]}"
+  ${update_command[@]} ${suffix[@]}
 
   # Update Mac environment...
   if [ "$(uname -s)" = "Darwin" ]; then
@@ -119,7 +85,21 @@ function sys_update {
   fi
 }
 
-function get_wezterm {
-  flatpak install flathub org.wezfurlong.wezterm
-  flatpak run org.wezfurlong.wezterm
+function pkginstall {
+  # TODO: Check for jq before running it... 
+  package=$(jq -r ".$1.$option" packages.json)
+  if type "$package" !&> /dev/null; then 
+    echo "Installing package: " "$package""..."
+    ${install_command[@]} $package ${suffix[@]}
+  else
+    echo "$package" "is already installed. Skipping..."
+  fi
+}
+
+function get_terminal {
+  if [ "$(uname -s)" = "Linux" ] && [ "$option" = "apt" ]; then
+    flatpak install flathub org.wezfurlong.wezterm
+    flatpak run org.wezfurlong.wezterm
+  fi
+  pkginstall terminal
 }
