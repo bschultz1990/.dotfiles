@@ -104,7 +104,7 @@ function pkginstall {
       echo "Installing package: " "$package""..."
       ${install_command[@]} "$package" ${suffix[@]}
     else
-      echo "$package" "is already installed. Skipping..."
+      echo "$1" "is already installed. Skipping..."
     fi
   fi
 }
