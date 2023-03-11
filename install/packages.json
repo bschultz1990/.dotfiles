@@ -29,7 +29,7 @@
     "nix": "nixpkgs.lazygit",
     "pacman": "lazygit"
   },
-  "git_credential_manager":{
+  "git-credential-manager":{
     "apt": "",
     "brew": "git-credential-manager-core",
     "nix": "",
@@ -49,7 +49,7 @@
   },
   "python":{
     "apt": "python3",
-    "brew": "python@311",
+    "brew": "python@3.11",
     "nix": "nixpkgs.python311",
     "pacman": "python"
   },
@@ -119,3 +119,4 @@
     "nix": "nixpkgs.zsh",
     "pacman": "zsh"
   }
+}

@@ -3,7 +3,7 @@
 # Get system name to help set default values
 # system="$(uname -s)"
 
-set_manager () {
+function set_manager {
   # TODO: Add an 'are you sure?' prompt before making a final choice.
   # TODO: Add a safety on old Betsy. Actually check for the platform
   # compatibility and check if the package manager in question is installed first.
@@ -93,10 +93,10 @@ function sys_update {
 }
 
 function pkginstall {
-  # Warn user if 'jq' is not installed.
+  # Warn user and exit if 'jq' is not installed.
   if ! which "jq" &> /dev/null; then
     echo "FATAL: 'jq' is not installed. Please install before running this script again."
-    return
+    exit
   else
     package=$(jq -r ".$1.$option" packages.json)
     if ! type "$package" &> /dev/null; then 
@@ -117,5 +117,5 @@ function get_terminal {
 }
 
 function hello {
-  echo "Hello! I'm not supposed to run. Teehee!"
+  echo "Hello! I'm not supposed to run if jq is not installed. Teehee!"
 }
