@@ -3,5 +3,4 @@
 source functions.sh
 
 set_manager
-pkginstall python
-hello
+pkginstall python3

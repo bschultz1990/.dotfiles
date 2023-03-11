@@ -98,10 +98,11 @@ function pkginstall {
     echo "FATAL: 'jq' is not installed. Please install before running this script again."
     exit
   else
-    package=$(jq -r ".$1.$option" packages.json)
-    if ! type "$package" &> /dev/null; then 
+    # TODO: Change this to use 'zq' instead.
+    package=$(jq ".$1.$option" packages.json)
+    if ! type "$1" &> /dev/null; then 
       echo "Installing package: " "$package""..."
-      ${install_command[@]} $package ${suffix[@]}
+      ${install_command[@]} "$package" ${suffix[@]}
     else
       echo "$package" "is already installed. Skipping..."
     fi

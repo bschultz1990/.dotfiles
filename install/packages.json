@@ -47,7 +47,7 @@
     "nix": "nixpkgs.curl",
     "pacman": "curl"
   },
-  "python":{
+  "python3":{
     "apt": "python3",
     "brew": "python@3.11",
     "nix": "nixpkgs.python311",
@@ -71,7 +71,7 @@
     "nix": "nixpkgs.fd",
     "pacman": "fd"
   },
-  "ripgrep":{
+  "rg":{
     "apt": "ripgrep",
     "brew": "ripgrep",
     "nix": "nixpkgs.ripgrep",
