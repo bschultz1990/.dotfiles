@@ -1,10 +1,12 @@
-#!/bin/bash
+#!bash
 
 # Get system name to help set default values
 # system="$(uname -s)"
 
-function set_manager {
+set_manager () {
   # TODO: Add an 'are you sure?' prompt before making a final choice.
+  # TODO: Add a safety on old Betsy. Actually check for the platform
+  # compatibility and check if the package manager in question is installed first.
   PS3="Select your package manager: "
   declare -A choices=(
   ["apt"]="apt"
@@ -24,6 +26,11 @@ select option in "${choices[@]}"; do
         install_command=(sudo pacman -S)
         update_command=(sudo pacman -Syu)
         suffix=(-y)
+        ;;
+      brew)
+        install_command=(brew install)
+        update_command=(brew update)
+        suffix=()
         ;;
       nix)
         install_command=(nix-env -iA)
@@ -58,10 +65,9 @@ function sys_update {
   echo "Updating using " "${option[@]}"
   ${update_command[@]} ${suffix[@]}
 
-  # Update Mac environment...
+  # Install and update Brew on Mac if it isn't installed already.
   if [ "$(uname -s)" = "Darwin" ]; then
-    # Install Brew if it doesn't exist already.
-    if type "brew" !&> /dev/null; then
+    if ! which "brew" &> /dev/null; then
       echo "Installing Homebrew Package Manager..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       # Pause the script and allow the user to input commands 
@@ -87,13 +93,18 @@ function sys_update {
 }
 
 function pkginstall {
-  # TODO: Check for jq before running it... 
-  package=$(jq -r ".$1.$option" packages.json)
-  if type "$package" !&> /dev/null; then 
-    echo "Installing package: " "$package""..."
-    ${install_command[@]} $package ${suffix[@]}
+  # Warn user if 'jq' is not installed.
+  if ! which "jq" &> /dev/null; then
+    echo "FATAL: 'jq' is not installed. Please install before running this script again."
+    return
   else
-    echo "$package" "is already installed. Skipping..."
+    package=$(jq -r ".$1.$option" packages.json)
+    if ! type "$package" &> /dev/null; then 
+      echo "Installing package: " "$package""..."
+      ${install_command[@]} $package ${suffix[@]}
+    else
+      echo "$package" "is already installed. Skipping..."
+    fi
   fi
 }
 
@@ -103,4 +114,8 @@ function get_terminal {
     flatpak run org.wezfurlong.wezterm
   fi
   pkginstall terminal
+}
+
+function hello {
+  echo "Hello! I'm not supposed to run. Teehee!"
 }
