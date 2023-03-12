@@ -1,4 +1,4 @@
-#!bash
+#!/usr/bin/env bash
 
 # Get system name to help set default values
 # system="$(uname -s)"
@@ -98,8 +98,7 @@ function pkginstall {
     echo "FATAL: 'jq' is not installed. Please install before running this script again."
     exit
   else
-    # TODO: Change this to use 'zq' instead.
-    package=$(jq ".$1.$option" packages.json)
+    package=$(jq '."$1"."$option"' packages.json)
     if ! type "$1" &> /dev/null; then 
       echo "Installing package: " "$package""..."
       ${install_command[@]} "$package" ${suffix[@]}
