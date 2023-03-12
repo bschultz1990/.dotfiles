@@ -3,4 +3,5 @@
 source functions.sh
 
 set_manager
-pkginstall "glow"
+
+pkginstall git-credential-manager
