@@ -4,4 +4,5 @@ source functions.sh
 
 set_manager
 
-pkginstall jdk --cask
+pkginstall glow
+pkginstall lsd

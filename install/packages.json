@@ -89,7 +89,7 @@
     "nix": "nixpkgs.luajitPackages.luarocks",
     "pacman": "luarocks"
   },
-  "jdk":{
+  "java":{
     "apt": "openjdk-17-jdk-headless",
     "brew": "oracle-jdk",
     "nix": "nixpkgs.jdk",
@@ -109,7 +109,7 @@
   },
   "terminal": {
     "apt": "",
-    "brew": "--cask iterm2",
+    "brew": "iterm2",
     "nix": "nixpkgs.wezterm",
     "pacman": "wezterm"
   },
@@ -118,5 +118,11 @@
     "brew": "zsh",
     "nix": "nixpkgs.zsh",
     "pacman": "zsh"
+  },
+  "ruby": {
+    "apt": "CHANGE",
+    "brew": "CHANGE",
+    "nix": "CHANGE",
+    "pacman": "CHANGE"
   }
 }

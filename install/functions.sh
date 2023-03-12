@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Get system name to help set default values
-# system="$(uname -s)"
+system="$(uname -s)"
 
 function set_manager {
   # TODO: Add an 'are you sure?' prompt before making a final choice.
@@ -53,24 +53,45 @@ done
 }
 
 function pkginstall {
-  # Warn user and exit if 'jq' is not installed.
+  # Exit if 'jq' isn't installed
   if ! which "jq" &> /dev/null; then
     echo "FATAL: 'jq' is not installed. Please install before running this script again."
     exit
-  else
-    package=$(jq -r ".[\"$1\"].\"$option\"" packages.json)
-    echo ""
-    echo "Request is "$1
-    echo "\$option is "$option
-    echo "\$package is "$package
-    if ! type "$1" &> /dev/null; then 
-      echo "Installing package: " "$package""..."
+  fi
+  package=$(jq -r ".[\"$1\"].\"$option\"" packages.json)
+  if ! type "$1" &> /dev/null; then 
+    echo "Installing package: " "$package..."
+    if [ "$2" == "--cask" ] && [ "$system" == "Darwin" ]; then
+      echo "Cask on Mac!"
       ${install_command[@]} $2 "$package" ${suffix[@]}
     else
-      echo "$1" "is already installed. Skipping..."
+      ${install_command[@]} "$package" ${suffix[@]}
     fi
+  else
+    echo "$1" "is already installed. Skipping install of" "$package"
   fi
 }
+
+# function pkginstall {
+#   # Warn user and exit if 'jq' is not installed.
+#   if ! which "jq" &> /dev/null; then
+#     echo "FATAL: 'jq' is not installed. Please install before running this script again."
+#     exit
+#   else
+#     package=$(jq -r ".[\"$1\"].\"$option\"" packages.json)
+#     if ! type "$1" &> /dev/null; then 
+#       echo "Installing package: " "$package..."
+#       if [ "$2" == "--cask" ] && [ "$system" == "Darwin" ]; then
+#         echo "Cask on Mac!"
+#         ${install_command[@]} $2 "$package" ${suffix[@]}
+#       else
+#         ${install_command[@]} "$package" ${suffix[@]}
+#       fi
+#     else
+#       echo "$1" "is already installed. Skipping install of" "$package"
+#     fi
+#   fi
+# }
 
 # Create the Apps directory if it doesn't exist already.
 function set_appdir {
@@ -86,7 +107,7 @@ function sys_update {
   ${update_command[@]} ${suffix[@]}
 
   # Install and update Brew on Mac if it isn't installed already.
-  if [ "$(uname -s)" = "Darwin" ]; then
+  if [ "$system" == "Darwin" ]; then
     if ! which "brew" &> /dev/null; then
       echo "Installing Homebrew Package Manager..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
