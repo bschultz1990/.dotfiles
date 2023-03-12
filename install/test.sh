@@ -4,4 +4,4 @@ source functions.sh
 
 set_manager
 
-pkginstall git-credential-manager
+pkginstall jdk --cask
