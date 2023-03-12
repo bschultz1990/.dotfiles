@@ -91,7 +91,7 @@
   },
   "jdk":{
     "apt": "openjdk-17-jdk-headless",
-    "brew": "oracle-jdk",
+    "brew": "--cask oracle-jdk",
     "nix": "nixpkgs.jdk",
     "pacman": "jdk17-openjdk"
   },
@@ -109,7 +109,7 @@
   },
   "terminal": {
     "apt": "",
-    "brew": "iterm2",
+    "brew": "--cask iterm2",
     "nix": "nixpkgs.wezterm",
     "pacman": "wezterm"
   },
