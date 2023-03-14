@@ -124,5 +124,15 @@
     "brew": "CHANGE",
     "nix": "CHANGE",
     "pacman": "CHANGE"
+  },
+  "rectangle": {
+    "brew": "rectangle",
+    "app": "Rectangle.app"
+  },
+  "neovim": {
+    "apt": "neovim",
+    "brew": "neovim",
+    "nix": "nixpkgs.neovim",
+    "pacman": "neovim"
   }
 }
