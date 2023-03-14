@@ -26,88 +26,11 @@ alias fnkeys='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 alias eses='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /microphone:sys:alsa /sound:sys:alsa /monitors:2,1 /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
 alias eses-nosound='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /monitors:2,1 /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
 alias eses-all='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
-
-
-function colors {
-  # ChatGPT colorscheme...
-  # Define variables for each color
-  red='\033[0;31m'
-  green='\033[0;32m'
-  yellow='\033[0;33m'
-  blue='\033[0;34m'
-  purple='\033[0;35m'
-  cyan='\033[0;36m'
-  white='\033[0;37m'
-
-# Define variables for bold versions of each color
-bold_red='\033[1;31m'
-bold_green='\033[1;32m'
-bold_yellow='\033[1;33m'
-bold_blue='\033[1;34m'
-bold_purple='\033[1;35m'
-bold_cyan='\033[1;36m'
-bold_white='\033[1;37m'
-
-# Define variables for background colors
-bg_red='\033[41m'
-bg_green='\033[42m'
-bg_yellow='\033[43m'
-bg_blue='\033[44m'
-bg_purple='\033[45m'
-bg_cyan='\033[46m'
-bg_white='\033[47m'
-
-# Reset all color changes
-reset='\033[0m'
-
-# Print a message using each color and background color
-echo -e "${red}Red text${reset}"
-echo -e "${green}Green text${reset}"
-echo -e "${yellow}Yellow text${reset}"
-echo -e "${blue}Blue text${reset}"
-echo -e "${purple}Purple text${reset}"
-echo -e "${cyan}Cyan text${reset}"
-echo -e "${white}White text${reset}"
-echo -e "${bold_red}Bold red text${reset}"
-echo -e "${bold_green}Bold green text${reset}"
-echo -e "${bold_yellow}Bold yellow text${reset}"
-echo -e "${bold_blue}Bold blue text${reset}"
-echo -e "${bold_purple}Bold purple text${reset}"
-echo -e "${bold_cyan}Bold cyan text${reset}"
-echo -e "${bold_white}Bold white text${reset}"
-echo -e "${bg_red}Red background${reset}"
-echo -e "${bg_green}Green background${reset}"
-echo -e "${bg_yellow}Yellow background${reset}"
-echo -e "${bg_blue}Blue background${reset}"
-echo -e "${bg_purple}Purple background${reset}"
-echo -e "${bg_cyan}Cyan background${reset}"
-echo -e "${bg_white}White background${reset}"
-}
-
 alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /usb:id:dev:0b0e:245e /microphone:sys:alsa /sound:sys:alsa /monitors:2,1 /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
 # FreeRDP CLI Documentation. More options! :)
 # https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface
 
 alias update='brew update && brew update && brew doctor'
-
-function installruby {
-  echo "Installing Ruby."
-  echo "Read more here: https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/"
-  brew install chruby ruby-install
-  ruby-install
-  echo "Install your preferred version by typing in 'ruby-install' then the version number."
-  echo "This process could take up to 15 minutes. You may skip this step and then come back to it later if you desire."
-  echo "Enter your commands, then type 'continue' to continue installing other packages..."
-  while true; do
-    read -r -p "> " input
-    if [ "$input" == "continue" ]; then
-      break
-    else
-      # Execute the user's command
-      eval "$input"
-    fi
-  done
-}
 
 function ls {
   cmd="ls"
@@ -135,11 +58,15 @@ lg()
   fi
 }
 
+function reload {
+  exec zsh
+}
+
 # Change to a directory and list files.
 function c {
   clear
   cd "$1" || return
-  lsd
+  ls
 }
 
 # Make a directory and change to it.
@@ -156,7 +83,7 @@ function t {
   done
   # List all the files in the directory:
   clear
-  lsd
+  ls
 }
 
 # Display a man page and edit it in the default editor.
