@@ -119,12 +119,6 @@
     "nix": "nixpkgs.zsh",
     "pacman": "zsh"
   },
-  "ruby": {
-    "apt": "CHANGE",
-    "brew": "CHANGE",
-    "nix": "CHANGE",
-    "pacman": "CHANGE"
-  },
   "rectangle": {
     "brew": "rectangle",
     "app": "Rectangle.app"
@@ -134,5 +128,17 @@
     "brew": "neovim",
     "nix": "nixpkgs.neovim",
     "pacman": "neovim"
+  },
+  "ruby": {
+    "apt": 
+    "brew": "null",
+    "nix": 
+    "pacman":
+  },
+  "grip": {
+    "apt": 
+    "brew": "grip",
+    "nix": "nixpkgs.grip",
+    "pacman": 
   }
 }

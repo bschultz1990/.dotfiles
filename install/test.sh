@@ -3,7 +3,6 @@
 source functions.sh
 
 set_manager
-
 pkginstall rectangle --cask
 pkginstall glow
 

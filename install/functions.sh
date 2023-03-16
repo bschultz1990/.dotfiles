@@ -122,3 +122,4 @@ function get_terminal {
 function hello {
   echo "Hello! I'm not supposed to run if jq is not installed. Teehee!"
 }
+
