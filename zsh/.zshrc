@@ -1,6 +1,19 @@
+#!/usr/bin/env bash
+
 # Save this for later configuration.
 # zsh config dir:
 # export ZDOTDIR=$HOME/.config/zsh
+system="$(uname -s)"
+antidote_path="$HOME/.antidote" 
+
+# Plugins
+# Install Antidote if it doesn't exist.
+[ ! -d "$antidote_path" ] \
+  && echo "Antidote not installed. Installing..." \
+  && git clone --depth=1 https://github.com/mattmc3/antidote.git "$antidote_path"
+
+source "$antidote_path""/antidote.zsh"
+antidote load
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -9,24 +22,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#!/bin/bash
-
-# Plugins
-source "/usr/local/Cellar/antidote/1.8.1/share/antidote/antidote.zsh"
-antidote load
-
 # Custom Aliases
 alias gpull='git pull'
 alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m "Added files via CMD"'
 alias gp='git push origin HEAD' # Push local branch to matching remote branch.
-alias gsw='git switch'
 alias fnkeys='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
-alias eses='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /microphone:sys:alsa /sound:sys:alsa /monitors:2,1 /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
-alias eses-nosound='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /monitors:2,1 /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
-alias eses-all='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
-alias test='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /usb:id:dev:0b0e:245e /microphone:sys:alsa /sound:sys:alsa /monitors:2,1 /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
 # FreeRDP CLI Documentation. More options! :)
 # https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface
 
@@ -143,17 +145,27 @@ function mdb {
   mongosh mongodb+srv://wdbc.rrnu9ou.mongodb.net/"$1" --apiVersion 1 --username bschultz1990
 }
 
+function pkgsearch {
+  open "https://archlinux.org/packages/?sort=&q=""$1""&maintainer=&flagged="
+  open "https://search.nixos.org/packages?channel=22.11&show=mongosh&from=0&size=50&sort=relevance&type=packages&query=""$1"
+  open "https://formulae.brew.sh/formula/""$1""#default"
+  open "https://formulae.brew.sh/formula/cask/""$1""#default"
+  open "https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=""$1""&searchon=names"
+}
+
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Apps:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
 
-# External Sources
-source "/usr/local/opt/chruby/share/chruby/chruby.sh"
-# Enable auto-switching of Rubies via .ruby-version files
-source "/usr/local/opt/chruby/share/chruby/auto.sh" 
-chruby ruby-3.2.1
+if [ "$system" = "Darwin" ]; then
+  # External Sources
+  source "/usr/local/opt/chruby/share/chruby/chruby.sh"
+  # Enable auto-switching of Rubies via .ruby-version files
+  source "/usr/local/opt/chruby/share/chruby/auto.sh" 
+  chruby ruby-3.2.1
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
