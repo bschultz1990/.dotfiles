@@ -5,6 +5,8 @@
 # export ZDOTDIR=$HOME/.config/zsh
 system="$(uname -s)"
 antidote_path="$HOME/.antidote" 
+[ "$system" = "Linux" ] && alias update='sudo nala update && sudo nala upgrade -y'
+[ "$system" = "Darwin" ] && alias update='brew update && brew upgrade && brew doctor'
 
 # Plugins
 # Install Antidote if it doesn't exist.
@@ -31,8 +33,6 @@ alias gp='git push origin HEAD' # Push local branch to matching remote branch.
 alias fnkeys='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 # FreeRDP CLI Documentation. More options! :)
 # https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface
-
-alias update='brew update && brew update && brew doctor'
 
 function ls {
   cmd="ls"
@@ -169,4 +169,3 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
