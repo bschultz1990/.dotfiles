@@ -121,6 +121,7 @@ function trashconfigs {
 	trash ~/.zsh_plugins.zsh
 	cd ~/.config || return
 	trash kitty
+	trash alacritty
 	trash nvim
 }
 
@@ -147,8 +148,8 @@ function cloneme {
 		cd ~/.dotfiles \
 			&& echo "Stowing bash..." \
 			&& stow -t ~/ bash \
-			&& echo "Stowing kitty..." \
-			&& stow -t ~/ kitty \
+			&& echo "Stowing Alacritty..." \
+			&& stow -t ~/ alacritty \
 			&& echo "Stowing zsh..." \
 			&& stow -t ~/ zsh
 		}

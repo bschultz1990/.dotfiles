@@ -108,10 +108,10 @@
     "pacman": "glow"
   },
   "terminal": {
-    "apt": "",
+    "apt": "alacritty",
     "brew": "iterm2",
-    "nix": "nixpkgs.wezterm",
-    "pacman": "wezterm"
+    "nix": "nixpkgs.alacritty",
+    "pacman": "alacritty"
   },
   "zsh": {
     "apt": "zsh",
