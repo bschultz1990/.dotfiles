@@ -131,11 +131,11 @@ font:
             x: 0
             y: -3
       normal:
-            family: MesloLGLDZ Nerd Font
+            family: MesloLGS NF
       bold:
-            family: MesloLGLDZ Nerd Font
+            family: MesloLGS NF
       italic:
-            family: MesloLGLDZ Nerd Font
+            family: MesloLGS NF
 
 # Bold italic font face
 # bold_italic:
