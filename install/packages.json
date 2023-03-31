@@ -136,7 +136,7 @@
     "pacman":
   },
   "grip": {
-    "apt": 
+    "apt": "grip",
     "brew": "grip",
     "nix": "nixpkgs.grip",
     "pacman": 

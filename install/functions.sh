@@ -7,6 +7,7 @@ function set_manager {
   # TODO: Add an 'are you sure?' prompt before making a final choice.
   # TODO: Add a safety on old Betsy. Actually check for the platform
   # compatibility and check if the package manager in question is installed first.
+  # FIXME: Dis brokded.
   PS3="Select your package manager: "
   declare -A choices=(
   ["apt"]="apt"
