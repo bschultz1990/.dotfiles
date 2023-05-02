@@ -34,6 +34,15 @@ alias fnkeys='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 # FreeRDP CLI Documentation. More options! :)
 # https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface
 
+# Use fzf to open a directory.
+function f {
+  cd "$(find . -type d | fzf)" || return
+}
+
+function noderun {
+  node -i -e "$(< "$1")"
+}
+
 function ls {
   cmd="ls"
   args=(-1A)
