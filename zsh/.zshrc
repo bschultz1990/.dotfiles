@@ -31,8 +31,32 @@ alias ga='git add .'
 alias gc='git commit -m "Added files via CMD"'
 alias gp='git push origin HEAD' # Push local branch to matching remote branch.
 alias fnkeys='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
-# FreeRDP CLI Documentation. More options! :)
-# https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface
+
+function cwd {
+  pwd | pbcopy
+}
+
+function urlencode() {
+  local string="${1}"
+  local strlen=${#string}
+  local encoded=""
+  local pos c o
+
+  for (( pos=0 ; pos<strlen ; pos++ )); do
+    c=${string:$pos:1}
+    case "${c}" in
+      [-_.~a-zA-Z0-9] ) o="${c}" ;;
+      * )               printf -v o '%%%02x' "'$c"
+    esac
+    encoded+="${o}"
+  done
+  echo "${encoded}"
+}
+
+function search {
+  query=$(urlencode "$*")
+  open "https://duckduckgo.com/?q=$query"
+}
 
 # Use fzf to open a directory.
 function f {
@@ -161,6 +185,23 @@ function pkgsearch {
   open "https://formulae.brew.sh/formula/cask/""$1""#default"
   open "https://packages.ubuntu.com/search?suite=default&section=all&arch=any&keywords=""$1""&searchon=names"
 }
+
+function colorband {
+  awk 'BEGIN{
+    s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
+    for (colnum = 0; colnum<77; colnum++) {
+        r = 255-(colnum*255/76);
+        g = (colnum*510/76);
+        b = (colnum*255/76);
+        if (g>255) g = 510-g;
+        printf "\033[48;2;%d;%d;%dm", r,g,b;
+        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+        printf "%s\033[0m", substr(s,colnum+1,1);
+    }
+    printf "\n";
+}'
+}
+
 
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"
