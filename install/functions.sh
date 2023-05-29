@@ -2,12 +2,13 @@
 
 # Get system name to help set default values
 system="$(uname -s)"
+messages=()
 
 function set_manager {
   # TODO: Add an 'are you sure?' prompt before making a final choice.
   # TODO: Add a safety on old Betsy. Actually check for the platform
   # compatibility and check if the package manager in question is installed first.
-  # FIXME: Dis brokded.
+  # FIXME: Dis brokded.Windowed
   PS3="Select your package manager: "
   declare -A choices=(
   ["apt"]="apt"
@@ -60,7 +61,12 @@ function pkginstall {
     echo "FATAL: 'jq' is not installed. Please install before running this script again."
     exit
   fi
+
+  manager_check
+
   package=$(jq -r ".[\"$1\"].\"$option\"" packages.json)
+
+  # Quickly abort installation on installed apps using Mac:
   app=$(jq -r ".[\"$1\"].app" packages.json)
   [ "$app" != null ] && echo "Checking for" "$app" "in /Applications first..."
   if command -v "$1" >/dev/null 2>&1 || [ -e "/Applications/""$app" ]; then
@@ -118,6 +124,33 @@ function get_terminal {
     flatpak run org.wezfurlong.wezterm
   fi
   pkginstall terminal
+}
+
+function lazygit_install {
+  if ! manager_check; then
+    echo "manager_check failed."
+    return
+  fi
+  if [ "$option" = "apt" ]; then
+    messages+=("LAZYGIT_INSTALL: \nlazygit is not available on 'apt'. \nRun 'set_manager' and choose a different package manager or visit https://github.com/jesseduffield/lazygit for more installation options.")
+    return
+  fi
+  pkginstall lazygit
+}
+
+function manager_check {
+  if [ "$option" = "" ]; then
+    echo "Package manager not set. Run 'set_manager to continue. Aborting."
+    return 1
+  fi
+  return 0
+}
+
+function showmsgs {
+  #Display messages from other functions.
+  for message in "${messages[@]}"; do
+    echo "$message"
+  done
 }
 
 function hello {

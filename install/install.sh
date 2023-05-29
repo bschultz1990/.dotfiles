@@ -11,21 +11,20 @@ pkginstall wget
 pkginstall curl
 pkginstall stow
 pkginstall trash
+
+echo "Installing Rust..."
 curl https://sh.rustup.rs -sSf | sh
 
 # Git and gh-cli
-function git_tools {
-	brew install git
-	brew install gh
-	brew install jesseduffield/lazygit/lazygit
-}
+pkginstall git
+pkginstall git
+pkginstall gh
+lazygit_install
 
 # Configure gh and git. Log in to GitHub
-function gitconfig {
-	git config --global user.name "Ben S."
-	git config --global user.email "bens@noemail.com"
-	gh auth login
-}
+git config --global user.name "Ben S."
+git config --global user.email "bens@noemail.com"
+gh auth login
 
 # Python
 brew install python@3.11 \
@@ -38,20 +37,13 @@ brew install python@3.11 \
 python3 -m pip install pynvim
 python3 -m pip install --upgrade pip
 
-# # Install and set Kitty as default terminal:
-# curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-# if [ "$(uname -s)" = "Linux" ]; then
-# 	sudo update-alternatives --config x-terminal-emulator
-# fi
-
 # Node, Yarn, and NPM
 brew install node \
 	&& npm install -g n \
 	&& sudo n install latest -y \
 	&& sudo npm install -g neovim \
 	&& sudo npm install -g live-server \
-	&& sudo npm install -g cmdtest \
-	&& npm fund
+	&& sudo npm install -g cmdtest
 
 # Set ownership of ~/.npm
 sudo chown -R 501:20 ~/.npm
@@ -94,7 +86,6 @@ function macruby {
 # Unneeded packages for now
 # brew install go
 # brew install composer
-# brew install freerdp
 
 echo "Installing extra applications..."
 brew install lsd
