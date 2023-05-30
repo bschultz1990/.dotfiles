@@ -5,6 +5,12 @@
   "nix": "",
   "pacman": ""
 },
+  "ctags": {
+    "apt": "universal-ctags",
+    "brew": "universal-ctags",
+    "nix": "nixpkgs.universal-ctags",
+    pacman: "ctags"
+  },
   "curl": {
     "apt": "curl",
     "brew": "curl",
@@ -100,9 +106,7 @@
     "brew": "rectangle"
   },
   "rg": {
-    "apt": "ripgrep
-
-",
+    "apt": "ripgrep ",
     "brew": "ripgrep",
     "nix": "nixpkgs.ripgrep",
     "pacman": "ripgrep"

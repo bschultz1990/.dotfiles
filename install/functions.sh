@@ -7,76 +7,78 @@ messages=()
 function antidote_install {
   # Antidote zsh plugin manager
   brew install antidote
+  return
 }
 
 function cloneme {
   # Clone .dotfiles
-  echo "Cloning /.dotfiles" \
-    && cd ~/ \
-    && git clone https://github.com/bschultz1990/.dotfiles
+  echo "Cloning /.dotfiles"
+  cd ~/ || return
+  git clone https://github.com/bschultz1990/.dotfiles
 
   # Clone nvim repo
-  echo "Cloning nvim config." \
-    && cd ~/.config \
-    && git clone --depth 1 https://github.com/bschultz1990/nvim
+  echo "Cloning nvim config."
+  cd ~/.config || return
+  git clone --depth 1 https://github.com/bschultz1990/nvim
 
   # Clone notes
-  echo "Cloning notes" \
-    && cd ~/Documents/ \
-    && git clone https://github.com/bschultz1990/notes
-  }
+  echo "Cloning notes"
+  cd ~/Documents/ || return
+  git clone https://github.com/bschultz1990/notes
+}
 
-  function get_terminal {
-    if [ "$(uname -s)" = "Linux" ] && [ "$option" = "apt" ]; then
-      flatpak install flathub org.wezfurlong.wezterm
-      flatpak run org.wezfurlong.wezterm
-    fi
-    pkginstall terminal
-  }
+function get_terminal {
+  if [ "$(uname -s)" = "Linux" ] && [ "$option" = "apt" ]; then
+    flatpak install flathub org.wezfurlong.wezterm
+    flatpak run org.wezfurlong.wezterm
+  fi
+  pkginstall terminal
+}
 
-  function getnf {
-	cd "$HOME/Apps" || return \
-		&& git clone https://github.com/ronniedroid/getnf.git \
-		&& cd getnf \
-		&& ./install.sh
-  }
+function getnf {
+  cd "$HOME/Apps" || return
+  git clone https://github.com/ronniedroid/getnf.git
+  cd getnf || return
+  ./install.sh
+}
 
-  function lazygit_install {
-    if ! manager_check; then
-      echo "manager_check failed."
-      return
-    fi
-    if [ "$option" = "apt" ]; then
-      messages+=("LAZYGIT_INSTALL: \nlazygit is not available on 'apt'. \nRun 'set_manager' and choose a different package manager or visit https://github.com/jesseduffield/lazygit for more installation options.")
-      return
-    fi
-    pkginstall lazygit
-  }
+function lazygit_install {
+  if ! manager_check; then
+    echo "manager_check failed."
+    return
+  fi
+  if [ "$option" = "apt" ]; then
+    messages+=("LAZYGIT_INSTALL: \nlazygit is not available on 'apt'. \nRun 'set_manager' and choose a different package manager or visit https://github.com/jesseduffield/lazygit for more installation options.")
+    return
+  fi
+  pkginstall lazygit
+}
 
-  function macs_fan_install {
-    brew install --cask macs-fan-control
-    open "/Applications/Macs Fan Control"
-  }
+function macs_fan_install {
+  brew install --cask macs-fan-control
+  open "/Applications/Macs Fan Control"
+}
 
-  function manager_check {
-    if [ "$option" = "" ]; then
-      echo "Package manager not set. Run 'set_manager to continue. Aborting."
-      return 1
-    fi
-    return 0
-  }
+function manager_check {
+  if [ "$option" = "" ]; then
+    echo "Package manager not set. Run 'set_manager to continue. Aborting."
+    return 1
+  fi
+  return 0
+}
 
-  function pkginstall {
-    echo ""
-    # Exit if 'jq' isn't installed
-    if ! which "jq" &> /dev/null; then
-      echo "FATAL: 'jq' is not installed. Please install before running this script again."
-      exit
-    fi
+function pkginstall {
+  echo ""
+  # Exit if 'jq' isn't installed
+  if ! which "jq" &> /dev/null; then
+    echo "FATAL: 'jq' is not installed. Please install before running this script again."
+    exit
+  fi
 
-    manager_check
+  manager_check
 
-    package=$(jq -r ".[\"$1\"].\"$option\"" packages.json)
+  package=$(jq -r ".[\"$1\"].\"$option\"" packages.json)
+  echo "Installing $package"
 
   # Quickly abort installation on installed apps using Mac:
   app=$(jq -r ".[\"$1\"].app" packages.json)
@@ -150,14 +152,14 @@ function showmsgs {
 function stowme {
   # Stow the new stuff
   echo "Stowing from .dotfiles..."
-  cd ~/.dotfiles \
-    && echo "Stowing bash..." \
-    && stow -t ~/ bash \
-    && echo "Stowing Alacritty..." \
-    && stow -t ~/ alacritty \
-    && echo "Stowing zsh..." \
-    && stow -t ~/ zsh
-  }
+  cd ~/.dotfiles || return
+  echo "Stowing bash..."
+  stow -t ~/ bash
+  echo "Stowing Alacritty..."
+  stow -t ~/ alacritty
+  echo "Stowing zsh..."
+  stow -t ~/ zsh
+}
 
 function sys_update {
   # update Linux system

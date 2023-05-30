@@ -41,29 +41,30 @@ if [ ! -e "$HOME/Apps" ]; then
 	echo "$HOME/Apps directory created!"
 fi
 
-	# Install pip
-	cd "$HOME/Apps" || return \
-		&& curl -fLo ~/Apps/get-pip.py \
-		&& https://bootstrap.pypa.io/get-pip.py \
-		&& sudo chmod u+rwx ~/Apps/get-pip.py
+# Install pip
+cd "$HOME/Apps" || return
+curl -fLo ~/Apps/get-pip.py
+https://bootstrap.pypa.io/get-pip.py
+sudo chmod u+rwx ~/Apps/get-pip.py
 
 # Install pynvim through pip
 python3 -m pip install pynvim
 python3 -m pip install --upgrade pip
 
 # Node, Yarn, and NPM
-pkginstall node \
-	&& npm install -g n \
-	&& sudo n install latest -y \
-	&& sudo npm install -g neovim \
-	&& sudo npm install -g live-server \
-	&& sudo npm install -g cmdtest
+pkginstall node
+npm install -g n
+sudo n install latest -y
+sudo npm install -g neovim
+sudo npm install -g live-server
+sudo npm install -g cmdtest
 
 # Set ownership of ~/.npm
 sudo chown -R 501:20 ~/.npm
 
 
 # Neovim dependencies
+pkginstall ctags
 pkginstall fzf
 pkginstall fd
 pkginstall rg
@@ -78,25 +79,6 @@ if [ "$(uname -s)" = "Linux" ]; then
 	pkginstall ruby
 fi
 
-function macruby {
-	if [ "$(uname -s)" = "Darwin" ]; then
-		brew install chruby ruby-install
-		ruby-install
-		echo "Install your preferred version by typing in 'ruby-install' then the version number."
-		echo "This process could take up to 15 minutes. You may skip this step and then come back to it later if you desire."
-		echo "Source this script, then run 'macruby' to install Ruby."
-		echo "After you're done, type, 'continue' to continue."
-		while true; do
-			read -r -p "> " input
-			if [ "$input" == "continue" ]; then
-				break
-			else
-				# Execute the user's command
-				eval "$input"
-			fi
-		done
-	fi
-}
 # Unneeded packages for now
 # brew install go
 # brew install composer
