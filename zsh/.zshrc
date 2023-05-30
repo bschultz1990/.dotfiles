@@ -34,6 +34,7 @@ alias fnkeys='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 
 function cwd {
   pwd | pbcopy
+  pwd | xclip
 }
 
 function urlencode() {

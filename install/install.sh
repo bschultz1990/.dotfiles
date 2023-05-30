@@ -7,6 +7,7 @@ set_appdir
 sys_update
 
 # Basic dependencies
+pkginstall antidote
 pkginstall wget
 pkginstall curl
 pkginstall stow
@@ -17,7 +18,6 @@ curl https://sh.rustup.rs -sSf | sh
 
 # Git and gh-cli
 pkginstall git
-pkginstall git
 pkginstall gh
 lazygit_install
 
@@ -26,19 +26,33 @@ git config --global user.name "Ben S."
 git config --global user.email "bens@noemail.com"
 gh auth login
 
+# Git Credential Manager
+if [ "$(uname -s)" = "Darwin" ]; then
+	brew tap microsoft/git
+	brew install --cask git-credential-manager-core
+fi
+
 # Python
-brew install python@3.11 \
-	&& cd "$HOME/Apps" || return \
-	&& curl -fLo ~/Apps/get-pip.py \
-	&& https://bootstrap.pypa.io/get-pip.py \
-	&& sudo chmod u+rwx ~/Apps/get-pip.py
+pkginstall python3
+
+# Create the Apps directory if it doesn't exist already.
+if [ ! -e "$HOME/Apps" ]; then
+	mkdir "$HOME/Apps"
+	echo "$HOME/Apps directory created!"
+fi
+
+	# Install pip
+	cd "$HOME/Apps" || return \
+		&& curl -fLo ~/Apps/get-pip.py \
+		&& https://bootstrap.pypa.io/get-pip.py \
+		&& sudo chmod u+rwx ~/Apps/get-pip.py
 
 # Install pynvim through pip
 python3 -m pip install pynvim
 python3 -m pip install --upgrade pip
 
 # Node, Yarn, and NPM
-brew install node \
+pkginstall node \
 	&& npm install -g n \
 	&& sudo n install latest -y \
 	&& sudo npm install -g neovim \
@@ -50,18 +64,18 @@ sudo chown -R 501:20 ~/.npm
 
 
 # Neovim dependencies
-brew install fzf
-brew install fd
-brew install ripgrep
-brew install lua
-brew install luarocks
-brew install oracle-jdk
-brew install neovim
+pkginstall fzf
+pkginstall fd
+pkginstall rg
+pkginstall lua
+pkginstall luarocks
+pkginstall java
+pkginstall neovim
 cargo install tree-sitter-cli
 
 # Ruby
 if [ "$(uname -s)" = "Linux" ]; then
-	sudo apt install ruby
+	pkginstall ruby
 fi
 
 function macruby {
@@ -93,63 +107,21 @@ brew install glow
 brew install signal
 
 # Mac Specific Apps
-brew install --cask rectangle
-brew install --cask iterm2
-brew install --cask ao # Microsoft To Do Client
+if [ "$(uname -s)" = "Darwin" ]; then
+	brew install --cask rectangle
+	brew install --cask iterm2
+	brew install --cask ao # Microsoft To Do Client
+	open "/Applications/Rectangle.app"
+fi
 
-open "/Applications/Rectangle.app"
 
-# xclip not needed on mac. Keep for Linux script.
-brew install xclip
+# xclip not needed on mac.
+pkginstall xclip
 
-function trashconfigs {
-	# Trash existing configs
-	echo "Trashing existing configs. Recover using 'trash-restore'"
-	cd ~/ || return
-	trash ~/.bashrc
-	trash ~/.zshrc
-	trash ~/.zsh_plugins.txt
-	trash ~/.zsh_plugins.zsh
-	cd ~/.config || return
-	trash kitty
-	trash alacritty
-	trash nvim
-}
+trashconfigs
+cloneme
+stowme
+getnf
 
-function cloneme {
-	# Clone .dotfiles
-	echo "Cloning /.dotfiles" \
-		&& cd ~/ \
-		&& git clone https://github.com/bschultz1990/.dotfiles
-
-	# Clone nvim repo
-	echo "Cloning nvim config." \
-		&& cd ~/.config \
-		&& git clone --depth 1 https://github.com/bschultz1990/nvim
-
-	# Clone notes
-	echo "Cloning notes" \
-		&& cd ~/Documents/ \
-		&& git clone https://github.com/bschultz1990/notes
-	}
-
-	function stowme {
-		# Stow the new stuff
-		echo "Stowing from .dotfiles..."
-		cd ~/.dotfiles \
-			&& echo "Stowing bash..." \
-			&& stow -t ~/ bash \
-			&& echo "Stowing Alacritty..." \
-			&& stow -t ~/ alacritty \
-			&& echo "Stowing zsh..." \
-			&& stow -t ~/ zsh
-		}
-
-	# Install getnf.
-	cd "$HOME/Apps" || return \
-		&& git clone https://github.com/ronniedroid/getnf.git \
-		&& cd getnf \
-		&& ./install.sh
-
-	echo "restarting shell..."
-	exec zsh
+echo "restarting shell..."
+exec zsh

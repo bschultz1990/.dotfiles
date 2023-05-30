@@ -1,127 +1,81 @@
 {
-  "stow":{
-    "apt": "stow",
-    "brew": "stow",
-    "nix": "nixpkgs.stow",
-    "pacman": "stow"
-  },
-  "trash":{
-    "apt": "trash-cli",
-    "brew": "trash-cli",
-    "nix": "nixpkgs.trash-cli",
-    "pacman": "trash-cli"
-  },
-  "git":{
-    "apt": "git",
-    "brew": "git",
-    "nix": "nixpkgs.git",
-    "pacman": "git"
-  },
-  "gh":{
-    "apt": "gh",
-    "brew": "gh",
-    "nix": "nixpkgs.gh",
-    "pacman": "github-cli"
-  },
-  "lazygit":{
-    "apt": "",
-    "brew": "jesseduffield/lazygit/lazygit",
-    "nix": "nixpkgs.lazygit",
-    "pacman": "lazygit"
-  },
-  "git-credential-manager":{
-    "apt": "",
-    "brew": "git-credential-manager-core",
-    "nix": "",
-    "pacman": ""
-  },
-  "wget":{
-    "apt": "wget",
-    "brew": "wget",
-    "nix": "nixpkgs.wget",
-    "pacman": "wget"
-  },
-  "curl":{
+"antidote": {
+  "apt": "",
+  "brew": "antidote",
+  "nix": "",
+  "pacman": ""
+},
+  "curl": {
     "apt": "curl",
     "brew": "curl",
     "nix": "nixpkgs.curl",
     "pacman": "curl"
   },
-  "python3":{
-    "apt": "python3",
-    "brew": "python@3.11",
-    "nix": "nixpkgs.python311",
-    "pacman": "python"
-  },
-  "node":{
-    "apt": "nodejs",
-    "brew": "node",
-    "nix": "nixpkgs.nodejs",
-    "pacman": "nodejs"
-  },
-  "fzf":{
-    "apt": "fzf",
-    "brew": "fzf",
-    "nix": "nixpkgs.fzf",
-    "pacman": "fzf"
-  },
-  "fd":{
+  "fd": {
     "apt": "fdfind",
     "brew": "fd",
     "nix": "nixpkgs.fd",
     "pacman": "fd"
   },
-  "rg":{
-    "apt": "ripgrep",
-    "brew": "ripgrep",
-    "nix": "nixpkgs.ripgrep",
-    "pacman": "ripgrep"
+  "fzf": {
+    "apt": "fzf",
+    "brew": "fzf",
+    "nix": "nixpkgs.fzf",
+    "pacman": "fzf"
   },
-  "lua":{
-    "apt": "lua",
-    "brew": "lua",
-    "nix": "nixpkgs.lua",
-    "pacman": "lua"
+  "git": {
+    "apt": "git",
+    "brew": "git",
+    "nix": "nixpkgs.git",
+    "pacman": "git"
   },
-  "luarocks":{
-    "apt": "luarocks",
-    "brew": "luarocks",
-    "nix": "nixpkgs.luajitPackages.luarocks",
-    "pacman": "luarocks"
+  "gh": {
+    "apt": "gh",
+    "brew": "gh",
+    "nix": "nixpkgs.gh",
+    "pacman": "github-cli"
   },
-  "java":{
-    "apt": "openjdk-17-jdk-headless",
-    "brew": "oracle-jdk",
-    "nix": "nixpkgs.jdk",
-    "pacman": "jdk17-openjdk"
-  },
-  "lsd":{
-    "apt": "lsd",
-    "brew": "lsd",
-    "nix": "nixpkgs.lsd",
-    "pacman": "lsd"
-  },
-  "glow":{
+  "glow": {
     "apt": "glow",
     "brew": "glow",
     "nix": "nixpkgs.glow",
     "pacman": "glow"
   },
-  "terminal": {
-    "apt": "alacritty",
-    "brew": "iterm2",
-    "nix": "nixpkgs.alacritty",
-    "pacman": "alacritty"
+  "grip": {
+    "apt": "grip",
+    "brew": "grip",
+    "nix": "nixpkgs.grip",
+    "pacman": ""
   },
-  "zsh": {
-    "apt": "zsh",
-    "brew": "zsh",
-    "nix": "nixpkgs.zsh",
-    "pacman": "zsh"
+  "java": {
+    "apt": "openjdk-17-jdk-headless",
+    "brew": "oracle-jdk",
+    "nix": "nixpkgs.jdk",
+    "pacman": "jdk17-openjdk"
   },
-  "rectangle": {
-    "brew": "rectangle",
-    "app": "Rectangle.app"
+  "lazygit": {
+    "apt": "",
+    "brew": "jesseduffield/lazygit/lazygit",
+    "nix": "nixpkgs.lazygit",
+    "pacman": "lazygit"
+  },
+  "lsd": {
+    "apt": "lsd",
+    "brew": "lsd",
+    "nix": "nixpkgs.lsd",
+    "pacman": "lsd"
+  },
+  "lua": {
+    "apt": "lua",
+    "brew": "lua",
+    "nix": "nixpkgs.lua",
+    "pacman": "lua"
+  },
+  "luarocks": {
+    "apt": "luarocks",
+    "brew": "luarocks",
+    "nix": "nixpkgs.luajitPackages.luarocks",
+    "pacman": "luarocks"
   },
   "neovim": {
     "apt": "neovim",
@@ -129,16 +83,76 @@
     "nix": "nixpkgs.neovim",
     "pacman": "neovim"
   },
-  "ruby": {
-    "apt": 
-    "brew": "null",
-    "nix": 
-    "pacman":
+  "node": {
+    "apt": "nodejs",
+    "brew": "node",
+    "nix": "nixpkgs.nodejs",
+    "pacman": "nodejs"
   },
-  "grip": {
-    "apt": "grip",
-    "brew": "grip",
-    "nix": "nixpkgs.grip",
-    "pacman": 
+  "python3": {
+    "apt": "python3",
+    "brew": "python@3.11",
+    "nix": "nixpkgs.python311",
+    "pacman": "python"
+  },
+  "rectangle": {
+    "app": "Rectangle.app",
+    "brew": "rectangle"
+  },
+  "rg": {
+    "apt": "ripgrep
+
+",
+    "brew": "ripgrep",
+    "nix": "nixpkgs.ripgrep",
+    "pacman": "ripgrep"
+  },
+  "signal": {
+    "apt": "",
+    "brew": "signal",
+    "nix": "nixpkgs.signal-desktop",
+    "pacman": "signal-desktop"
+  },
+  "stow": {
+    "apt": "stow",
+    "brew": "stow",
+    "nix": "nixpkgs.stow",
+    "pacman": "stow"
+  },
+  "terminal": {
+    "apt": "alacritty",
+    "brew": "iterm2",
+    "nix": "nixpkgs.alacritty",
+    "pacman": "alacritty"
+  },
+  "trash": {
+    "apt": "trash-cli",
+    "brew": "trash-cli",
+    "nix": "nixpkgs.trash-cli",
+    "pacman": "trash-cli"
+  },
+  "wget": {
+    "apt": "wget",
+    "brew": "wget",
+    "nix": "nixpkgs.wget",
+    "pacman": "wget"
+  },
+  "zsh": {
+    "apt": "zsh",
+    "brew": "zsh",
+    "nix": "nixpkgs.zsh",
+    "pacman": "zsh"
+  },
+  "ruby": {
+    "apt": "",
+    "brew": "null",
+    "nix": "",
+    "pacman": ""
+  },
+  "clip-util": {
+    "apt": "xclip",
+    "brew": "",
+    "nix": "nixpkgs.xclip",
+    "pacman": "xclip"
   }
 }

@@ -4,6 +4,92 @@
 system="$(uname -s)"
 messages=()
 
+function antidote_install {
+  # Antidote zsh plugin manager
+  brew install antidote
+}
+
+function cloneme {
+  # Clone .dotfiles
+  echo "Cloning /.dotfiles" \
+    && cd ~/ \
+    && git clone https://github.com/bschultz1990/.dotfiles
+
+  # Clone nvim repo
+  echo "Cloning nvim config." \
+    && cd ~/.config \
+    && git clone --depth 1 https://github.com/bschultz1990/nvim
+
+  # Clone notes
+  echo "Cloning notes" \
+    && cd ~/Documents/ \
+    && git clone https://github.com/bschultz1990/notes
+  }
+
+  function get_terminal {
+    if [ "$(uname -s)" = "Linux" ] && [ "$option" = "apt" ]; then
+      flatpak install flathub org.wezfurlong.wezterm
+      flatpak run org.wezfurlong.wezterm
+    fi
+    pkginstall terminal
+  }
+
+  function getnf {
+	cd "$HOME/Apps" || return \
+		&& git clone https://github.com/ronniedroid/getnf.git \
+		&& cd getnf \
+		&& ./install.sh
+  }
+
+  function lazygit_install {
+    if ! manager_check; then
+      echo "manager_check failed."
+      return
+    fi
+    if [ "$option" = "apt" ]; then
+      messages+=("LAZYGIT_INSTALL: \nlazygit is not available on 'apt'. \nRun 'set_manager' and choose a different package manager or visit https://github.com/jesseduffield/lazygit for more installation options.")
+      return
+    fi
+    pkginstall lazygit
+  }
+
+  function macs_fan_install {
+    brew install --cask macs-fan-control
+    open "/Applications/Macs Fan Control"
+  }
+
+  function manager_check {
+    if [ "$option" = "" ]; then
+      echo "Package manager not set. Run 'set_manager to continue. Aborting."
+      return 1
+    fi
+    return 0
+  }
+
+  function pkginstall {
+    echo ""
+    # Exit if 'jq' isn't installed
+    if ! which "jq" &> /dev/null; then
+      echo "FATAL: 'jq' is not installed. Please install before running this script again."
+      exit
+    fi
+
+    manager_check
+
+    package=$(jq -r ".[\"$1\"].\"$option\"" packages.json)
+
+  # Quickly abort installation on installed apps using Mac:
+  app=$(jq -r ".[\"$1\"].app" packages.json)
+  [ "$app" != null ] && echo "Checking for" "$app" "in /Applications first..."
+  if command -v "$1" >/dev/null 2>&1 || [ -e "/Applications/""$app" ]; then
+    echo "$1 is already installed. Skipping install of $package"
+  else
+    echo "Installing package: $package ..."
+    [ "$2" == "--cask" ] && [ "$system" == "Darwin" ] && install_command+=( "$2" )
+    ${install_command[@]} "$package" "${suffix[@]}"
+  fi
+}
+
 function set_manager {
   # TODO: Add an 'are you sure?' prompt before making a final choice.
   # TODO: Add a safety on old Betsy. Actually check for the platform
@@ -54,37 +140,24 @@ done
   echo "Your update command is" "${update_command[@]}"
 }
 
-function pkginstall {
-  echo ""
-  # Exit if 'jq' isn't installed
-  if ! which "jq" &> /dev/null; then
-    echo "FATAL: 'jq' is not installed. Please install before running this script again."
-    exit
-  fi
-
-  manager_check
-
-  package=$(jq -r ".[\"$1\"].\"$option\"" packages.json)
-
-  # Quickly abort installation on installed apps using Mac:
-  app=$(jq -r ".[\"$1\"].app" packages.json)
-  [ "$app" != null ] && echo "Checking for" "$app" "in /Applications first..."
-  if command -v "$1" >/dev/null 2>&1 || [ -e "/Applications/""$app" ]; then
-    echo "$1 is already installed. Skipping install of $package"
-  else
-    echo "Installing package: $package ..."
-    [ "$2" == "--cask" ] && [ "$system" == "Darwin" ] && install_command+=( "$2" )
-    ${install_command[@]} "$package" "${suffix[@]}"
-  fi
+function showmsgs {
+  #Display messages from other functions.
+  for message in "${messages[@]}"; do
+    echo "$message"
+  done
 }
 
-# Create the Apps directory if it doesn't exist already.
-function set_appdir {
-  if [ ! -e "$HOME/Apps" ]; then
-    mkdir "$HOME/Apps"
-    echo "$HOME/Apps directory created!"
-  fi
-}
+function stowme {
+  # Stow the new stuff
+  echo "Stowing from .dotfiles..."
+  cd ~/.dotfiles \
+    && echo "Stowing bash..." \
+    && stow -t ~/ bash \
+    && echo "Stowing Alacritty..." \
+    && stow -t ~/ alacritty \
+    && echo "Stowing zsh..." \
+    && stow -t ~/ zsh
+  }
 
 function sys_update {
   # update Linux system
@@ -110,50 +183,20 @@ function sys_update {
     fi
     echo "Brew installed! Making sure it's ready to Brew..."
     brew update && brew upgrade && brew doctor
-    brew install --cask macs-fan-control
-    open "/Applications/Macs Fan Control"
 
-    # Antidote zsh plugin manager
-    brew install antidote git-credential-manager-core
   fi
 }
 
-function get_terminal {
-  if [ "$(uname -s)" = "Linux" ] && [ "$option" = "apt" ]; then
-    flatpak install flathub org.wezfurlong.wezterm
-    flatpak run org.wezfurlong.wezterm
-  fi
-  pkginstall terminal
+function trashconfigs {
+  # Trash existing configs
+  echo "Trashing existing configs. Recover using 'trash-restore'"
+  cd ~/ || return
+  trash ~/.bashrc
+  trash ~/.zshrc
+  trash ~/.zsh_plugins.txt
+  trash ~/.zsh_plugins.zsh
+  cd ~/.config || return
+  trash kitty
+  trash alacritty
+  trash nvim
 }
-
-function lazygit_install {
-  if ! manager_check; then
-    echo "manager_check failed."
-    return
-  fi
-  if [ "$option" = "apt" ]; then
-    messages+=("LAZYGIT_INSTALL: \nlazygit is not available on 'apt'. \nRun 'set_manager' and choose a different package manager or visit https://github.com/jesseduffield/lazygit for more installation options.")
-    return
-  fi
-  pkginstall lazygit
-}
-
-function manager_check {
-  if [ "$option" = "" ]; then
-    echo "Package manager not set. Run 'set_manager to continue. Aborting."
-    return 1
-  fi
-  return 0
-}
-
-function showmsgs {
-  #Display messages from other functions.
-  for message in "${messages[@]}"; do
-    echo "$message"
-  done
-}
-
-function hello {
-  echo "Hello! I'm not supposed to run if jq is not installed. Teehee!"
-}
-
