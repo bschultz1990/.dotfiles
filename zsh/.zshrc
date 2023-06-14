@@ -205,6 +205,7 @@ function colorband {
 
 
 # Custom PATH Additions
+export PATH="/usr/local/Cellar/node/20.2.0/:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Apps:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
