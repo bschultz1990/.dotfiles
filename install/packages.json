@@ -9,7 +9,7 @@
     "apt": "universal-ctags",
     "brew": "universal-ctags",
     "nix": "nixpkgs.universal-ctags",
-    pacman: "ctags"
+    "pacman": "ctags"
   },
   "curl": {
     "apt": "curl",
@@ -46,12 +46,6 @@
     "brew": "glow",
     "nix": "nixpkgs.glow",
     "pacman": "glow"
-  },
-  "grip": {
-    "apt": "grip",
-    "brew": "grip",
-    "nix": "nixpkgs.grip",
-    "pacman": ""
   },
   "java": {
     "apt": "openjdk-17-jdk-headless",
