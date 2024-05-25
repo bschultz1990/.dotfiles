@@ -43,8 +43,7 @@ fi
 
 # Install pip
 cd "$HOME/Apps" || return
-curl -fLo ~/Apps/get-pip.py
-https://bootstrap.pypa.io/get-pip.py
+curl -fLo ~/Apps/get-pip.py https://bootstrap.pypa.io/get-pip.py
 sudo chmod u+rwx ~/Apps/get-pip.py
 
 # Install pynvim through pip
