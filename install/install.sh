@@ -69,7 +69,7 @@ pkginstall fd
 pkginstall rg
 pkginstall lua
 pkginstall luarocks
-pkginstall java
+# pkginstall java
 pkginstall neovim
 cargo install tree-sitter-cli
 
@@ -83,15 +83,14 @@ fi
 # brew install composer
 
 echo "Installing extra applications..."
-brew install lsd
-brew install glow
-brew install signal
 
 # Mac Specific Apps
 if [ "$(uname -s)" = "Darwin" ]; then
+	brew install lsd
+	brew install glow
+	brew install signal
 	brew install --cask rectangle
 	brew install --cask iterm2
-	brew install --cask ao # Microsoft To Do Client
 	open "/Applications/Rectangle.app"
 fi
 
