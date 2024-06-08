@@ -1,10 +1,17 @@
 #!/bin/bash
 
+sessions()
+{
+  c ~/Documents/vim_sessions/
+  nvim -S $(fzf)
+}
+
 update()
 {
 	sudo apt update
 	sudo apt upgrade -y
-  #
+  sudo apt autoremove
+
 	# Update NeoVim
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 	chmod u+x nvim.appimage
@@ -20,7 +27,6 @@ c() {
 b() {
   clear
 	cd ..
-  pwd
 	ls -a1
 }
 
