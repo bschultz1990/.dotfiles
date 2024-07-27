@@ -22,7 +22,7 @@ update()
 	sudo apt update
 	sudo apt upgrade -y
   sudo apt autoremove
-  flatpak update
+  flatpak update -y
 
 	# Update NeoVim
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
