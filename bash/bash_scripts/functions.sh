@@ -43,4 +43,14 @@ b() {
 	ls -a1
 }
 
+notes() {
+  if ! [ -d ~/Documents/notes/ ]; then
+    cd ~/Documents/
+    gh repo clone notes
+  fi
+  cd ~/Documents/notes
+  git pull
+  nvim +"Telescope find_files"
+}
+
 alias q='clear'
