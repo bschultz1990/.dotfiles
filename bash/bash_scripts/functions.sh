@@ -45,10 +45,10 @@ b() {
 
 notes() {
   if ! [ -d ~/Documents/notes/ ]; then
-    cd ~/Documents/
+    cd ~/Documents/ || return
     gh repo clone notes
   fi
-  cd ~/Documents/notes
+  cd ~/Documents/notes || return
   git pull
   nvim +"Telescope find_files"
 }
