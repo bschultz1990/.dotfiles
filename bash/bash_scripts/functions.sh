@@ -46,7 +46,7 @@ b() {
 notes() {
   if ! [ -d ~/Documents/notes/ ]; then
     cd ~/Documents/ || return
-    gh repo clone notes
+    glab repo clone notes
   fi
   cd ~/Documents/notes || return
   git pull
