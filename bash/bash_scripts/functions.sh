@@ -10,13 +10,6 @@ paths_edit()
   nvim ~/.dotfiles/bash/bash_scripts/paths.sh
 }
 
-# load neovim sessions
-sessions()
-{
-  c ~/Documents/vim_sessions/
-  nvim -S "$(fzf)"
-}
-
 update()
 {
 	sudo apt update
@@ -24,10 +17,12 @@ update()
   sudo apt autoremove
   flatpak update -y
 
+  readonly nvim_filename='nvim-linux-x86_64.appimage'
+
 	# Update NeoVim
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-	chmod u+x nvim.appimage
-	sudo mv nvim.appimage /usr/local/bin/nvim
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/$nvim_filename
+	chmod u+x $nvim_filename
+	sudo mv $nvim_filename /usr/local/bin/nvim
   nvim --version
 }
 
