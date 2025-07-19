@@ -1,15 +1,5 @@
 #!/bin/bash
 
-paths()
-{
-  fzf < <(cat ~/.dotfiles/bash/bash_scripts/paths.sh)
-}
-
-paths_edit()
-{
-  nvim ~/.dotfiles/bash/bash_scripts/paths.sh
-}
-
 update()
 {
 	sudo apt update
