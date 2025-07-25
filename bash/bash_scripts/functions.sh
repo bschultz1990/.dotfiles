@@ -18,7 +18,7 @@ update()
 
 c() {
   clear
-  cd "$1" || return
+  cd "$1" || cd . || return
   ls -a1
 }
 
