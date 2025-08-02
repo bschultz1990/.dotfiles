@@ -53,6 +53,7 @@ echo "Configuring Neovim..."
 git clone https://github.com/NvChad/starter ~/.config/nvim
 sudo rm -r ~/.config/nvim/.git/
 gh repo clone nvim ~/.config/nvim/lua/user
+xdg-open ~/.config/nvim/lua/user/readme.md
 vi ~/.config/nvim/init.lua
 
 echo "All done! :) Restart to bask in the full glory of your updates."
