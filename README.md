@@ -29,7 +29,7 @@ sudo dnf install broadcom-wl -y
 echo "Installing extras..."
 sudo dnf install neovim npm fzf glab konsole gh glab fastfetch cascadia-mono-nf-fonts tldr -y
 
-echo "Installing .dotfiles and updating ~/.bashrc..."
+echo "Installing .dotfiles and configuring ~/.bashrc..."
 gh auth login
 cd ~/
 gh repo clone .dotfiles
