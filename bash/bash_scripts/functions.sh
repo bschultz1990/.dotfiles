@@ -2,15 +2,15 @@
 
 update()
 {
-	sudo dnf update -y
-	sudo dnf upgrade -y
-  sudo dnf clean all -y
-  sudo dnf autoremove -y
-  flatpak update -y
+	sudo pamac update
+	sudo pamac upgrade
+  sudo pamac clean all
+  # sudo pamac autoremove
+  flatpak update
 
   # readonly nvim_filename='nvim-linux-x86_64.appimage'
 
-	# Update NeoVim
+	# Update Neovim
 	# curl -LO https://github.com/neovim/neovim/releases/latest/download/$nvim_filename
 	# chmod u+x $nvim_filename
 	# sudo mv $nvim_filename /usr/local/bin/nvim

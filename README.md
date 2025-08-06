@@ -27,7 +27,7 @@ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-rele
 sudo dnf install broadcom-wl -y
 
 echo "Installing extras..."
-sudo dnf install neovim fzf glab konsole gh glab fastfetch cascadia-mono-nf-fonts tldr -y
+sudo dnf install neovim npm fzf glab konsole gh glab fastfetch cascadia-mono-nf-fonts tldr -y
 
 echo "Installing .dotfiles and updating ~/.bashrc..."
 gh auth login
