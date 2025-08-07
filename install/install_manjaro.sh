@@ -1,14 +1,9 @@
 #!/usr/bin/bash
 
 # Enter your name and email for git config later
-echo "Enter your name:"
-read user_name
-
-echo "Enter your email:"
-read user_email
-
-echo "Name: $user_name"
-echo "Email: $user_email"
+echo "Enter your name:"; read user_name
+echo "Enter your email:"; read user_email
+echo "Name: $user_name"; echo "Email: $user_email"
 
 
 echo "Enabling the AUR and Flatpacks..."
@@ -16,7 +11,7 @@ sleep 1
 sudo sed -i '/EnableAUR\|CheckAURUpdates\|CheckFlatpakUpdates\|EnableFlatpak/s/^#//' /etc/pamac.conf
 
 
-echo "Cleaning up and installing fan control..."
+echo "Installing Fan Control..."
 sudo pamac install macfanctld --no-confirm
 sleep 1
 sudo sed -i '/fan_min/s/\(: \).*/\13500/g' /etc/macfanctl.conf
@@ -58,6 +53,7 @@ echo "nvim:";sudo pamac install nvim --no-confirm
 echo "fzf";sudo pamac install fzf --no-confirm
 echo "xclip";sudo pamac install xclip --no-confirm
 echo "npm";sudo pamac install npm --no-confirm
+echo "ripgrep";sudo pamac install ripgrep --no-confirm
 echo "tree-sitter";sudo pamac install tree-sitter tree-sitter-cli --no-confirm
 
 
@@ -72,7 +68,7 @@ sed -i '/import = \"plugins\"/a \{ import = \"user.plugins\" \}' ~/.config/nvim/
 
 echo "Installing other apps..."
 sleep 1
-sudo pamac install fastfetch getnf --no-confirm
+sudo pamac install fastfetch getnf gnome-font-viewer --no-confirm
 
 
 echo "Downloading notes..."
@@ -83,3 +79,6 @@ echo "Installing starship prompt..."
 sudo pamac install starship --no-confirm
 echo 'eval "$(starship init bash)"
 export STARSHIP_CONFIG=~/.dotfiles/starship/starship.toml' >> ~/.bashrc
+
+echo "Installing Typst and friends..."
+sudo pamac install typst
