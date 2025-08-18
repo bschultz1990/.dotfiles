@@ -86,3 +86,7 @@ export STARSHIP_CONFIG=~/.dotfiles/starship/starship.toml' >> ~/.bashrc
 
 echo "Installing Typst and friends..."
 sudo pamac install typst
+
+echo "Installing pipx and pyrefly"
+sudo pamac install python-pipx
+pipx install pyrefly

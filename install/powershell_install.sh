@@ -1,4 +1,3 @@
-###################################
 # Prerequisites
 
 # Update the list of packages

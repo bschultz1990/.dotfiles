@@ -1,4 +1,3 @@
-
 # Find anything anywhere and open in Neovim.
 function f {
 	fdfind . '/home/bens/' --type f --hidden --exclude .git | fzf --preview-window right | xargs nvim

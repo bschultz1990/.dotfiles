@@ -11,7 +11,6 @@ sudo systemctl start mbpfan
 
 echo "Uninstalling LibreOffice and Updating System..."
 sudo dnf remove *libreoffice* -y
-
 echo "Performing a full system upgrade..."
 sleep 1
 kill $(pgrep firefox)
@@ -22,16 +21,16 @@ echo "Configuring git, gh, and glab..."
 sudo dnf install glab gh
 
 echo "Installing .dotfiles and configuring ~/.bashrc..."
-cd ~/
+cd ~/ || exit
 gh repo clone .dotfiles
-echo '
+echo "
 
 # Bash Scripts
 if [ -d ~/.dotfiles/bash/bash_scripts/ ]; then
     for file in ~/.dotfiles/bash/bash_scripts/*; do
         . $file
     done
-fi' >> ~/.bashrc
+fi" >> ~/.bashrc
 
 echo "Installing Neovim and friends..."
 sleep 1
