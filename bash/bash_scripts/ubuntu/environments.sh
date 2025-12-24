@@ -1,0 +1,1 @@
+export WORK_COMPUTER=0
