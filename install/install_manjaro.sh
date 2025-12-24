@@ -44,8 +44,8 @@ gh repo clone .dotfiles
 echo '
 
 # Bash Scripts
-if [ -d ~/.dotfiles/bash/bash_scripts/ ]; then
-    for file in ~/.dotfiles/bash/bash_scripts/*; do
+if [ -d ~/.dotfiles/bash/bash_scripts/manjaro/ ]; then
+    for file in ~/.dotfiles/bash/bash_scripts/manjaro/*; do
         . $file
     done
 fi' >> ~/.bashrc
@@ -60,15 +60,6 @@ echo "npm";sudo pamac install npm --no-confirm
 echo "ripgrep";sudo pamac install ripgrep --no-confirm
 echo "tree-sitter";sudo pamac install tree-sitter tree-sitter-cli --no-confirm
 
-
-echo "Configuring Neovim..."
-echo ""
-sleep 1
-git clone https://github.com/NvChad/starter ~/.config/nvim
-sudo rm -r ~/.config/nvim/.git
-gh repo clone nvim ~/.config/nvim/lua/user -- --depth=1
-sed -i '/require \"mappings\"/a require \"user.init\"' ~/.config/nvim/init.lua
-sed -i '/import = \"plugins\"/a \{ import = \"user.plugins\" \}' ~/.config/nvim/init.lua
 
 echo "Installing other apps..."
 sleep 1
