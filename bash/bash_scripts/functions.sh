@@ -2,13 +2,13 @@
 
 update()
 {
-  echo "Updating system..."
+  echo "UPDATING SYSTEM..."
 	pamac update --no-confirm
 	pamac upgrade --no-confirm
-  echo "Cleaning local packages..."
+  echo "CLEANING LOCAL PACKAGES..."
   pamac clean all
   pamac remove -o
-  echo "Cleaning flatpak packages..."
+  echo "CLEANING FLATPAK PACKAGES..."
   flatpak update --noninteractive
   flatpak uninstall --unused --noninteractive
 }
