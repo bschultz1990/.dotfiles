@@ -31,12 +31,17 @@ echo "
 
 
 # Bash Scripts
-if [ -d ~/.dotfiles/bash/bash_scripts/ ]; then
-    for file in ~/.dotfiles/bash/bash_scripts/*; do
+if [ -d ~/.dotfiles/bash/bash_scripts/fedora/ ]; then
+    for file in ~/.dotfiles/bash/bash_scripts/fedora/*; do
+        . $file
+    done
+fi
+
+if [ -d ~/.dotfiles/bash/bash_scripts/base/ ]; then
+    for file in ~/.dotfiles/bash/bash_scripts/base/*; do
         . $file
     done
 fi" >> ~/.bashrc
-
 
 echo "Installing Neovim and friends..."
 sleep 1
