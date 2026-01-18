@@ -11,6 +11,15 @@ b() {
   ls -a1
 }
 
+update_neovim() {
+  nvim_filename='nvim-linux-x86_64.appimage'
+
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/$nvim_filename
+	chmod u+x $nvim_filename
+	sudo mv $nvim_filename /usr/local/bin/nvim
+  nvim --version
+}
+
 notes() {
   if ! requirements "glab" "nvim"; then
     return

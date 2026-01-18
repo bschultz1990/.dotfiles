@@ -4,12 +4,6 @@
 system="$(uname -s)"
 messages=()
 
-function antidote_install {
-  # Antidote zsh plugin manager
-  brew install antidote
-  return
-}
-
 function cloneme {
   # Clone .dotfiles
   echo "Cloning /.dotfiles"

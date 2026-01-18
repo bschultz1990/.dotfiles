@@ -1,4 +1,5 @@
 #!/bin/bash
+source ./../base/functions.sh
 
 msg()
 {
@@ -18,14 +19,6 @@ update()
   msg "CLEANING FLATPAK PACKAGES"
   flatpak update --noninteractive
   flatpak uninstall --unused --noninteractive
-}
 
-# update_neovim() {
-#   readonly nvim_filename='nvim-linux-x86_64.appimage'
-#
-# 	Update Neovim
-# 	curl -LO https://github.com/neovim/neovim/releases/latest/download/$nvim_filename
-# 	chmod u+x $nvim_filename
-# 	sudo mv $nvim_filename /usr/local/bin/nvim
-#   nvim --version
-# }
+  update_neovim 
+}

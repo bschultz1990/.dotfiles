@@ -39,9 +39,9 @@ gh auth login
 glab auth login
 
 echo "Installing .dotfiles and configuring ~/.bashrc..."
-cd ~/
+cd "$HOME" || exit 1
 gh repo clone .dotfiles
-echo '
+echo "
 
 # Bash Scripts
 if [ -d ~/.dotfiles/bash/bash_scripts/manjaro/ ]; then
@@ -54,7 +54,7 @@ if [ -d ~/.dotfiles/bash/bash_scripts/base/ ]; then
     for file in ~/.dotfiles/bash/bash_scripts/base/*.sh; do
         . $file
     done
-fi'>> ~/.bashrc
+fi">> ~/.bashrc
 
 
 echo "Installing Neovim and friends..."

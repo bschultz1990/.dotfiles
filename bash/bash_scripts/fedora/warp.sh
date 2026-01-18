@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly sessions='/home/bens/Documents/nvim_sessions/sessions.txt'
+sessions='/home/bens/Documents/nvim_sessions/sessions.txt'
 
 Warp()
 {

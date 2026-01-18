@@ -1,13 +1,13 @@
 #!/bin/bash
 
-readonly sessions='/home/bens/Documents/nvim_sessions/sessions.txt'
+sessions="$HOME/Documents/nvim_sessions/sessions.txt"
 
 Warp()
 {
   if ! requirements "fzf"; then
     return
   else
-    cd $(cat $sessions | fzf)
+    cd "$(cat "$sessions" | fzf)" || exit 1
   fi
 }
 
@@ -17,6 +17,6 @@ WarpEdit()
   if ! requirements "nvim"; then
     return
   else
-    nvim $sessions
+    nvim "$sessions"
   fi
 }

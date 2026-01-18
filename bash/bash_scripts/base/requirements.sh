@@ -1,14 +1,12 @@
 #!/usr/bin/bash
-# Check for installed apps on Linux. Return 1 if any aren't installed.
-# Inform the user which ones need to be installed yet.
-
-# Call like this:
 # if ! requirements "list" "of" "apps"; then
 #   return
 # else
 #   do stuff
 # fi
-
+#
+# Checks for installed apps on Linux. Return 1 if any aren't installed.
+# Inform the user which ones need to be installed yet.
 function requirements ()
 {
   notinstalled=()

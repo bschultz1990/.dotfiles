@@ -1,0 +1,35 @@
+#!/bin/bash
+source ./../bash/bash_scripts/base/requirements.sh
+source ./../bash/bash_scripts/base/functions.sh
+
+echo "Installing prerequisites"
+
+sudo apt install macfanctld
+sudo apt install git curl wget
+sudo apt install glab gh
+# gh auth login
+# glab auth login
+sudo apt install fzf
+sudo apt install ripgrep
+sudo apt install wget
+sudo apt install xclip
+
+update_neovim 
+
+
+# Install Font Manager
+sudo apt install font-manager
+cd "$HOME/Downloads" || exit
+font_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip"
+font_zip_name="${font_url##*/}"
+wget "$font_zip_name"
+echo "Installing $font_zip_name and refreshing font cache..."
+
+font-manager -i 
+fc-cache -fv
+
+
+echo "MANUALLY install NodeJS and npm"
+echo "Redirecting to 'https://nodesource.com/products/distributions'"
+echo "For more updated instructions"
+nohup xdg-open "https://nodesource.com/products/distributions" >/dev/null 2>&1 &
