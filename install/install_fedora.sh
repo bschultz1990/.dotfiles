@@ -25,7 +25,7 @@ sudo dnf install glab gh
 
 
 echo "Installing .dotfiles and configuring ~/.bashrc..."
-cd ~/ || exit
+cd ~/ || return
 gh repo clone .dotfiles
 echo "
 

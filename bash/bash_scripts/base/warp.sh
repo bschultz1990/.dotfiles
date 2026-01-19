@@ -4,10 +4,10 @@ sessions="$HOME/Documents/nvim_sessions/sessions.txt"
 
 Warp()
 {
-  if ! requirements "fzf"; then
+  if ! requirements "fzf" "sed"; then
     return
   else
-    cd "$(cat "$sessions" | fzf)" || exit 1
+    cd "$(eval echo $(cat "$sessions" | fzf))"
   fi
 }
 

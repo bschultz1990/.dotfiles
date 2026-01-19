@@ -39,7 +39,7 @@ gh auth login
 glab auth login
 
 echo "Installing .dotfiles and configuring ~/.bashrc..."
-cd "$HOME" || exit 1
+cd "$HOME" || return 1
 gh repo clone .dotfiles
 echo "
 
