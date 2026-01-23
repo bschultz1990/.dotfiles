@@ -3,6 +3,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/../bash/bash_scripts/base/requirements.sh"
 source "$SCRIPT_DIR/../bash/bash_scripts/base/functions.sh"
+source "$SCRIPT_DIR/../install/write_bashrc.sh"
 
 echo "Installing prerequisites"
 
@@ -36,27 +37,4 @@ echo "Redirecting to 'https://nodesource.com/products/distributions'"
 echo "For more updated instructions"
 nohup xdg-open "https://nodesource.com/products/distributions" >/dev/null 2>&1 &
 
-
-
-write_bashrc () {
-  if ! requirements "rg"; then return; fi
-
-  script_directory=$(realpath "$(dirname "$0")")
-  echo "Working in: $script_directory"
-
-  if [ ! -f ~/.bashrc ]; then
-    echo "Creating ~/.bashrc file"
-    touch ~/.bashrc
-    chmod u+x ~/.bashrc
-  fi
-
-  if rg '# Bash Scripts' ~/.bashrc -q; then
-    return
-  fi
-
-  echo "Writing to .bashrc"
-  cat "$script_directory/ubuntu_bashrc_snippet.sh" >> ~/.bashrc
-}
-
 write_bashrc
-
