@@ -11,6 +11,10 @@ b() {
   ls -a1
 }
 
+f() {
+  nvim "$(fzf)"
+}
+
 update_neovim() {
   nvim_filename='nvim-linux-x86_64.appimage'
 

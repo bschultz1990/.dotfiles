@@ -13,7 +13,7 @@ write_snippet () {
 
 
 write_bashrc () {
-  if ! requirements "rg"; then return; fi
+  if ! requirements "rg" "touch" "echo" "realpath" "dirname"; then return; fi
 
   script_dir=$(realpath "$(dirname "$0")")
 
