@@ -65,6 +65,8 @@ install_node () {
   nohup xdg-open "https://nodesource.com/products/distributions" >/dev/null 2>&1 &
 }
 
+install_node
+
 write_bashrc () {
   cat "
   # DOTFILES_BASE_SNIPPET_START
