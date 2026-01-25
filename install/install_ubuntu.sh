@@ -7,10 +7,6 @@ source "$SCRIPT_DIR/../install/write_bashrc.sh"
 
 echo "Installing prerequisites"
 
-sudo apt install macfanctld
-sudo apt install git curl wget
-sudo apt install glab gh
-# gh auth login
 # glab auth login
 sudo apt install fzf
 sudo apt install ripgrep
