@@ -3,19 +3,22 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/../bash/bash_scripts/base/requirements.sh"
 source "$SCRIPT_DIR/../bash/bash_scripts/base/functions.sh"
-source "$HOME/.dotfiles/install/write_bashrc.sh"
 
 echo "Installing prerequisites"
 
-# glab auth login
 sudo apt install fzf -y
 sudo apt install ripgrep -y
 sudo apt install wget -y
 sudo apt install xclip -y
+sudo apt install golang -y
 
 update_neovim 
 
-marker="$(pwd)"
+# marker="$(pwd)"
+
+cd "$HOME/"
+gh repo clone .dotfiles
+source "$HOME/.dotfiles/install/write_bashrc.sh"
 
 cd ~/.config
 gh repo clone nvim
@@ -36,5 +39,5 @@ echo "Redirecting to 'https://nodesource.com/products/distributions'"
 echo "For more updated instructions"
 nohup xdg-open "https://nodesource.com/products/distributions" >/dev/null 2>&1 &
 
-cd "$marker"
+# cd "$marker"
 write_bashrc
