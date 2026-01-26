@@ -1,6 +1,8 @@
 #!/bin/bash
 
 sudo apt install macfanctld -y
+sudo apt update
+sudo apt upgrade -y
 sudo apt install broadcom-sta-dkms -y
 sudo apt install git -y
 sudo apt install curl -y
