@@ -9,4 +9,5 @@ gh auth login
 cd ~/
 gh repo clone .dotfiles
 cd ~/.dotfiles/install
-bash install_ubuntu.sh
+pwd
+echo "Copy this path and cd into it to run the Ubuntu install script."
