@@ -8,10 +8,10 @@ source "$SCRIPT_DIR/../install/write_bashrc.sh"
 echo "Installing prerequisites"
 
 # glab auth login
-sudo apt install fzf
-sudo apt install ripgrep
-sudo apt install wget
-sudo apt install xclip
+sudo apt install fzf -y
+sudo apt install ripgrep -y
+sudo apt install wget -y
+sudo apt install xclip -y
 
 update_neovim 
 
