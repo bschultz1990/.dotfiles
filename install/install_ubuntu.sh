@@ -41,3 +41,7 @@ nohup xdg-open "https://nodesource.com/products/distributions" >/dev/null 2>&1 &
 
 # cd "$marker"
 write_bashrc
+
+cd ~/Documents/
+glab auth login
+glab repo clone notes
