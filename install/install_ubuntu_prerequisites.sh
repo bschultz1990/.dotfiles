@@ -1,10 +1,10 @@
 #!/bin/bash
 
-sudo apt install macfanctld
-sudo apt install broadcom-sta-dkms
-sudo apt install git curl wget
-sudo apt install gh
-sudo apt install glab
+sudo apt install macfanctld -y
+sudo apt install broadcom-sta-dkms -y
+sudo apt install git curl wget -y
+sudo apt install gh -y
+sudo apt install glab -y
 gh auth login
 cd ~/
 gh repo clone .dotfiles
