@@ -27,7 +27,7 @@ n() {
 
 d() { 
   if ! requirements "fdfind"; then return; fi
-  cd "$(fdfind -type d | fzf)" || return
+  cd "$(fdfind --type d | fzf)" || return
 }
 
 update_neovim() {
