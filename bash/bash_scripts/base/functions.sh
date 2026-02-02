@@ -37,6 +37,11 @@ update_neovim() {
   chmod u+x $nvim_filename
   sudo mv $nvim_filename /usr/local/bin/nvim
   nvim --version
+
+  wget https://github.com/neovide/neovide/releases/latest/download/neovide.AppImage
+  chmod u+x neovide.AppImage
+  sudo mv neovide.AppImage /usr/local/bin/neovide
+  neovide --version
 }
 
 notes() {

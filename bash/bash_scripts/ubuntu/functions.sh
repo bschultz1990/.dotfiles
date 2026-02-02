@@ -14,7 +14,7 @@ update()
     echo "CLEANING LOCAL PACKAGES..."
     sudo apt autoremove
     echo "CLEANING SNAP PACKAGES..."
-    snap refresh
+    # snap refresh
     #TODO: Is there a way to clean up unused snaps?
     update_neovim
   fi
