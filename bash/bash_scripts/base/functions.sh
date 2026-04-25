@@ -26,24 +26,8 @@ n() {
 }
 
 d() { 
-  if ! requirements "fdfind"; then return; fi
+  if ! requirements "fdfind" "fzf"; then return; fi
   cd "$(fdfind --type d | fzf)" || return
-}
-
-update_neovim() {
-  nvim_filename='nvim-linux-x86_64.appimage'
-
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/$nvim_filename
-  chmod u+x $nvim_filename
-  sudo mv $nvim_filename /usr/local/bin/nvim
-  nvim --version
-}
-
-update_neovide(){
-  wget https://github.com/neovide/neovide/releases/latest/download/neovide.AppImage
-  chmod u+x neovide.AppImage
-  sudo mv neovide.AppImage /usr/local/bin/neovide
-  neovide --version
 }
 
 notes() {
