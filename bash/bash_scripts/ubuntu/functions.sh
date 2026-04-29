@@ -15,7 +15,6 @@ update() {
   downloadGitHubAppImage neovim/neovim 3 nvim
   downloadGitHubAppImage neovide/neovide 3 neovide
   downloadGitHubAppImage pkgforge-dev/ghostty-appimage 2 ghostty
-  downloadGitHubAppImage pkgforge-dev/ghostty-appimage 2 ghostty
   bash <(curl -sL https://git.io/go-installer)
   downloadGitHubAppImage TibixDev/winboat 2 winboat
 
