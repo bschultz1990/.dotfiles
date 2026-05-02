@@ -10,7 +10,7 @@ update() {
   sudo apt update -y
   sudo apt upgrade -y
   echo "CLEANING LOCAL PACKAGES..."
-  sudo apt autoremove
+  sudo apt autoremove -y
 
   downloadGitHubAppImage neovim/neovim 3 nvim
   downloadGitHubAppImage neovide/neovide 3 neovide

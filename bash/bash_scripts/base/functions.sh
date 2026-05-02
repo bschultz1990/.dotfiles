@@ -27,7 +27,7 @@ n() {
 
 d() { 
   if ! requirements "fdfind" "fzf"; then return; fi
-  cd "$(fdfind --type d | fzf)" || return
+  cd "$(fdfind --type d --hidden | fzf)" || return
 }
 
 notes() {
