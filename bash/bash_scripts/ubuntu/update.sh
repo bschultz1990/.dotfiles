@@ -15,7 +15,7 @@ update() {
   downloadGitHubAppImage neovim/neovim 3 nvim
   downloadGitHubAppImage neovide/neovide 3 neovide
   downloadGitHubAppImage pkgforge-dev/ghostty-appimage 2 ghostty
-  bash <(curl -sL https://git.io/go-installer)
+  wget https://git.io/go-installer.sh && chmod u+rwx go-installer.sh && bash go-installer.sh
   downloadGitHubAppImage TibixDev/winboat 2 winboat
 
   ## Lazygit start------
