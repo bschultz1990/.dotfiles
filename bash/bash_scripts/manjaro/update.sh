@@ -21,6 +21,4 @@ update()
   msg "CLEANING FLATPAK PACKAGES"
   flatpak update --noninteractive
   flatpak uninstall --unused --noninteractive
-
-  update_neovim 
 }

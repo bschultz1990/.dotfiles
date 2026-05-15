@@ -19,7 +19,7 @@ function fan() {
           sudo nvim /etc/macfanctl.conf
           break
           ;;
-        "4. Install mbpfan")
+        "4. Install macfanctld")
           sudo pamac install macfanctld
           break
           ;;

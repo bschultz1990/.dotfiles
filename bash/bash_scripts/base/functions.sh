@@ -25,9 +25,23 @@ n() {
   nvim "$(fzf)"
 }
 
-d() { 
-  if ! requirements "fdfind" "fzf"; then return; fi
-  cd "$(fdfind --type d --hidden | fzf)" || return
+d() {
+  if ! requirements "fzf"; then
+    return
+  fi
+
+  if which fd >/dev/null 2>&1; then
+    cd "$(fd --type d --hidden | fzf)" || return
+    return 0
+  fi
+
+  if which fdfind >/dev/null 2>&1; then
+    cd "$(fdfind --type d --hidden | fzf)" || return
+    return 0
+  fi
+
+  echo "Please install 'fd' or 'fdfind' to continue" >&2
+  return 1
 }
 
 notes() {
