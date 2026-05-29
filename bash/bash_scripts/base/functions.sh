@@ -66,3 +66,10 @@ gsa(){
   # Retrieved 2026-04-25, License - CC BY-SA 4.0
   find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;
 }
+
+cwd(){
+  if ! requirements "xclip"; then return
+  else
+    pwd | xclip -selection clipboard
+  fi
+}
