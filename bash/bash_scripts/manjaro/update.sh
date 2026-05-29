@@ -17,8 +17,9 @@ update()
   msg "UPDATING SYSTEM"
   sudo pacman -Syu
   msg "CLEANING LOCAL PACKAGES"
-  sudo pacman -Rsn $(pacman -Qdtq)
-  msg "CLEANING FLATPAK PACKAGES"
+  sudo pacman -Rsn "$(pacman -Qdtq)"
+  msg "UPDATING FLATPAK PACKAGES"
   flatpak update --noninteractive
+  msg "CLEANING FLATPAK PACKAGES"
   flatpak uninstall --unused --noninteractive
 }
