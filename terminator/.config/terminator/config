@@ -1,5 +1,6 @@
 [global_config]
   handle_size = 2
+  inactive_color_offset = 1.0
 [keybindings]
   split_horiz = <Primary><Shift>e
   split_vert = <Primary><Shift>o
