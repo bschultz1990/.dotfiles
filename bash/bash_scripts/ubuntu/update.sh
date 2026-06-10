@@ -6,17 +6,19 @@ source "$SCRIPT_DIR/../base/functions.sh"
 update() {
   curl -sS https://starship.rs/install.sh | sh
 
+  wget https://git.io/go-installer.sh && chmod u+rwx go-installer.sh && bash go-installer.sh
+  rm *go-installer*.sh
+  downloadGitHubAppImage neovim/neovim 3 nvim
+  downloadGitHubAppImage neovide/neovide 3 neovide
+  # downloadGitHubAppImage pkgforge-dev/ghostty-appimage 2 ghostty
+  downloadGitHubAppImage TibixDev/winboat 2 winboat
+
+
   echo "UPDATING SYSTEM..."
   sudo apt update -y
   sudo apt upgrade -y
   echo "CLEANING LOCAL PACKAGES..."
   sudo apt autoremove -y
-
-  downloadGitHubAppImage neovim/neovim 3 nvim
-  downloadGitHubAppImage neovide/neovide 3 neovide
-  downloadGitHubAppImage pkgforge-dev/ghostty-appimage 2 ghostty
-  wget https://git.io/go-installer.sh && chmod u+rwx go-installer.sh && bash go-installer.sh
-  downloadGitHubAppImage TibixDev/winboat 2 winboat
 
   ## Lazygit start------
   LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
