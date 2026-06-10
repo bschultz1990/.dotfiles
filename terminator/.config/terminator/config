@@ -10,7 +10,7 @@
 [profiles]
   [[default]]
     audible_bell = True
-    background_color = "#282c34"
+    background_color = "#27211e"
     cursor_fg_color = "#282c34"
     cursor_bg_color = "#865e3c"
     font = JetBrainsMonoNL Nerd Font Mono 12
