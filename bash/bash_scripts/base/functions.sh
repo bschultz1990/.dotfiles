@@ -67,9 +67,35 @@ gsa(){
   find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;
 }
 
+
 cwd(){
   if ! requirements "xclip"; then return
   else
     pwd | xclip -selection clipboard
+  fi
+}
+
+
+fzfrmdir(){
+  if ! requirements "fzf" "fdfind"; then return;
+  else
+    mapfile -t directories < <( fdfind --type d --hidden | fzf -m )
+
+    for item in "${directories[@]}"; do
+      gio trash -- "$item"
+    done
+  fi
+}
+
+
+fzfrm(){
+  if ! requirements "fzf"; then return;
+  else
+    command -v fzf >/dev/null || return
+    mapfile -t items < <(fzf -m)
+
+    for item in "${items[@]}"; do
+      gio trash -- "$item"
+    done
   fi
 }
