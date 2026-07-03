@@ -5,7 +5,7 @@
   split_horiz = <Primary><Shift>e
   split_vert = <Primary><Shift>o
   full_screen = <Alt>Return
-  new_window = <Primary>n
+  new_window = 
   preferences = <Primary>comma
 [profiles]
   [[default]]
