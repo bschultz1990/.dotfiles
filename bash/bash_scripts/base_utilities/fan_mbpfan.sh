@@ -15,11 +15,11 @@ function fan() {
           break
           ;;
         "3. Edit config file")
-          sudo vi /etc/mbpfan.conf
+          sudo "$(EDITOR:-vi)" /etc/mbpfan.conf
           break
           ;;
         "4. Install mbpfan")
-          sudo dnf install mbpfan
+          echo "Use your package manager."
           break
           ;;
         "5. Exit")

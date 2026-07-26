@@ -16,11 +16,11 @@ function fan() {
           break
           ;;
         "3. Edit config file")
-          sudo nvim /etc/macfanctl.conf
+          sudo "$(EDITOR:-vi)" /etc/macfanctl.conf
           break
           ;;
-        "4. Install mbpfan")
-          sudo pamac install macfanctld
+        "4. Install macfanctld")
+          echo "Use your package manager."
           break
           ;;
         "5. Exit")
@@ -29,3 +29,4 @@ function fan() {
       esac
     done
   }
+
