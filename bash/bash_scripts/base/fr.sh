@@ -10,8 +10,8 @@ function fr ()
     return
   else
     local app
-    app=$(flatpak list --columns=name,application | fzf | awk '{print $2}')
-    flatpak run "$app" >/dev/null 2>&1 &
+    app=$(flatpak list --columns=name,application | fzf --query="'$1"| awk '{print $2}')
+    flatpak run --filesystem=host "$app" "$2" >/dev/null 2>&1 &
     disown
   fi
 }
