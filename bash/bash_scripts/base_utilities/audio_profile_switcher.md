@@ -1,3 +1,4 @@
+```bash
 #! /usr/bin/bash
 
 # https://linuxvox.com/blog/linux-pactl/#querying-pulseaudio-information
@@ -10,3 +11,4 @@ notify-send "Scarlett 18i20 USB" "Profile: HiFi"
 
 pactl set-card-profile alsa_card.usb-Focusrite_Scarlett_18i20_USB_00014818-00 pro-audio
 notify-send "Scarlett 18i20 USB" "Profile: pro-audio"
+```

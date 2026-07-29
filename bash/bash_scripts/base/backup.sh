@@ -4,6 +4,6 @@ backup() {
   directory="/mnt/data/Files/"
   bucket="JediArchiveBackup/FalconII/"
   echo "Success!"
-  # cd "$directory" || echo "Error: $directory does not exist"
-  # b2 sync --keep-days 30 --replace-newer . b2:$bucket
+  cd "$directory" || echo "Error: $directory does not exist"
+  b2 sync --keep-days 14 --replace-newer . b2:$bucket
 }
