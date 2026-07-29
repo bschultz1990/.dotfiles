@@ -11,6 +11,7 @@ function fr ()
   else
     local app
     app=$(flatpak list --columns=name,application | fzf | awk '{print $2}')
-    flatpak run "$app"
+    flatpak run "$app" >/dev/null 2>&1 &
+    disown
   fi
 }
