@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$SCRIPT_DIR/requirements.sh"
+# SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# source "$SCRIPT_DIR/requirements.sh"
 
 c() {
   clear
@@ -52,7 +52,7 @@ notes() {
       glab repo clone notes
     fi
     cd ~/Documents/notes || return
-    git pull
+    # git pull
     nvim +"Telescope find_files"
   fi
 }

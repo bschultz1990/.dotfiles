@@ -6,9 +6,9 @@ echo "Enter your email:"; read user_email
 echo "Name: $user_name"; echo "Email: $user_email"
 
 
-echo "Enabling the AUR and Flatpacks..."
-sleep 1
-sudo sed -i '/EnableAUR\|CheckAURUpdates\|CheckFlatpakUpdates\|EnableFlatpak/s/^#//' /etc/pamac.conf
+# echo "Enabling the AUR and Flatpacks..."
+# sleep 1
+# sudo sed -i '/EnableAUR\|CheckAURUpdates\|CheckFlatpakUpdates\|EnableFlatpak/s/^#//' /etc/pamac.conf
 
 
 echo "Installing Fan Control..."
@@ -26,10 +26,10 @@ sudo pacman -Syyu -y
 
 pamac install glab github-cli --no-confirm
 
-echo "Replacing Vivaldi with Firefox..."
-sleep 1
-pamac remove vivaldi --no-confirm
-pamac install firefox --no-confirm
+# echo "Replacing Vivaldi with Firefox..."
+# sleep 1
+# pamac remove vivaldi --no-confirm
+# pamac install firefox --no-confirm
 
 echo "Configuring git, gh, and glab..."
 sleep 1
@@ -42,19 +42,22 @@ echo "Installing .dotfiles and configuring ~/.bashrc..."
 cd "$HOME" || return 1
 gh repo clone .dotfiles
 echo "
-
-# Bash Scripts
-if [ -d ~/.dotfiles/bash/bash_scripts/manjaro/ ]; then
-    for file in ~/.dotfiles/bash/bash_scripts/manjaro/*.sh; do
-        . $file
+source_files() {
+  local source_dir=\"$1\"
+  if [ -d \"$source_dir\" ]; then
+    for file in \"$source_dir\"/*.sh; do
+      [ -e \"$file\" ] || continue
+      . \"$file\"
     done
-fi
+  fi
+}
 
-if [ -d ~/.dotfiles/bash/bash_scripts/base/ ]; then
-    for file in ~/.dotfiles/bash/bash_scripts/base/*.sh; do
-        . $file
-    done
-fi">> ~/.bashrc
+source_files \"$HOME/.dotfiles/bash/bash_scripts/base\" 
+source_files \"$HOME/.dotfiles/bash/bash_scripts/base_utilities/fan_macfanctl.sh\" 
+source_files \"$HOME/.dotfiles/bash/bash_scripts/base_utilities/syncnotes.sh\" 
+
+
+">> ~/.bashrc
 
 
 echo "Installing Neovim and friends..."
